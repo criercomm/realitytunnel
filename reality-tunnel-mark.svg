@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 42 50"
+     role="img"
+     aria-labelledby="rt-mark-title">
+  <title id="rt-mark-title">Reality Tunnel mark</title>
+
+  <!-- Mark-only logo: four concentric ellipses, centered in the viewBox.
+       Use wherever the wordmark would be too small to read: favicon, app
+       icon, social card, small button, OS dock. Colors match the live brand
+       lockup (purple → cyan → orange → terracotta). -->
+
+  <g transform="translate(0 25)">
+    <ellipse cx="20.74" cy="0"    rx="20.26" ry="25.08" fill="#6900E9"/>
+    <ellipse cx="23.77" cy="0.56" rx="16.68" ry="20.64" fill="#00AEEF"/>
+    <ellipse cx="27.79" cy="0.62" rx="12.21" ry="15.11" fill="#fe5828"/>
+    <ellipse cx="31.47" cy="1.17" rx="7.83"  ry="9.69"  fill="#8c3622"/>
+  </g>
+</svg>

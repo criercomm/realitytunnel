@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 360 74"
+     role="img"
+     aria-labelledby="rt-title rt-desc"
+     preserveAspectRatio="xMinYMid meet">
+  <title id="rt-title">Reality Tunnel</title>
+  <desc id="rt-desc">Reality Tunnel — Immersive Experiences Studio</desc>
+
+  <!-- Static lockup. No animation, no script. Safe to use as <img src> or in
+       email/print contexts where script-driven animation isn't supported. -->
+
+  <g transform="translate(8 37) scale(1.05)">
+    <ellipse cx="20.74" cy="0"    rx="20.26" ry="25.08" fill="#6900E9"/>
+    <ellipse cx="23.77" cy="0.56" rx="16.68" ry="20.64" fill="#00AEEF"/>
+    <ellipse cx="27.79" cy="0.62" rx="12.21" ry="15.11" fill="#fe5828"/>
+    <ellipse cx="31.47" cy="1.17" rx="7.83"  ry="9.69"  fill="#8c3622"/>
+  </g>
+
+  <text x="82" y="46"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="21"
+        font-weight="500"
+        letter-spacing="2.94"
+        fill="currentColor">REALITY TUNNEL</text>
+</svg>
