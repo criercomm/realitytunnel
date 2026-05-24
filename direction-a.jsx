@@ -546,7 +546,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             We design, build, and integrate brand experiences that customers remember — and act upon with a senior team that's shipped together for a decade.
           </p>
           <div style={{ marginTop: 28, display: 'flex', gap: 12, alignItems: 'center' }}>
-            <a href="#" style={{
+            <a href="#contact" style={{
               background: A, color: '#fff', fontSize: 15, fontWeight: 600,
               padding: '16px 28px', borderRadius: 99,
               boxShadow: `0 12px 40px ${A}66, inset 0 1px 0 rgba(255,255,255,0.2)`,
@@ -656,9 +656,9 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           {/* Menu content grid: large nav links + contact info */}
           <div className="container" style={{
             position: 'relative', zIndex: 2,
-            padding: '32px 64px 96px',
+            padding: '8px 64px 64px',
             display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 80,
-            alignItems: 'end', minHeight: 'calc(100vh - 200px)',
+            alignItems: 'start',
           }}>
             <nav aria-label="Primary" style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
               {[
