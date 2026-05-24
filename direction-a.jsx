@@ -653,39 +653,40 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             }} />
           </div>
 
-          {/* Menu header — close button + tiny brand mark */}
-          <div className="container" style={{
-            position: 'relative', zIndex: 2,
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '32px 64px',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <span className="mono" style={{ fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)' }}>
-                <span style={{ color: A }}>●</span>&nbsp;&nbsp;Reality Tunnel · Menu
-              </span>
+          {/* Menu header — close button positioned to mirror the hero hamburger */}
+          <header style={{ position: 'relative', zIndex: 2, padding: '32px 0' }}>
+            <div className="container" style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              minHeight: 106, // matches hero logo height (89 * 50/42) so close button shares burger's y
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <span className="mono" style={{ fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)' }}>
+                  <span style={{ color: A }}>●</span>&nbsp;&nbsp;Reality Tunnel · Menu
+                </span>
+              </div>
+              <button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.18)',
+                  color: '#fff', borderRadius: 99,
+                  width: 44, height: 44,
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'background 160ms, border-color 160ms, transform 200ms',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; e.currentTarget.style.transform = 'rotate(90deg)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'rotate(0deg)'; }}
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+                  <path d="M2 2 L12 12" />
+                  <path d="M12 2 L2 12" />
+                </svg>
+              </button>
             </div>
-            <button
-              type="button"
-              aria-label="Close menu"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.18)',
-                color: '#fff', borderRadius: 99,
-                width: 44, height: 44,
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'pointer',
-                transition: 'background 160ms, border-color 160ms, transform 200ms',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; e.currentTarget.style.transform = 'rotate(90deg)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'rotate(0deg)'; }}
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
-                <path d="M2 2 L12 12" />
-                <path d="M12 2 L2 12" />
-              </svg>
-            </button>
-          </div>
+          </header>
 
           {/* Menu content grid: large nav links + contact info */}
           <div className="container" style={{
@@ -795,7 +796,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       {/* ── SERVICES ─────────────────────────────────────── */}
       <section id="services" style={{ position: 'relative', padding: '88px 0 96px', background: '#ffffff', color: '#0a0a0a' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, marginBottom: 80 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, marginBottom: 40 }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 28 }}>Capabilities · 06</div>
               <h2 style={{ fontSize: 64, lineHeight: 1.02, letterSpacing: '-0.028em', color: '#0a0a0a' }}>
@@ -805,7 +806,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             </div>
             <div style={{ paddingTop: 60 }}>
               <p style={{ fontSize: 19, lineHeight: 1.55, color: 'rgba(10,10,10,0.7)', fontWeight: 400, maxWidth: 480 }}>
-                A single roadmap, owned by senior engineers and 3D artists who have shipped together for a decade. No subcontractor chains, no offshore black boxes.
+                No pyramid. The people pitching are the people prototyping, building, and pushing pixels at 3am the night before launch.
               </p>
             </div>
           </div>
@@ -895,7 +896,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       {/* ── WORK ─────────────────────────────────────────── */}
       <section id="work" style={{ position: 'relative', padding: '104px 0 80px', background: '#ffffff', color: '#0a0a0a' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 60 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 32 }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 28 }}>Selected work · 2022–2025</div>
               <h2 style={{ fontSize: 64, lineHeight: 1.02, letterSpacing: '-0.028em', color: '#0a0a0a' }}>
