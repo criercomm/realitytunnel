@@ -79,13 +79,44 @@ function TestimonialCarousel({ accent }) {
   );
 }
 
-// ── ApproachStepper — click-through highlight across the 4 phases ──
+// ── ApproachStepper — auto-cycling highlight across the 4 phases ──
 function ApproachStepper({ accent }) {
   const n = APPROACH.length;
   const [active, setActive] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
+  const [tick, setTick] = React.useState(0); // bumps to restart progress fill on manual nav
+  const CYCLE_MS = 4200;
+
+  // Auto-advance loop — pauses while hovered or when the section is offscreen
+  const wrapRef = React.useRef(null);
+  const [visible, setVisible] = React.useState(true);
+  React.useEffect(() => {
+    if (!wrapRef.current || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.25 }
+    );
+    io.observe(wrapRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (paused || !visible) return;
+    const id = setTimeout(() => setActive((a) => (a + 1) % n), CYCLE_MS);
+    return () => clearTimeout(id);
+  }, [active, paused, visible, n, tick]);
+
+  const goTo = (i) => {
+    setActive(i);
+    setTick((t) => t + 1); // restart the countdown bar
+  };
 
   return (
-    <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
+    <div
+      ref={wrapRef}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
       {/* base connecting line */}
       <div style={{
         position: 'absolute', top: 36, left: '12%', right: '12%', height: 1,
@@ -105,7 +136,7 @@ function ApproachStepper({ accent }) {
         return (
           <div
             key={step.n}
-            onClick={() => setActive(i)}
+            onClick={() => goTo(i)}
             role="button"
             tabIndex={0}
             style={{ position: 'relative', padding: '0 14px', cursor: 'pointer' }}

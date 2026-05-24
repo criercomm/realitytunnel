@@ -112,7 +112,7 @@ const SERVICES = [
 const APPROACH = [
   { n: '01', name: 'Discover',  blurb: 'We start by identifying project objectives and leave with a scope, budget, and delivery schedule.' },
   { n: '02', name: 'Prototype', blurb: 'A working prototype on real hardware in four to six weeks — never a slide deck.' },
-  { n: '03', name: 'Build',     blurb: 'Senior team, fixed-price sprints, daily Loom updates. Production-grade code from day one.' },
+  { n: '03', name: 'Build',     blurb: 'Senior team, fixed-price sprints, constant updates. Production-grade code from day one.' },
   { n: '04', name: 'Operate',   blurb: 'On-site operators for events, tier-1 SLA for retail, analytics piped into your stack.' },
 ];
 
