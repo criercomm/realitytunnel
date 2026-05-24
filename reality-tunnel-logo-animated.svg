@@ -1,119 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 360 74"
-     role="img"
-     aria-labelledby="rt-title rt-desc"
-     preserveAspectRatio="xMinYMid meet">
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 74" role="img" aria-labelledby="rt-title rt-desc" preserveAspectRatio="xMinYMid meet">
   <title id="rt-title">Reality Tunnel</title>
   <desc id="rt-desc">Reality Tunnel — Immersive Experiences Studio</desc>
 
-  <style>
-    /* Reality Tunnel animated lockup.
-       Self-contained: styles, animation, and the activation script all live
-       inside this SVG. Use cases:
-         - Inline (paste this file's contents into HTML): full animation + script.
-         - <object data="reality-tunnel-logo-animated.svg">: full animation + script.
-         - <img src="reality-tunnel-logo-animated.svg">: static only — browsers do
-           not run scripts in image-loaded SVGs. Rings will be invisible because
-           the activation script never runs to add .rt-anim. If you need a static
-           rendering use the no-script fallback class (see below). */
+  
 
-    .rt-ring{transform-box:fill-box;transform-origin:center;opacity:0;}
-
-    /* When .rt-anim is present on the root svg, run entrance + perpetual motion */
-    .rt-anim .rt-r4{
-      animation:rt-mark-in 1.0s cubic-bezier(0.22,1,0.36,1) 0.0s both,
-                rt-scale-4 5.7s ease-in-out 1.4s infinite;
-    }
-    .rt-anim .rt-r3{
-      animation:rt-mark-in 1.0s cubic-bezier(0.22,1,0.36,1) 0.18s both,
-                rt-stretch-3 6.1s ease-in-out 1.4s infinite,
-                rt-pulse-3 3.8s ease-in-out 1.4s infinite;
-    }
-    .rt-anim .rt-r2{
-      animation:rt-mark-in 1.0s cubic-bezier(0.22,1,0.36,1) 0.36s both,
-                rt-rotate-2 5.3s ease-in-out 1.4s infinite,
-                rt-pulse-2 3.1s ease-in-out 1.4s infinite;
-    }
-    .rt-anim .rt-r1{
-      animation:rt-mark-in 1.0s cubic-bezier(0.22,1,0.36,1) 0.54s both,
-                rt-scale-1 4.7s ease-in-out 1.4s infinite,
-                rt-pulse-1 5.9s ease-in-out 1.4s infinite;
-    }
-    .rt-anim .rt-word{
-      animation:rt-word-in 0.9s cubic-bezier(0.22,1,0.36,1) 0.7s both;
-    }
-    .rt-word{opacity:0;transform:translateX(-8px);transform-box:fill-box;transform-origin:left center;}
-
-    /* Pause perpetual motion when the parent document hides */
-    .paused .rt-ring{animation-play-state:paused!important;}
-
-    /* Static fallback class: use this instead of .rt-anim when scripts can't run
-       (e.g. SVG loaded via <img>). Skips entrance, shows rings at rest. */
-    .rt-static .rt-ring,.rt-static .rt-word{opacity:1;transform:none;}
-
-    @keyframes rt-mark-in{
-      0%   { opacity:0; transform:scale(0.15); }
-      30%  { opacity:1; }
-      100% { opacity:1; transform:scale(1); }
-    }
-    @keyframes rt-word-in{
-      from { opacity:0; transform:translateX(-8px); }
-      to   { opacity:1; transform:translateX(0); }
-    }
-
-    @keyframes rt-scale-1   { 0%,100%{transform:scale(1);}      50%{transform:scale(1.10);} }
-    @keyframes rt-pulse-1   { 0%,100%{filter:brightness(1);}    50%{filter:brightness(1.30);} }
-    @keyframes rt-rotate-2  { 0%,100%{transform:rotate(0);}     50%{transform:rotate(-8deg);} }
-    @keyframes rt-pulse-2   { 0%,100%{filter:brightness(1);}    50%{filter:brightness(0.70);} }
-    @keyframes rt-stretch-3 { 0%,100%{transform:scale(1,1);}    50%{transform:scale(1.20,0.80);} }
-    @keyframes rt-pulse-3   { 0%,100%{filter:brightness(1);}    50%{filter:brightness(1.42);} }
-    @keyframes rt-scale-4   { 0%,100%{transform:scale(1);}      50%{transform:scale(0.86);} }
-
-    @media (prefers-reduced-motion: reduce){
-      .rt-anim .rt-ring,.rt-anim .rt-word{
-        animation:none!important;opacity:1!important;transform:none!important;filter:none!important;
-      }
-    }
-  </style>
-
-  <!-- Mark: four nested ellipses, scaled to sit in a 74-unit-tall band -->
+  
   <g class="rt-mark" transform="translate(8 37) scale(1.05)">
-    <ellipse class="rt-ring rt-r1" cx="20.74" cy="0"    rx="20.26" ry="25.08" fill="#6900E9"/>
-    <ellipse class="rt-ring rt-r2" cx="23.77" cy="0.56" rx="16.68" ry="20.64" fill="#00AEEF"/>
-    <ellipse class="rt-ring rt-r3" cx="27.79" cy="0.62" rx="12.21" ry="15.11" fill="#fe5828"/>
-    <ellipse class="rt-ring rt-r4" cx="31.47" cy="1.17" rx="7.83"  ry="9.69"  fill="#8c3622"/>
+    <ellipse class="rt-ring rt-r1" cx="20.74" cy="0" rx="20.26" ry="25.08" fill="#6900E9"></ellipse>
+    <ellipse class="rt-ring rt-r2" cx="23.77" cy="0.56" rx="16.68" ry="20.64" fill="#00AEEF"></ellipse>
+    <ellipse class="rt-ring rt-r3" cx="27.79" cy="0.62" rx="12.21" ry="15.11" fill="#fe5828"></ellipse>
+    <ellipse class="rt-ring rt-r4" cx="31.47" cy="1.17" rx="7.83" ry="9.69" fill="#8c3622"></ellipse>
   </g>
 
-  <!-- Wordmark: "REALITY TUNNEL" in Inter Medium.
-       Note: the SVG renders correctly with the system fallback (Helvetica Neue
-       / Segoe UI / Arial). For exact Inter rendering, load Inter on the host
-       page; SVG cannot reliably load external fonts itself. -->
-  <text class="rt-word"
-        x="82" y="46"
-        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
-        font-size="21"
-        font-weight="500"
-        letter-spacing="2.94"
-        fill="currentColor">REALITY TUNNEL</text>
+  
+  <text class="rt-word" x="82" y="46" font-family="Inter, system-ui, -apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="21" font-weight="500" letter-spacing="2.94" fill="currentColor">REALITY TUNNEL</text>
 
-  <script type="application/ecmascript">
-    <![CDATA[
-      // Activation: add .rt-anim to play entrance + perpetual motion.
-      // Pause on parent-document visibility change (works when this SVG is loaded
-      // as <object> or inlined; <img>-loaded SVGs do not run this script).
-      (function(){
-        var svg = document.documentElement;
-        if (!svg) return;
-        svg.classList.add('rt-anim');
-        try {
-          var doc = (document.defaultView && document.defaultView.parent && document.defaultView.parent.document) || document;
-          doc.addEventListener('visibilitychange', function(){
-            if (doc.hidden) svg.classList.add('paused');
-            else svg.classList.remove('paused');
-          });
-        } catch(e){ /* cross-origin or unsupported — animation just keeps running */ }
-      })();
-    ]]>
-  </script>
+  
 </svg>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reality Tunnel — Eye Mark</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #08021c; }
+  body { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .rt-eye {
+    width: 360px; height: auto; display: block; overflow: hidden;
+  }
+  .rt-eye .tr {
+    transform-box: fill-box; transform-origin: center;
+    opacity: 0;
+    animation: rt-tunnel 3.6s cubic-bezier(0.4, 0, 0.7, 0.6) infinite;
+    will-change: transform, opacity;
+  }
+  .rt-eye .tr.t1 { animation-delay: -3.0s; }
+  .rt-eye .tr.t2 { animation-delay: -2.28s; }
+  .rt-eye .tr.t3 { animation-delay: -1.56s; }
+  .rt-eye .tr.t4 { animation-delay: -0.84s; }
+  .rt-eye .tr.t5 { animation-delay: -0.12s; }
+  @keyframes rt-tunnel {
+    0%   { transform: scale(0.12); opacity: 0; }
+    8%   { opacity: 0.95; }
+    70%  { opacity: 0.85; }
+    100% { transform: scale(3.8); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rt-eye .tr { animation: none !important; opacity: 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="rt-eye" viewBox="0 0 42 50" aria-label="Reality Tunnel" role="img">
+  <defs>
+    <clipPath id="rt-eye-clip">
+      <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" />
+    </clipPath>
+  </defs>
+
+  <!-- Outer eye shape — filled, no keyline -->
+  <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" fill="rgba(255,255,255,0.18)" />
+
+  <!-- Tunnel rings spawning near the top of the eye, clipped to the eye shape -->
+  <g clip-path="url(#rt-eye-clip)">
+    <circle class="tr t1" cx="21" cy="15" r="5" fill="rgba(255,255,255,0.62)" />
+    <circle class="tr t2" cx="21" cy="15" r="5" fill="rgba(255,255,255,1)"    />
+    <circle class="tr t3" cx="21" cy="15" r="5" fill="rgba(255,255,255,0.62)" />
+    <circle class="tr t4" cx="21" cy="15" r="5" fill="rgba(255,255,255,1)"    />
+    <circle class="tr t5" cx="21" cy="15" r="5" fill="rgba(255,255,255,0.62)" />
+  </g>
+</svg>
+
+</body>
+</html>
