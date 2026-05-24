@@ -140,7 +140,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         .dirA .rt-wordmark .rt-word .ch{display:inline-block;opacity:0;transform:var(--from) rotate(var(--rot));animation-name:dirA-char-in;animation-timing-function:cubic-bezier(0.22,1,0.36,1);animation-fill-mode:forwards;will-change:transform,opacity;}
         .dirA .rt-wordmark .rt-word .sp{display:inline-block;}
         @keyframes dirA-char-in{from{opacity:0;transform:var(--from) rotate(var(--rot));}to{opacity:1;transform:translate(0,0) rotate(0deg);}}
-        .dirA .rt-wordmark .rt-tag{font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:400;font-size:10px;letter-spacing:0.36em;line-height:1;color:rgba(255,255,255,0.55);white-space:nowrap;text-transform:uppercase;margin-top:8px;opacity:0;animation:dirA-tag-in 0.9s cubic-bezier(0.22,1,0.36,1) 2.4s both;}
+        .dirA .rt-wordmark .rt-tag{font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:400;font-size:10px;letter-spacing:0.48em;line-height:1;color:rgba(255,255,255,0.55);white-space:nowrap;text-transform:uppercase;margin-top:8px;opacity:0;animation:dirA-tag-in 0.9s cubic-bezier(0.22,1,0.36,1) 2.4s both;}
         @keyframes dirA-tag-in{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
         @media (prefers-reduced-motion:reduce){
           .dirA .rt-wordmark .rt-word .ch{animation:none!important;opacity:1!important;transform:none!important;}
@@ -225,8 +225,14 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             </div>
           </div>
           <nav style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-            {['Work', 'Services', 'Approach', 'Studio', 'Contact'].map((l) => (
-              <a key={l} href="#" style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.7)', padding: '8px 14px', borderRadius: 99 }}>{l}</a>
+            {[
+              ['Work', '#work'],
+              ['Services', '#services'],
+              ['Approach', '#approach'],
+              ['Studio', '#studio'],
+              ['Contact', '#contact'],
+            ].map(([l, href]) => (
+              <a key={l} href={href} style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.7)', padding: '8px 14px', borderRadius: 99 }}>{l}</a>
             ))}
           </nav>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -239,7 +245,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               background: A, color: '#fff', fontSize: 13, fontWeight: 600,
               padding: '10px 18px', borderRadius: 99,
               boxShadow: `0 8px 32px ${A}55`,
-            }}>Start a project →</a>
+            }} href="#contact">Start a project →</a>
           </div>
           </div>
         </header>
@@ -263,7 +269,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             maxWidth: 540, fontWeight: 300,
             textShadow: '0 1px 12px rgba(0,0,0,0.5)',
           }}>
-            We design, build, and integrate brand experiences that customers remember — and act upon with senior team that's shipped together for a decade.
+            We design, build, and integrate brand experiences that customers remember — and act upon with a senior team that's shipped together for a decade.
           </p>
           <div style={{ marginTop: 28, display: 'flex', gap: 12, alignItems: 'center' }}>
             <a href="#" style={{
@@ -341,7 +347,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       </section>
 
       {/* ── SERVICES ─────────────────────────────────────── */}
-      <section style={{ position: 'relative', padding: '88px 0 96px', background: '#ffffff', color: '#0a0a0a' }}>
+      <section id="services" style={{ position: 'relative', padding: '88px 0 96px', background: '#ffffff', color: '#0a0a0a' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, marginBottom: 80 }}>
             <div>
@@ -441,7 +447,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       </section>
 
       {/* ── WORK ─────────────────────────────────────────── */}
-      <section style={{ position: 'relative', padding: '104px 0 80px', background: '#ffffff', color: '#0a0a0a' }}>
+      <section id="work" style={{ position: 'relative', padding: '104px 0 80px', background: '#ffffff', color: '#0a0a0a' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 60 }}>
             <div>
@@ -540,7 +546,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       </section>
 
       {/* ── APPROACH ─────────────────────────────────────── */}
-      <section style={{ position: 'relative', padding: '88px 0 120px', background: 'linear-gradient(180deg, #081a30 0%, #0a1530 60%, #0a1228 100%)' }}>
+      <section id="approach" style={{ position: 'relative', padding: '88px 0 120px', background: 'linear-gradient(180deg, #081a30 0%, #0a1530 60%, #0a1228 100%)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 80 }}>
             <div className="eyebrow" style={{ marginBottom: 28 }}>How we work</div>
@@ -584,7 +590,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       </section>
 
       {/* ── ABOUT THE NAME — gradient bg + slow drifting dark blobs ── */}
-      <section style={{
+      <section id="studio" style={{
         position: 'relative', padding: '88px 0 80px',
         background: 'linear-gradient(180deg, #081a30 0%, #0a1530 60%, #0a1228 100%)',
         color: '#eaf2ff',
@@ -625,7 +631,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       </section>
 
       {/* ── CONTACT CTA ──────────────────────────────────── */}
-      <section style={{ position: 'relative', padding: '64px 0 64px', overflow: 'hidden', background: '#050913' }}>
+      <section id="contact" style={{ position: 'relative', padding: '64px 0 64px', overflow: 'hidden', background: '#050913' }}>
         <div style={{
           position: 'absolute', inset: 0, opacity: 0.6,
           background: `radial-gradient(ellipse 60% 80% at 50% 60%, ${A}44 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 20%, ${B}33 0%, transparent 60%)`,
