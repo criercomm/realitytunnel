@@ -415,7 +415,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           <div className="container" style={{ position: 'relative', height: '100%' }}>
             <div style={{
               position: 'absolute', top: '50%', right: -180, transform: 'translateY(-50%)',
-              width: 1100, height: 1100, pointerEvents: 'none',
+              width: 1400, height: 1400, pointerEvents: 'none',
               animation: 'dirA-orb-drift 14s ease-in-out infinite, dirA-orb-pulse 7s ease-in-out infinite',
             }}>
               <svg viewBox="0 0 42 50" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
@@ -464,8 +464,11 @@ function DirectionA({ accent, navPalette, keylineColor }) {
                   sits flush against the filled eye with no dark gap between. Half the stroke
                   width sits inside the fill (invisible, same color); the other half extends
                   beyond, creating the visible halo. */}
-              <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z"
-                    fill={navRingColors[0]} stroke={navKeyline} strokeWidth="4" strokeLinejoin="miter" />
+              {/* Eye fill (defines the clipped region for the tunnel) */}
+              <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" fill={navRingColors[0]} />
+              {/* Keyline — same shape, shifted up a hair, independent of the fill + tunnel */}
+              <path d="M 5,24 Q 21,3 37,24 Q 21,45 5,24 Z"
+                    fill="none" stroke={navKeyline} strokeWidth="4" strokeLinejoin="miter" />
               {/* Tunnel rings spawning near the top, scaling down through the eye */}
               <g clipPath="url(#rt-nav-clip)">
                 <circle className="tunnel-ring tr1" cx="21" cy="15" r="5" fill={navRingColors[1]} />

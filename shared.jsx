@@ -269,8 +269,9 @@ function EyeMark({ size = 89, colors, keylineColor, strokeWidth = 4, scope = 'em
           .${id}-tr{animation:none!important;opacity:0!important;}
         }
       `}</style>
-      <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z"
-            fill={c[0]} stroke={stroke} strokeWidth={strokeWidth} strokeLinejoin="miter" />
+      <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" fill={c[0]} />
+      <path d="M 5,24 Q 21,3 37,24 Q 21,45 5,24 Z"
+            fill="none" stroke={stroke} strokeWidth={strokeWidth} strokeLinejoin="miter" />
       <g clipPath={`url(#${id}-clip)`}>
         <circle className={`${id}-tr t1`} cx="21" cy="15" r="5" fill={c[1]} />
         <circle className={`${id}-tr t2`} cx="21" cy="15" r="5" fill={c[2]} />
