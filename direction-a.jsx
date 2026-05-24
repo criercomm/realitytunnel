@@ -79,6 +79,242 @@ function TestimonialCarousel({ accent }) {
   );
 }
 
+// ── ApproachStepper — click-through highlight across the 4 phases ──
+function ApproachStepper({ accent }) {
+  const n = APPROACH.length;
+  const [active, setActive] = React.useState(0);
+
+  return (
+    <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
+      {/* base connecting line */}
+      <div style={{
+        position: 'absolute', top: 36, left: '12%', right: '12%', height: 1,
+        background: 'rgba(255,255,255,0.10)', zIndex: 0,
+      }} />
+      {/* progress line — fills proportionally to active step */}
+      <div style={{
+        position: 'absolute', top: 36, left: '12%', height: 1,
+        width: `calc((100% - 24%) * ${active / Math.max(1, n - 1)})`,
+        background: `linear-gradient(90deg, ${accent}aa 0%, ${accent}ff 100%)`,
+        transition: 'width 700ms cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 0,
+      }} />
+
+      {APPROACH.map((step, i) => {
+        const isActive = i === active;
+        return (
+          <div
+            key={step.n}
+            onClick={() => setActive(i)}
+            role="button"
+            tabIndex={0}
+            style={{ position: 'relative', padding: '0 14px', cursor: 'pointer' }}
+          >
+            <div style={{
+              width: 72, height: 72, borderRadius: 99, margin: '0 auto 28px',
+              background: isActive ? accent : 'rgba(255,255,255,0.04)',
+              border: isActive ? `1px solid ${accent}` : '1px solid rgba(255,255,255,0.15)',
+              boxShadow: isActive ? `0 0 40px ${accent}88` : 'none',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: '"JetBrains Mono",monospace', fontSize: 14, fontWeight: 500,
+              letterSpacing: '0.05em',
+              position: 'relative', zIndex: 2,
+              transform: isActive ? 'scale(1.06)' : 'scale(1)',
+              color: '#fff',
+              transition: 'background 360ms ease, border-color 360ms ease, box-shadow 480ms ease, transform 360ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+            }}>{step.n}</div>
+            <h3 style={{
+              fontSize: 24, fontWeight: 500, marginBottom: 12, textAlign: 'center', letterSpacing: '-0.018em',
+              color: isActive ? '#fff' : 'rgba(255,255,255,0.78)',
+              transition: 'color 360ms ease',
+            }}>{step.name}</h3>
+            <p style={{
+              fontSize: 14, lineHeight: 1.55, textAlign: 'center', fontWeight: 300,
+              color: isActive ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.5)',
+              transition: 'color 360ms ease',
+            }}>{step.blurb}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── ContactForm — two-column contact info + form ──
+function ContactForm({ accent, secondary }) {
+  const [form, setForm] = React.useState({
+    name: '', company: '', email: '', service: '', budget: '', brief: '',
+  });
+  const [sent, setSent] = React.useState(false);
+  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // For deployment: replace with real endpoint. For now, simulate + mailto fallback.
+    const body = `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nService: ${form.service}\nBudget: ${form.budget}\n\n${form.brief}`;
+    const href = `mailto:contact@realitytunnel.com?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
+    // Open mail client in a new tab
+    window.open(href, '_blank');
+    setSent(true);
+  };
+
+  const fieldStyle = {
+    width: '100%', background: 'rgba(255,255,255,0.04)', color: '#fff',
+    border: '1px solid rgba(255,255,255,0.10)', borderRadius: 10,
+    padding: '14px 16px', fontSize: 15, fontFamily: 'inherit',
+    outline: 'none', transition: 'border-color 160ms, background 160ms',
+  };
+  const labelStyle = {
+    display: 'block', fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+    fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+    color: 'rgba(255,255,255,0.6)', marginBottom: 8,
+  };
+
+  if (sent) {
+    return (
+      <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center', padding: '64px 32px' }}>
+        <div style={{
+          width: 80, height: 80, borderRadius: 99, margin: '0 auto 24px',
+          background: accent, color: '#fff',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 36,
+        }}>✓</div>
+        <h3 style={{ fontSize: 36, fontWeight: 600, letterSpacing: '-0.02em', color: '#fff' }}>Thanks — your brief is on its way.</h3>
+        <p style={{ marginTop: 16, fontSize: 17, color: 'rgba(255,255,255,0.7)', fontWeight: 300 }}>
+          We'll reply within one business day with a shaped scope. In the meantime,
+          your default mail client should have opened with the message — review and hit send.
+        </p>
+        <button
+          type="button"
+          onClick={() => { setSent(false); setForm({ name: '', company: '', email: '', service: '', budget: '', brief: '' }); }}
+          style={{
+            marginTop: 32, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)',
+            color: '#fff', padding: '12px 22px', borderRadius: 99, cursor: 'pointer',
+            fontSize: 13, fontFamily: '"JetBrains Mono", monospace', letterSpacing: '0.08em', textTransform: 'uppercase',
+          }}
+        >
+          Send another
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      maxWidth: 1100, margin: '0 auto',
+      display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 56,
+      background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: 24, padding: '48px 48px',
+    }}>
+      <aside style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+        <div>
+          <div style={{
+            fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+            fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+            color: accent, marginBottom: 14,
+          }}>Reach us directly</div>
+          <a href="mailto:contact@realitytunnel.com" style={{ display: 'block', fontSize: 16, color: '#fff', marginBottom: 8, textDecoration: 'none' }}>contact@realitytunnel.com</a>
+          <a href="tel:+51958967616" style={{ display: 'block', fontSize: 16, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>+51 958 967 616</a>
+        </div>
+        <div>
+          <div style={{
+            fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+            fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+            color: accent, marginBottom: 14,
+          }}>Response time</div>
+          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', margin: 0, lineHeight: 1.55 }}>
+            One business day. We'll come back with a written scope, a budget range, and a delivery schedule.
+          </p>
+        </div>
+        <div>
+          <div style={{
+            fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+            fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+            color: accent, marginBottom: 14,
+          }}>Studio</div>
+          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', margin: 0, lineHeight: 1.55 }}>
+            Lima, Peru<br />Serving US &amp; LATAM
+          </p>
+        </div>
+      </aside>
+
+      <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+          <label>
+            <span style={labelStyle}>Name</span>
+            <input required value={form.name} onChange={set('name')} type="text" placeholder="Your name" style={fieldStyle} />
+          </label>
+          <label>
+            <span style={labelStyle}>Company</span>
+            <input value={form.company} onChange={set('company')} type="text" placeholder="Brand or studio" style={fieldStyle} />
+          </label>
+        </div>
+        <label>
+          <span style={labelStyle}>Email</span>
+          <input required value={form.email} onChange={set('email')} type="email" placeholder="you@company.com" style={fieldStyle} />
+        </label>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+          <label>
+            <span style={labelStyle}>What are you exploring?</span>
+            <select required value={form.service} onChange={set('service')} style={{ ...fieldStyle, appearance: 'none' }}>
+              <option value="" style={{ background: '#050913' }}>Select a service</option>
+              <option value="ar" style={{ background: '#050913' }}>Augmented reality</option>
+              <option value="vr" style={{ background: '#050913' }}>Virtual reality &amp; 360°</option>
+              <option value="3d" style={{ background: '#050913' }}>3D visualization</option>
+              <option value="ai" style={{ background: '#050913' }}>AI &amp; computer vision</option>
+              <option value="event" style={{ background: '#050913' }}>Event activation</option>
+              <option value="integration" style={{ background: '#050913' }}>Integration</option>
+              <option value="other" style={{ background: '#050913' }}>Not sure yet</option>
+            </select>
+          </label>
+          <label>
+            <span style={labelStyle}>Budget range</span>
+            <select value={form.budget} onChange={set('budget')} style={{ ...fieldStyle, appearance: 'none' }}>
+              <option value="" style={{ background: '#050913' }}>Select a range</option>
+              <option value="<25k" style={{ background: '#050913' }}>Under $25k</option>
+              <option value="25-50k" style={{ background: '#050913' }}>$25k – $50k</option>
+              <option value="50-100k" style={{ background: '#050913' }}>$50k – $100k</option>
+              <option value="100k+" style={{ background: '#050913' }}>$100k+</option>
+              <option value="discuss" style={{ background: '#050913' }}>Let's discuss</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          <span style={labelStyle}>Brief - Tell us all about it</span>
+          <textarea
+            required value={form.brief} onChange={set('brief')} rows={5}
+            placeholder="What do you want to build? Audience, surface (web / iOS / event / headset), rough deadline."
+            style={{ ...fieldStyle, resize: 'vertical', minHeight: 120, fontFamily: 'inherit' }}
+          />
+        </label>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginTop: 8, flexWrap: 'wrap' }}>
+          <span style={{
+            fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+            fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.5)',
+          }}>
+            By submitting, you consent to be contacted by Reality Tunnel.
+          </span>
+          <button
+            type="submit"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              background: accent, color: '#fff', fontSize: 15, fontWeight: 600,
+              padding: '14px 28px', borderRadius: 99,
+              border: 0, cursor: 'pointer',
+              boxShadow: `0 12px 40px ${accent}55, inset 0 1px 0 rgba(255,255,255,0.18)`,
+              transition: 'transform 200ms ease',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+          >
+            Send brief <span style={{ opacity: 0.8 }}>→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
 function DirectionA({ accent, navPalette, keylineColor }) {
   // accent palette: [primary, secondary, tertiary, quaternary (ember)]
   const A = accent.primary;    // headline glow / CTA
@@ -92,6 +328,20 @@ function DirectionA({ accent, navPalette, keylineColor }) {
   const navRingColors = navPalette || ringColors;
   // Independent color for the nav eye keyline (defaults to outer nav color).
   const navKeyline = keylineColor || navRingColors[0];
+
+  // Hamburger / full-screen menu
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  React.useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false); };
+    document.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [menuOpen]);
 
   return (
     <div className="dirA" style={{
@@ -132,6 +382,12 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         @keyframes dirA-ob3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(10%,-8%) scale(1.06);}}
         @keyframes dirA-ob4{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-8%,-12%) scale(1.12);}}
         @media (prefers-reduced-motion:reduce){.dirA .origin-blobs .ob{animation:none!important;}}
+        @keyframes dirA-menu-bg-in{from{opacity:0;}to{opacity:1;}}
+        @keyframes dirA-menu-link-in{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+        @media (prefers-reduced-motion:reduce){
+          [role="dialog"][aria-modal="true"]{animation:none!important;}
+          .dirA .menu-link{animation:none!important;opacity:1!important;transform:none!important;}
+        }
         @keyframes dirA-testi-in{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
         .dirA .shimmer{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.08) 50%,transparent 100%);background-size:200% 100%;animation:dirA-shimmer 4s ease-in-out infinite;}
@@ -229,7 +485,6 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               ['Work', '#work'],
               ['Services', '#services'],
               ['Approach', '#approach'],
-              ['Studio', '#studio'],
               ['Contact', '#contact'],
             ].map(([l, href]) => (
               <a key={l} href={href} style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.7)', padding: '8px 14px', borderRadius: 99 }}>{l}</a>
@@ -241,11 +496,30 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               color: 'rgba(255,255,255,0.75)', fontSize: 11, padding: '8px 12px', borderRadius: 99,
               cursor: 'pointer',
             }}>EN · ES</button>
-            <a href="#" style={{
-              background: A, color: '#fff', fontSize: 13, fontWeight: 600,
-              padding: '10px 18px', borderRadius: 99,
-              boxShadow: `0 8px 32px ${A}55`,
-            }} href="#contact">Start a project →</a>
+            <button
+              type="button"
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(true)}
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                color: '#fff', borderRadius: 99,
+                width: 44, height: 44,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer',
+                backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+                transition: 'background 160ms, border-color 160ms',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+            >
+              <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+                <path d="M1 2 L17 2" />
+                <path d="M1 7 L17 7" />
+                <path d="M1 12 L11 12" />
+              </svg>
+            </button>
           </div>
           </div>
         </header>
@@ -315,6 +589,136 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         </div>
       </section>
 
+      {/* ── HAMBURGER MENU OVERLAY ──────────────────────── */}
+      {menuOpen && (
+        <div
+          role="dialog" aria-modal="true" aria-label="Site menu"
+          onClick={(e) => { if (e.target === e.currentTarget) setMenuOpen(false); }}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 100,
+            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(105,0,233,0.35) 0%, transparent 65%), linear-gradient(180deg, #07061a 0%, #050913 60%, #02030c 100%)',
+            animation: 'dirA-menu-bg-in 380ms cubic-bezier(0.22, 1, 0.36, 1) both',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Drifting accent orbs behind the menu */}
+          <div aria-hidden style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden',
+          }}>
+            <div style={{
+              position: 'absolute', width: 700, height: 700, top: '-15%', right: '-10%',
+              background: `radial-gradient(circle, ${A}55 0%, transparent 65%)`,
+              filter: 'blur(80px)',
+              animation: 'dirA-orb-drift 18s ease-in-out infinite',
+            }} />
+            <div style={{
+              position: 'absolute', width: 600, height: 600, bottom: '-15%', left: '-10%',
+              background: `radial-gradient(circle, ${B}44 0%, transparent 65%)`,
+              filter: 'blur(80px)',
+              animation: 'dirA-orb-drift 22s ease-in-out infinite reverse',
+            }} />
+          </div>
+
+          {/* Menu header — close button + tiny brand mark */}
+          <div className="container" style={{
+            position: 'relative', zIndex: 2,
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: '32px 64px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)' }}>
+                <span style={{ color: A }}>●</span>&nbsp;&nbsp;Reality Tunnel · Menu
+              </span>
+            </div>
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                color: '#fff', borderRadius: 99,
+                width: 44, height: 44,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'background 160ms, border-color 160ms, transform 200ms',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; e.currentTarget.style.transform = 'rotate(90deg)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'rotate(0deg)'; }}
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+                <path d="M2 2 L12 12" />
+                <path d="M12 2 L2 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Menu content grid: large nav links + contact info */}
+          <div className="container" style={{
+            position: 'relative', zIndex: 2,
+            padding: '32px 64px 96px',
+            display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 80,
+            alignItems: 'end', minHeight: 'calc(100vh - 200px)',
+          }}>
+            <nav aria-label="Primary" style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              {[
+                ['Work', '#work'],
+                ['Services', '#services'],
+                ['Approach', '#approach'],
+                ['Contact', '#contact'],
+              ].map(([l, href], i) => (
+                <a
+                  key={l}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="menu-link"
+                  style={{
+                    fontSize: 96, fontWeight: 600, letterSpacing: '-0.035em', lineHeight: 1.04,
+                    color: '#fff', textDecoration: 'none',
+                    opacity: 0, transform: 'translateY(28px)',
+                    animation: `dirA-menu-link-in 720ms cubic-bezier(0.22, 1, 0.36, 1) ${0.15 + i * 0.08}s both`,
+                    position: 'relative', display: 'inline-block', width: 'fit-content',
+                    transition: 'color 220ms ease, transform 220ms ease',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = A; e.currentTarget.style.transform = 'translateX(12px)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateX(0)'; }}
+                >
+                  {l}
+                </a>
+              ))}
+            </nav>
+
+            <aside style={{
+              display: 'flex', flexDirection: 'column', gap: 32,
+              opacity: 0,
+              animation: 'dirA-menu-link-in 720ms cubic-bezier(0.22, 1, 0.36, 1) 0.55s both',
+            }}>
+              <div>
+                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Start a project</div>
+                <a href="#contact" onClick={() => setMenuOpen(false)} style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 10,
+                  background: A, color: '#fff', fontSize: 15, fontWeight: 600,
+                  padding: '18px 28px', borderRadius: 99,
+                  boxShadow: `0 12px 40px ${A}66, inset 0 1px 0 rgba(255,255,255,0.2)`,
+                }}>Book a call →</a>
+              </div>
+              <div>
+                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Reach us</div>
+                <a href="mailto:contact@realitytunnel.com" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6 }}>contact@realitytunnel.com</a>
+                <a href="tel:+51958967616" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)' }}>+51 958 967 616</a>
+              </div>
+              <div>
+                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Follow</div>
+                <div style={{ display: 'flex', gap: 18 }}>
+                  {['Instagram', 'LinkedIn', 'Vimeo'].map((soc) => (
+                    <a key={soc} href="#" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>{soc}</a>
+                  ))}
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      )}
 
       {/* ── CLIENTS (logo scroll) — directly below the hero ────────────── */}
       <section style={{ position: 'relative', padding: '88px 0 96px', background: 'linear-gradient(180deg, #1d2138 0%, #171a2c 55%, #13162a 100%)', overflow: 'hidden' }}>
@@ -555,29 +959,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             </h2>
           </div>
 
-          <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
-            {/* connecting line */}
-            <div style={{
-              position: 'absolute', top: 36, left: '12%', right: '12%', height: 1,
-              background: `linear-gradient(90deg, transparent 0%, ${A}66 20%, ${A}66 80%, transparent 100%)`,
-            }} />
-            {APPROACH.map((step, i) => (
-              <div key={step.n} style={{ position: 'relative', padding: '0 14px' }}>
-                <div style={{
-                  width: 72, height: 72, borderRadius: 99, margin: '0 auto 28px',
-                  background: i === 0 ? A : 'rgba(255,255,255,0.04)',
-                  border: i === 0 ? `1px solid ${A}` : '1px solid rgba(255,255,255,0.15)',
-                  boxShadow: i === 0 ? `0 0 40px ${A}88` : 'none',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: '"JetBrains Mono",monospace', fontSize: 14, fontWeight: 500,
-                  letterSpacing: '0.05em',
-                  position: 'relative', zIndex: 1,
-                }}>{step.n}</div>
-                <h3 style={{ fontSize: 24, fontWeight: 500, marginBottom: 12, textAlign: 'center', letterSpacing: '-0.018em' }}>{step.name}</h3>
-                <p style={{ fontSize: 14, lineHeight: 1.55, color: 'rgba(255,255,255,0.6)', textAlign: 'center', fontWeight: 300 }}>{step.blurb}</p>
-              </div>
-            ))}
-          </div>
+          <ApproachStepper accent={A} />
         </div>
       </section>
 
@@ -630,51 +1012,96 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         </div>
       </section>
 
-      {/* ── CONTACT CTA ──────────────────────────────────── */}
-      <section id="contact" style={{ position: 'relative', padding: '64px 0 64px', overflow: 'hidden', background: '#050913' }}>
-        <div style={{
-          position: 'absolute', inset: 0, opacity: 0.6,
-          background: `radial-gradient(ellipse 60% 80% at 50% 60%, ${A}44 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 20%, ${B}33 0%, transparent 60%)`,
+      {/* ── CONTACT — full contact section with form ──────────────────── */}
+      <section id="contact" style={{ position: 'relative', padding: '88px 0 64px', overflow: 'hidden', background: '#050913' }}>
+        <div aria-hidden style={{
+          position: 'absolute', inset: 0, opacity: 0.6, pointerEvents: 'none',
+          background: `radial-gradient(ellipse 60% 80% at 50% 30%, ${A}33 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 85% 75%, ${B}33 0%, transparent 60%)`,
           filter: 'blur(40px)',
         }} />
-        <div className="container" style={{ position: 'relative', textAlign: 'center', maxWidth: 980 }}>
+
+        <div className="container" style={{ position: 'relative', textAlign: 'center', maxWidth: 980, marginBottom: 64 }}>
           <div style={{ display: 'inline-block', marginBottom: 20 }}>
-            <EyeMark size={108} colors={navRingColors} keylineColor={navKeyline} strokeWidth={4} scope="contact" />
+            <EyeMark size={88} colors={navRingColors} keylineColor={navKeyline} strokeWidth={4} scope="contact" />
           </div>
-          <h2 style={{ fontSize: 84, lineHeight: 1.02, letterSpacing: '-0.035em', fontWeight: 600 }}>
+          <h2 style={{ fontSize: 72, lineHeight: 1.04, letterSpacing: '-0.035em', fontWeight: 600 }}>
             Tell us what you want<br />to build <span style={{ fontStyle: 'italic', fontWeight: 300, color: A }}>next.</span>
           </h2>
-          <p style={{ fontSize: 19, color: 'rgba(255,255,255,0.7)', maxWidth: 600, margin: '32px auto 48px', fontWeight: 300, lineHeight: 1.5 }}>
+          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', maxWidth: 600, margin: '24px auto 0', fontWeight: 300, lineHeight: 1.5 }}>
             Give us a call or fill out a brief— whichever is easiest. We'll come back to you with a scope that meets your budget.
           </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 64 }}>
-            <a href="#" style={{
-              background: A, color: '#fff', fontSize: 15, fontWeight: 600,
-              padding: '18px 32px', borderRadius: 99,
-              boxShadow: `0 12px 40px ${A}66, inset 0 1px 0 rgba(255,255,255,0.2)`,
-            }}>Start a project →</a>
-            <a href="#" className="mono" style={{
-              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)',
-              color: '#fff', fontSize: 13, padding: '18px 28px', borderRadius: 99,
-              letterSpacing: '0.06em',
-            }}>contact@realitytunnel.com</a>
-          </div>
+        </div>
+
+        <div className="container" style={{ position: 'relative' }}>
+          <ContactForm accent={A} secondary={B} />
+        </div>
 
           <div style={{
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
             paddingTop: 48, borderTop: '1px solid rgba(255,255,255,0.08)',
-            maxWidth: 880, margin: '0 auto',
+            maxWidth: 1100, margin: '0 auto',
+            display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 56,
+            textAlign: 'left',
           }}>
-            <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-              ©2026 Reality Tunnel · US· Lima · LATAM
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                <EyeMark size={36} colors={navRingColors} keylineColor={navKeyline} strokeWidth={3} scope="ft" />
+                <span style={{ fontFamily: '"Inter", sans-serif', fontWeight: 300, letterSpacing: '0.28em', fontSize: 13, color: '#fff' }}>REALITY TUNNEL</span>
+              </div>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', maxWidth: 280, lineHeight: 1.55, margin: 0 }}>
+                Providing US &amp; LATAM markets with immersive experiences since 2014.
+              </p>
             </div>
-            <div style={{ display: 'flex', gap: 20 }}>
+
+            <div>
+              <div className="mono" style={{ fontSize: 11, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Studio</div>
+              {[
+                ['Work', '#work'],
+                ['Services', '#services'],
+                ['Approach', '#approach'],
+                ['Contact', '#contact'],
+              ].map(([l, href]) => (
+                <a
+                  key={l}
+                  href={href}
+                  onClick={(e) => {
+                    const target = document.querySelector(href);
+                    if (target) {
+                      e.preventDefault();
+                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}
+                >{l}</a>
+              ))}
+            </div>
+
+            <div>
+              <div className="mono" style={{ fontSize: 11, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Reach us</div>
+              <a href="mailto:contact@realitytunnel.com" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>contact@realitytunnel.com</a>
+              <a href="tel:+51958967616" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>+51 958 967 616</a>
+              <span style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0' }}>Lima · LATAM &amp; US</span>
+            </div>
+
+            <div>
+              <div className="mono" style={{ fontSize: 11, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Follow</div>
               {['Instagram', 'LinkedIn', 'Vimeo', 'GitHub'].map((s) => (
-                <a key={s} href="#" style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{s}</a>
+                <a key={s} href="#" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>{s}</a>
               ))}
             </div>
           </div>
-        </div>
+
+          <div style={{
+            maxWidth: 1100, margin: '40px auto 0',
+            paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.06)',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap',
+          }}>
+            <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              ©2026 Reality Tunnel · US · Lima · LATAM
+            </div>
+            <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              All rights reserved
+            </div>
+          </div>
       </section>
     </div>
   );
