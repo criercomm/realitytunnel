@@ -48,7 +48,7 @@ function TestimonialCarousel({ accent }) {
       </blockquote>
 
       <div style={{
-        marginTop: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14,
+        marginTop: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14,
       }}>
         <img src={t.img} alt="" style={{ width: 44, height: 44, borderRadius: 99, objectFit: 'cover', background: '#eee' }} />
         <div style={{ textAlign: 'left' }}>
