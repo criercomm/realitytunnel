@@ -183,7 +183,7 @@ function ContactForm({ accent, secondary }) {
     e.preventDefault();
     // For deployment: replace with real endpoint. For now, simulate + mailto fallback.
     const body = `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nService: ${form.service}\nBudget: ${form.budget}\n\n${form.brief}`;
-    const href = `mailto:contact@realitytunnel.com?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
+    const href = `mailto:contact@realitytunnel.ai?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
     // Open mail client in a new tab
     window.open(href, '_blank');
     setSent(true);
@@ -243,7 +243,7 @@ function ContactForm({ accent, secondary }) {
             fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
             color: accent, marginBottom: 14,
           }}>Reach us directly</div>
-          <a href="mailto:contact@realitytunnel.com" style={{ display: 'block', fontSize: 16, color: '#fff', marginBottom: 8, textDecoration: 'none' }}>contact@realitytunnel.com</a>
+          <a href="mailto:contact@realitytunnel.ai" style={{ display: 'block', fontSize: 16, color: '#fff', marginBottom: 8, textDecoration: 'none' }}>contact@realitytunnel.ai</a>
           <a href="tel:+51958967616" style={{ display: 'block', fontSize: 16, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>+51 958 967 616</a>
         </div>
         <div>
@@ -739,7 +739,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               </div>
               <div>
                 <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Reach us</div>
-                <a href="mailto:contact@realitytunnel.com" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6 }}>contact@realitytunnel.com</a>
+                <a href="mailto:contact@realitytunnel.ai" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6 }}>contact@realitytunnel.ai</a>
                 <a href="tel:+51958967616" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)' }}>+51 958 967 616</a>
               </div>
               <div>
@@ -1120,7 +1120,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
 
             <div>
               <div className="mono" style={{ fontSize: 11, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Reach us</div>
-              <a href="mailto:contact@realitytunnel.com" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>contact@realitytunnel.com</a>
+              <a href="mailto:contact@realitytunnel.ai" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>contact@realitytunnel.ai</a>
               <a href="tel:+51958967616" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>+51 958 967 616</a>
               <span style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0' }}>Lima · LATAM &amp; US</span>
             </div>
