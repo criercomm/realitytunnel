@@ -656,7 +656,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           {/* Menu content grid: large nav links + contact info */}
           <div className="container" style={{
             position: 'relative', zIndex: 2,
-            padding: '8px 64px 64px',
+            padding: '200px 64px 64px',
             display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 80,
             alignItems: 'start',
           }}>
@@ -965,7 +965,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
 
       {/* ── TESTIMONIAL ──────────────────────────────────── */}
       <section style={{
-        position: 'relative', padding: '80px 0 56px',
+        position: 'relative', padding: '80px 0 112px',
         background: '#ffffff', color: '#0a0a0a',
       }}>
         <TestimonialCarousel accent={A} />
