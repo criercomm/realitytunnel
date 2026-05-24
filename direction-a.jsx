@@ -721,7 +721,15 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       )}
 
       {/* ── CLIENTS (logo scroll) — directly below the hero ────────────── */}
-      <section style={{ position: 'relative', padding: '88px 0 96px', background: 'linear-gradient(180deg, #1d2138 0%, #171a2c 55%, #13162a 100%)', overflow: 'hidden' }}>
+      <section style={{
+        position: 'relative', padding: '88px 0 96px',
+        background:
+          'radial-gradient(ellipse 60% 55% at 80% 20%, rgba(105,0,233,0.30) 0%, transparent 65%),' +
+          'radial-gradient(ellipse 50% 45% at 12% 80%, rgba(0,174,239,0.18) 0%, transparent 65%),' +
+          'radial-gradient(ellipse 45% 35% at 55% 95%, rgba(254,88,40,0.14) 0%, transparent 60%),' +
+          'linear-gradient(180deg, #1c1f3a 0%, #14172a 55%, #0e1124 100%)',
+        overflow: 'hidden',
+      }}>
         <div className="container" style={{ marginBottom: 56 }}>
           <div className="eyebrow" style={{ marginBottom: 20 }}>46 brands · 100+ projects</div>
           <h2 style={{ fontSize: 56, fontWeight: 500, letterSpacing: '-0.024em', lineHeight: 1.05, maxWidth: 900 }}>
