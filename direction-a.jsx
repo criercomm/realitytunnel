@@ -914,13 +914,20 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           </div>
 
           {/* Featured project — cinematic (image background + readability overlay) */}
-          <div style={{
-            position: 'relative', borderRadius: 24, overflow: 'hidden',
-            background: `linear-gradient(135deg, rgba(10,10,15,0.35) 0%, rgba(10,10,15,0.0) 40%, rgba(10,10,15,0.85) 100%), url("projects/manchester-united.webp") center/cover no-repeat`,
-            aspectRatio: '21 / 9', marginBottom: 24,
-            border: '1px solid rgba(10,10,10,0.08)',
-            boxShadow: '0 1px 0 rgba(10,10,10,0.04), 0 16px 48px rgba(10,10,10,0.08)',
-          }}>
+          <a
+            href={PROJECTS[0].url || '#'}
+            style={{
+              display: 'block', textDecoration: 'none', color: 'inherit',
+              position: 'relative', borderRadius: 24, overflow: 'hidden',
+              background: `linear-gradient(135deg, rgba(10,10,15,0.35) 0%, rgba(10,10,15,0.0) 40%, rgba(10,10,15,0.85) 100%), url("${PROJECTS[0].img}") center/cover no-repeat`,
+              aspectRatio: '21 / 9', marginBottom: 24,
+              border: '1px solid rgba(10,10,10,0.08)',
+              boxShadow: '0 1px 0 rgba(10,10,10,0.04), 0 16px 48px rgba(10,10,10,0.08)',
+              transition: 'transform 360ms cubic-bezier(0.22,1,0.36,1), box-shadow 360ms ease',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 1px 0 rgba(10,10,10,0.04), 0 24px 64px rgba(10,10,10,0.14)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 0 rgba(10,10,10,0.04), 0 16px 48px rgba(10,10,10,0.08)'; }}
+          >
             <div style={{
               position: 'absolute', inset: 0,
               backgroundImage: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\' opacity=\'0.3\'/></svg>")',
@@ -951,23 +958,30 @@ function DirectionA({ accent, navPalette, keylineColor }) {
                 <div style={{ fontSize: 28, fontWeight: 500, letterSpacing: '-0.02em' }}>14M views</div>
               </div>
             </div>
-          </div>
+          </a>
 
-          {/* 5 more projects grid */}
+          {/* 6 more projects grid (2 rows × 3) */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 18 }}>
-            {PROJECTS.slice(1, 4).map((p, i) => (
-              <div key={p.title} style={{
+            {PROJECTS.slice(1, 7).map((p, i) => {
+              const Tag = p.url ? 'a' : 'div';
+              const tagProps = p.url
+                ? { href: p.url, style: { textDecoration: 'none', color: 'inherit' } }
+                : {};
+              return (
+              <Tag key={p.title} {...tagProps} style={{
+                ...(tagProps.style || {}),
                 padding: 28, borderRadius: 18,
                 background: '#fafaf7', border: '1px solid rgba(10,10,10,0.08)',
                 minHeight: 260, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-              }}>
+                transition: 'transform 280ms cubic-bezier(0.22,1,0.36,1), box-shadow 280ms ease, border-color 280ms ease',
+                cursor: p.url ? 'pointer' : 'default',
+              }}
+              onMouseEnter={p.url ? (e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 16px 36px rgba(10,10,10,0.08)'; e.currentTarget.style.borderColor = 'rgba(10,10,10,0.18)'; } : undefined}
+              onMouseLeave={p.url ? (e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(10,10,10,0.08)'; } : undefined}
+              >
                 <div style={{
                   width: '100%', aspectRatio: '4/3', borderRadius: 10, marginBottom: 24,
-                  background: [
-                    `linear-gradient(180deg, rgba(0,0,0,0.10) 0%, transparent 35%, rgba(0,0,0,0.45) 100%), url("projects/interbank-360.webp") center/cover no-repeat`,
-                    `linear-gradient(180deg, rgba(0,0,0,0.10) 0%, transparent 35%, rgba(0,0,0,0.45) 100%), url("projects/hp-ar.webp") center/cover no-repeat`,
-                    `linear-gradient(180deg, rgba(0,0,0,0.10) 0%, transparent 35%, rgba(0,0,0,0.45) 100%), url("projects/talentolandia.webp") center/cover no-repeat`,
-                  ][i],
+                  background: `linear-gradient(180deg, rgba(0,0,0,0.10) 0%, transparent 35%, rgba(0,0,0,0.45) 100%), url("${p.img}") center/cover no-repeat`,
                   position: 'relative', overflow: 'hidden',
                 }}>
                   <div style={{ position: 'absolute', top: 12, left: 12 }}>
@@ -987,8 +1001,9 @@ function DirectionA({ accent, navPalette, keylineColor }) {
                     <span className="mono" style={{ fontSize: 11, color: A }}>{p.metric}</span>
                   </div>
                 </div>
-              </div>
-            ))}
+              </Tag>
+            );
+            })}
           </div>
         </div>
       </section>

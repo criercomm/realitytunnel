@@ -25,6 +25,27 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
 
+  // Resolve `#section` from URLs like `index.html#work` AFTER React mounts.
+  // Without this, the browser tries to scroll before the React tree exists
+  // and the hash silently fails — so deep-links from project pages land at
+  // the top instead of the targeted section.
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      if (!hash) return;
+      // wait for next frame so the section has rendered + layout settled
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      });
+    };
+    // initial mount
+    const id = setTimeout(scrollToHash, 80);
+    // also respond to hash changes (in-page nav)
+    window.addEventListener('hashchange', scrollToHash);
+    return () => { clearTimeout(id); window.removeEventListener('hashchange', scrollToHash); };
+  }, []);
+
   const accent = useMemo(() => ({
     primary:    t.palette[0],
     secondary:  t.palette[1],
