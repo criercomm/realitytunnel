@@ -690,7 +690,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         {/* Hero content */}
         <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 16 }}>
           <div style={{ maxWidth: 920 }}>
-          <div className="eyebrow" style={{ marginBottom: 28 }}>Creating alternate realities since 2024</div>
+          <div className="eyebrow" style={{ marginBottom: 28 }}>Creating alternate realities since 2014</div>
           <h1 style={{
             fontSize: 80, lineHeight: 1.0, letterSpacing: '-0.015em',
             fontWeight: 600, color: '#fff',
