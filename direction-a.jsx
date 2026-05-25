@@ -464,8 +464,8 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#0a0a0a' }}>
-            <svg width={36} height={36 * (50 / 42)} viewBox="0 0 42 50" style={{ display: 'block', overflow: 'hidden' }} aria-hidden="true">
+          <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', gap: 11, color: '#0a0a0a' }}>
+            <svg width={52} height={52 * (50 / 42)} viewBox="0 0 42 50" style={{ display: 'block', overflow: 'hidden' }} aria-hidden="true">
               <defs>
                 <clipPath id="rt-scroll-clip">
                   <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" />
@@ -484,7 +484,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             </svg>
             <span style={{
               fontFamily: '"Inter", sans-serif', fontWeight: 300, letterSpacing: '0.28em',
-              fontSize: 14, color: '#0a0a0a', lineHeight: 1, whiteSpace: 'nowrap',
+              fontSize: 21, color: '#0a0a0a', lineHeight: 1, whiteSpace: 'nowrap',
             }}>REALITY TUNNEL</span>
           </a>
 
