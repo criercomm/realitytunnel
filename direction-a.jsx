@@ -706,7 +706,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             maxWidth: 540, fontWeight: 300,
             textShadow: '0 1px 12px rgba(0,0,0,0.5)',
           }}>
-            We design, build, and integrate brand experiences that customers remember — and act upon with a senior team that's shipped together for a decade.
+            We design, build, and integrate brand experiences that customers remember — and act upon — with a senior team that's shipped together for a decade.
           </p>
           <div style={{ marginTop: 28, display: 'flex', gap: 12, alignItems: 'center' }}>
             <a href="#contact" style={{
