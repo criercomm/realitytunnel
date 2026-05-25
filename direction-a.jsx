@@ -375,6 +375,16 @@ function DirectionA({ accent, navPalette, keylineColor }) {
     };
   }, [menuOpen]);
 
+  // Scroll-triggered floating nav — appears once the user scrolls past the
+  // hero. The hero already has its own header up top.
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 480);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <div className="dirA" style={{
       position: 'relative', width: '100%', minHeight: '100%',
@@ -435,6 +445,125 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           .dirA .rt-wordmark .rt-tag{animation:none!important;opacity:1!important;}
         }
       `}</style>
+
+      {/* ── SCROLL NAV — fixed, slides in once user scrolls past the hero ── */}
+      <div
+        aria-hidden={!scrolled}
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60,
+          padding: '10px 0',
+          background: scrolled ? 'rgba(8,8,18,0.78)' : 'rgba(8,8,18,0)',
+          backdropFilter: scrolled ? 'saturate(160%) blur(14px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'saturate(160%) blur(14px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
+          transform: scrolled ? 'translateY(0)' : 'translateY(-100%)',
+          opacity: scrolled ? 1 : 0,
+          pointerEvents: scrolled ? 'auto' : 'none',
+          transition: 'transform 360ms cubic-bezier(0.22,1,0.36,1), opacity 280ms ease, background 280ms ease, border-color 280ms ease',
+        }}
+      >
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'inherit' }}>
+            <svg width={36} height={36 * (50 / 42)} viewBox="0 0 42 50" style={{ display: 'block', overflow: 'hidden' }} aria-hidden="true">
+              <defs>
+                <clipPath id="rt-scroll-clip">
+                  <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" />
+                </clipPath>
+              </defs>
+              <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" fill={navRingColors[0]} />
+              <path d="M 5,24 Q 21,3 37,24 Q 21,45 5,24 Z"
+                    fill="none" stroke={navKeyline} strokeWidth="4" strokeLinejoin="miter" />
+              <g clipPath="url(#rt-scroll-clip)">
+                <circle className="tunnel-ring tr1" cx="21" cy="15" r="5" fill={navRingColors[1]} />
+                <circle className="tunnel-ring tr2" cx="21" cy="15" r="5" fill={navRingColors[2]} />
+                <circle className="tunnel-ring tr3" cx="21" cy="15" r="5" fill={navRingColors[1]} />
+                <circle className="tunnel-ring tr4" cx="21" cy="15" r="5" fill={navRingColors[2]} />
+                <circle className="tunnel-ring tr5" cx="21" cy="15" r="5" fill={navRingColors[1]} />
+              </g>
+            </svg>
+            <span style={{
+              fontFamily: '"Inter", sans-serif', fontWeight: 300, letterSpacing: '0.28em',
+              fontSize: 14, color: '#fff', lineHeight: 1, whiteSpace: 'nowrap',
+            }}>REALITY TUNNEL</span>
+          </a>
+
+          <nav style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+            {[
+              ['Work',     '#work'],
+              ['Services', '#services'],
+              ['Approach', '#approach'],
+              ['Contact',  '#contact'],
+            ].map(([l, href]) => (
+              <a
+                key={l}
+                href={href}
+                onClick={(e) => {
+                  const target = document.querySelector(href);
+                  if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                style={{
+                  fontSize: 13, fontWeight: 500,
+                  color: 'rgba(255,255,255,0.78)',
+                  padding: '8px 14px', borderRadius: 99,
+                  transition: 'color 160ms ease, background 160ms ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.78)'; e.currentTarget.style.background = 'transparent'; }}
+              >{l}</a>
+            ))}
+          </nav>
+
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                const target = document.querySelector('#contact');
+                if (target) {
+                  e.preventDefault();
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                background: A, color: '#fff',
+                fontSize: 12, fontWeight: 600,
+                padding: '9px 16px', borderRadius: 99,
+                boxShadow: `0 8px 24px ${A}55, inset 0 1px 0 rgba(255,255,255,0.18)`,
+                transition: 'transform 200ms ease',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+            >Start a project →</a>
+            <button
+              type="button"
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(true)}
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                color: '#fff', borderRadius: 99,
+                width: 38, height: 38,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer',
+                backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+                transition: 'background 160ms, border-color 160ms',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+            >
+              <svg width="16" height="12" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+                <path d="M1 2 L17 2" />
+                <path d="M1 7 L17 7" />
+                <path d="M1 12 L11 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section style={{ position: 'relative', height: 900, overflow: 'hidden' }}>
