@@ -927,7 +927,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, marginBottom: 40 }}>
             <div>
-              <div className="eyebrow" style={{ marginBottom: 28 }}>Capabilities · 06</div>
+              <div className="eyebrow" style={{ marginBottom: 28 }}>Capabilities</div>
               <h2 style={{ fontSize: 64, lineHeight: 1.02, letterSpacing: '-0.028em', color: '#0a0a0a' }}>
                 Six practices.<br />
                 <span style={{ color: A }}>One delivery team.</span>
@@ -953,22 +953,13 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               const grad = `linear-gradient(135deg, ${tints[i % tints.length][0]} 0%, ${tints[i % tints.length][1]} 100%)`;
               return (
               <div key={s.num} style={{
-                padding: 32, borderRadius: 20,
+                padding: '32px 32px 18px', borderRadius: 20,
                 background: grad,
                 border: '1px solid rgba(255,255,255,0.08)',
                 position: 'relative', overflow: 'hidden',
-                minHeight: 240,
+                minHeight: 150,
                 transition: 'background 200ms, border-color 200ms',
               }}>
-                <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 32 }}>
-                  <span className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.1em' }}>{s.num} / 06</span>
-                  <div style={{
-                    width: 32, height: 32, borderRadius: 8,
-                    background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.18)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#fff', fontSize: 14,
-                  }}>↗</div>
-                </div>
                 <h3 style={{ fontSize: 26, marginBottom: 14, fontWeight: 600, letterSpacing: '-0.02em', color: '#ffffff', position: 'relative' }}>{s.name}</h3>
                 <p style={{ fontSize: 14, lineHeight: 1.55, color: 'rgba(255,255,255,0.72)', fontWeight: 400, position: 'relative' }}>{s.blurb}</p>
               </div>
