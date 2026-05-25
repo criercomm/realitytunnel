@@ -1022,6 +1022,25 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               Built with brands that<br />
               <span style={{ color: A }}>need to move metrics.</span>
             </h2>
+            <p style={{
+              marginTop: 20, fontSize: 15, lineHeight: 1.5,
+              color: 'rgba(10,10,10,0.62)', fontWeight: 400, maxWidth: 640,
+            }}>
+              Selected work presented in partnership with our sister company,{' '}
+              <a
+                href="https://www.nextlatam.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: '#0a0a0a', fontWeight: 500,
+                  borderBottom: `1px solid ${A}`,
+                  paddingBottom: 1,
+                  transition: 'color 160ms ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = A; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#0a0a0a'; }}
+              >Next LATAM</a>.
+            </p>
           </div>
 
           {/* Featured project — cinematic (image background + readability overlay) */}
