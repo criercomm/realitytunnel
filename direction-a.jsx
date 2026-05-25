@@ -897,20 +897,12 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       {/* ── WORK ─────────────────────────────────────────── */}
       <section id="work" style={{ position: 'relative', padding: '104px 0 80px', background: '#ffffff', color: '#0a0a0a' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 32 }}>
-            <div>
-              <div className="eyebrow" style={{ marginBottom: 28 }}>Selected work · 2022–2025</div>
-              <h2 style={{ fontSize: 64, lineHeight: 1.02, letterSpacing: '-0.028em', color: '#0a0a0a' }}>
-                Built with brands that<br />
-                <span style={{ color: A }}>need to move metrics.</span>
-              </h2>
-            </div>
-            <a href="#" style={{
-              fontSize: 13, fontWeight: 500, color: '#0a0a0a',
-              padding: '12px 20px', borderRadius: 99,
-              border: '1px solid rgba(10,10,10,0.20)',
-              background: '#ffffff',
-            }}>All 47 projects →</a>
+          <div style={{ marginBottom: 32 }}>
+            <div className="eyebrow" style={{ marginBottom: 28 }}>Selected work · 2022–2025</div>
+            <h2 style={{ fontSize: 64, lineHeight: 1.02, letterSpacing: '-0.028em', color: '#0a0a0a' }}>
+              Built with brands that<br />
+              <span style={{ color: A }}>need to move metrics.</span>
+            </h2>
           </div>
 
           {/* Featured project — cinematic (image background + readability overlay) */}
