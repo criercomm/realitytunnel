@@ -569,7 +569,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             textShadow: `0 2px 32px rgba(0,0,0,0.5), 0 0 60px ${A}22`,
           }}>
             Unforgettable<br />
-            <span style={{ fontStyle: 'italic', fontWeight: 300, color: 'rgba(255,255,255,0.85)', display: 'inline-block', transform: 'translateY(4px)' }}>AR, VR &amp; 3D</span><br />
+            <span style={{ fontStyle: 'italic', fontWeight: 300, color: 'rgba(255,255,255,0.85)', display: 'inline-block', transform: 'translateY(6px)' }}>AR, VR &amp; 3D</span><br />
             experiences that<br />
             move the needle.
           </h1>
