@@ -446,16 +446,17 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         }
       `}</style>
 
-      {/* ── SCROLL NAV — fixed, slides in once user scrolls past the hero ── */}
+      {/* ── SCROLL NAV — fixed white nav that slides in past the hero ── */}
       <div
         aria-hidden={!scrolled}
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60,
           padding: '10px 0',
-          background: scrolled ? 'rgba(8,8,18,0.78)' : 'rgba(8,8,18,0)',
+          background: scrolled ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0)',
           backdropFilter: scrolled ? 'saturate(160%) blur(14px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'saturate(160%) blur(14px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid rgba(10,10,10,0.10)' : '1px solid transparent',
+          boxShadow: scrolled ? '0 1px 0 rgba(10,10,10,0.04), 0 8px 24px rgba(10,10,10,0.05)' : 'none',
           transform: scrolled ? 'translateY(0)' : 'translateY(-100%)',
           opacity: scrolled ? 1 : 0,
           pointerEvents: scrolled ? 'auto' : 'none',
@@ -463,7 +464,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'inherit' }}>
+          <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#0a0a0a' }}>
             <svg width={36} height={36 * (50 / 42)} viewBox="0 0 42 50" style={{ display: 'block', overflow: 'hidden' }} aria-hidden="true">
               <defs>
                 <clipPath id="rt-scroll-clip">
@@ -483,7 +484,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             </svg>
             <span style={{
               fontFamily: '"Inter", sans-serif', fontWeight: 300, letterSpacing: '0.28em',
-              fontSize: 14, color: '#fff', lineHeight: 1, whiteSpace: 'nowrap',
+              fontSize: 14, color: '#0a0a0a', lineHeight: 1, whiteSpace: 'nowrap',
             }}>REALITY TUNNEL</span>
           </a>
 
@@ -506,12 +507,12 @@ function DirectionA({ accent, navPalette, keylineColor }) {
                 }}
                 style={{
                   fontSize: 13, fontWeight: 500,
-                  color: 'rgba(255,255,255,0.78)',
+                  color: '#0a0a0a',
                   padding: '8px 14px', borderRadius: 99,
                   transition: 'color 160ms ease, background 160ms ease',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.78)'; e.currentTarget.style.background = 'transparent'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = A; e.currentTarget.style.background = 'rgba(10,10,10,0.04)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#0a0a0a'; e.currentTarget.style.background = 'transparent'; }}
               >{l}</a>
             ))}
           </nav>
@@ -528,14 +529,13 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               }}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: A, color: '#fff',
+                background: '#0a0a0a', color: '#fff',
                 fontSize: 12, fontWeight: 600,
                 padding: '9px 16px', borderRadius: 99,
-                boxShadow: `0 8px 24px ${A}55, inset 0 1px 0 rgba(255,255,255,0.18)`,
-                transition: 'transform 200ms ease',
+                transition: 'background 160ms ease',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = A; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#0a0a0a'; }}
             >Start a project →</a>
             <button
               type="button"
@@ -543,17 +543,16 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(true)}
               style={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.18)',
-                color: '#fff', borderRadius: 99,
+                background: 'transparent',
+                border: '1px solid rgba(10,10,10,0.18)',
+                color: '#0a0a0a', borderRadius: 99,
                 width: 38, height: 38,
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 cursor: 'pointer',
-                backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
                 transition: 'background 160ms, border-color 160ms',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(10,10,10,0.04)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
             >
               <svg width="16" height="12" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
                 <path d="M1 2 L17 2" />
