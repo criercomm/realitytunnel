@@ -464,7 +464,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', gap: 11, color: '#0a0a0a' }}>
+          <a href="https://criercomm.github.io/realitytunnel/" style={{ display: 'flex', alignItems: 'center', gap: 11, color: '#0a0a0a' }}>
             <svg width={52} height={52 * (50 / 42)} viewBox="0 0 42 50" style={{ display: 'block', overflow: 'hidden' }} aria-hidden="true">
               <defs>
                 <clipPath id="rt-scroll-clip">
