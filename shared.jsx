@@ -84,7 +84,7 @@ const TESTIMONIALS = [
     img: 'clients-testimonials/lisa_furfine.png',
   },
   {
-    quote: 'Carlos and his firm are the utmost professionals. They are responsive, hard working, solution driven and cost effective. We have worked with many IT firms and Reality Tunnel stands out as a true gem. I rely on him for all my IT needs.',
+    quote: 'Carlos and his firm are the utmost professionals. They are responsive, hard working, solution driven and cost effective. We have worked with many IT firms and his stands out as a true gem.',
     name: 'Susan Woods',
     role: 'CEO, The Woods & Co',
     img: 'clients-testimonials/susan_woods.png',
@@ -110,9 +110,9 @@ const SERVICES = [
 ];
 
 const APPROACH = [
-  { n: '01', name: 'Discover',  blurb: 'We start by identifying project objectives and leave with a scope, budget, and delivery schedule.' },
+  { n: '01', name: 'Discover',  blurb: 'We start by identifying project objectives and end with a scope, budget, and delivery schedule.' },
   { n: '02', name: 'Prototype', blurb: 'A working prototype on real hardware in four to six weeks — never a slide deck.' },
-  { n: '03', name: 'Build',     blurb: 'Senior team, fixed-price sprints, constant updates. Production-grade code from day one.' },
+  { n: '03', name: 'Build',     blurb: 'Senior team, fixed-price sprints, constant updates and production-grade code from day one.' },
   { n: '04', name: 'Operate',   blurb: 'On-site operators for events, tier-1 SLA for retail, analytics piped into your stack.' },
 ];
 

@@ -317,14 +317,7 @@ function ContactForm({ accent, secondary }) {
             style={{ ...fieldStyle, resize: 'vertical', minHeight: 120, fontFamily: 'inherit' }}
           />
         </label>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginTop: 8, flexWrap: 'wrap' }}>
-          <span style={{
-            fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-            fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.5)',
-          }}>
-            By submitting, you consent to be contacted by Reality Tunnel.
-          </span>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginTop: 0, flexWrap: 'wrap' }}>
           <button
             type="submit"
             style={{
@@ -340,6 +333,14 @@ function ContactForm({ accent, secondary }) {
           >
             Send brief <span style={{ opacity: 0.8 }}>→</span>
           </button>
+          <span style={{
+            fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+            fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.5)',
+            marginTop: 18,
+          }}>
+            By submitting, you consent to be contacted by Reality Tunnel.
+          </span>
         </div>
       </form>
     </div>
@@ -1082,7 +1083,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           <div style={{
             paddingTop: 48, borderTop: '1px solid rgba(255,255,255,0.08)',
             maxWidth: 1100, margin: '0 auto',
-            display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 56,
+            display: 'grid', gridTemplateColumns: '2.2fr 0.7fr 1fr 1fr', gap: 56,
             textAlign: 'left',
           }}>
             <div>
