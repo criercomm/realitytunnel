@@ -267,7 +267,7 @@
                 </div>
                 <div>
                   <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Reach us</div>
-                  <a href="mailto:contact@realitytunnel.ai" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6, textDecoration: 'none' }}>contact@realitytunnel.ai</a>
+                  <a href="mailto:jp@realitytunnel.ai" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6, textDecoration: 'none' }}>jp@realitytunnel.ai</a>
                   <a href="tel:+51958967616" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>+51 958 967 616</a>
                 </div>
                 <div>

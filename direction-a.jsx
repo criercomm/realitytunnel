@@ -183,7 +183,7 @@ function ContactForm({ accent, secondary }) {
     e.preventDefault();
     // For deployment: replace with real endpoint. For now, simulate + mailto fallback.
     const body = `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nService: ${form.service}\nBudget: ${form.budget}\n\n${form.brief}`;
-    const href = `mailto:contact@realitytunnel.ai?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
+    const href = `mailto:jp@realitytunnel.ai?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
     // Open mail client in a new tab
     window.open(href, '_blank');
     setSent(true);
@@ -243,8 +243,7 @@ function ContactForm({ accent, secondary }) {
             fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
             color: accent, marginBottom: 14,
           }}>Reach us directly</div>
-          <a href="mailto:contact@realitytunnel.ai" style={{ display: 'block', fontSize: 16, color: '#fff', marginBottom: 8, textDecoration: 'none' }}>contact@realitytunnel.ai</a>
-          <a href="tel:+51958967616" style={{ display: 'block', fontSize: 16, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>+51 958 967 616</a>
+          <a href="mailto:jp@realitytunnel.ai" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, textDecoration: 'none' }}>jp@realitytunnel.ai</a>
         </div>
         <div>
           <div style={{
@@ -261,10 +260,22 @@ function ContactForm({ accent, secondary }) {
             fontFamily: '"JetBrains Mono", ui-monospace, monospace',
             fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
             color: accent, marginBottom: 14,
+          }}>US Office</div>
+          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', margin: 0, lineHeight: 1.55 }}>
+            Los Angeles, California
+          </p>
+          <a href="tel:+13104081881" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', marginTop: 4, textDecoration: 'none' }}>1 (310) 408-1881</a>
+        </div>
+        <div>
+          <div style={{
+            fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+            fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+            color: accent, marginBottom: 14,
           }}>Studio</div>
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', margin: 0, lineHeight: 1.55 }}>
             Lima, Peru<br />Serving US &amp; LATAM
           </p>
+          <a href="tel:+51958967616" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', marginTop: 4, textDecoration: 'none' }}>+51 958 967 616</a>
         </div>
       </aside>
 
@@ -654,11 +665,38 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             ))}
           </nav>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <button className="mono" style={{
-              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)',
-              color: 'rgba(255,255,255,0.75)', fontSize: 11, padding: '8px 12px', borderRadius: 99,
-              cursor: 'pointer',
-            }}>EN · ES</button>
+            {(() => {
+              const isES = /(^|; )googtrans=\/en\/es(;|$)/.test(typeof document !== 'undefined' ? document.cookie : '');
+              const setLang = (target) => {
+                if (target === 'es') {
+                  document.cookie = 'googtrans=/en/es; path=/';
+                  document.cookie = `googtrans=/en/es; path=/; domain=${location.hostname}`;
+                } else {
+                  document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+                  document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${location.hostname}`;
+                }
+                location.reload();
+              };
+              const cellStyle = (active) => ({
+                color: active ? '#fff' : 'rgba(255,255,255,0.55)',
+                fontWeight: active ? 600 : 400,
+                cursor: 'pointer',
+                padding: '0 4px',
+                transition: 'color 160ms ease',
+              });
+              return (
+                <div className="mono notranslate translate" style={{
+                  display: 'inline-flex', alignItems: 'center',
+                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)',
+                  fontSize: 11, padding: '8px 8px', borderRadius: 99,
+                  letterSpacing: '0.05em',
+                }}>
+                  <span role="button" onClick={() => setLang('en')} style={cellStyle(!isES)}>EN</span>
+                  <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
+                  <span role="button" onClick={() => setLang('es')} style={cellStyle(isES)}>ES</span>
+                </div>
+              );
+            })()}
             <button
               type="button"
               aria-label="Open menu"
@@ -868,7 +906,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               </div>
               <div>
                 <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Reach us</div>
-                <a href="mailto:contact@realitytunnel.ai" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6 }}>contact@realitytunnel.ai</a>
+                <a href="mailto:jp@realitytunnel.ai" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6 }}>jp@realitytunnel.ai</a>
                 <a href="tel:+51958967616" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)' }}>+51 958 967 616</a>
               </div>
               <div>
@@ -1266,7 +1304,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
 
             <div>
               <div className="mono" style={{ fontSize: 11, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Reach us</div>
-              <a href="mailto:contact@realitytunnel.ai" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>contact@realitytunnel.ai</a>
+              <a href="mailto:jp@realitytunnel.ai" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>jp@realitytunnel.ai</a>
               <a href="tel:+51958967616" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>+51 958 967 616</a>
               <span style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0' }}>Lima · LATAM &amp; US</span>
             </div>
