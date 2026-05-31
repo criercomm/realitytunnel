@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy — Reality Tunnel</title>
+<meta name="description" content="Privacy Policy for Reality Tunnel, the US headquarters of NextLATAM.com.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap">
+
+<style>
+  :root {
+    --accent: #fe5828;
+    --ink: #0a0a0a;
+    --muted: rgba(10,10,10,0.66);
+    --line: rgba(10,10,10,0.1);
+    --bg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  body { font-family: "Sora", system-ui, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+  .mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+
+  /* ── Top bar ── */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px clamp(24px, 6vw, 80px);
+    background: rgba(255,255,255,0.82); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar a.brand {
+    display: flex; align-items: center; gap: 13px;
+    text-decoration: none; color: var(--ink);
+  }
+  .topbar .rt-eye { width: 38px; height: auto; display: block; overflow: hidden; flex: none; }
+  .rt-wordmark { display: flex; flex-direction: column; line-height: 1; gap: 5px; }
+  .rt-wordmark .rt-word {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 300; font-size: 16px; letter-spacing: 0.26em; line-height: 1;
+    color: var(--ink); white-space: nowrap;
+  }
+  .rt-wordmark .rt-tag {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 400; font-size: 9px; letter-spacing: 0.42em; line-height: 1;
+    color: rgba(10,10,10,0.5); white-space: nowrap; text-transform: uppercase;
+  }
+  .tunnel-ring {
+    transform-box: fill-box; transform-origin: center; opacity: 0;
+    animation: tunnel-flow 3.6s cubic-bezier(0.4,0,0.7,0.6) infinite;
+    will-change: transform, opacity;
+  }
+  .tr1 { animation-delay: -3.0s; }
+  .tr2 { animation-delay: -2.28s; }
+  .tr3 { animation-delay: -1.56s; }
+  .tr4 { animation-delay: -0.84s; }
+  .tr5 { animation-delay: -0.12s; }
+  @keyframes tunnel-flow {
+    0%   { transform: scale(0.12); opacity: 0; }
+    8%   { opacity: 0.95; }
+    70%  { opacity: 0.85; }
+    100% { transform: scale(3.8); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tunnel-ring { animation: none !important; opacity: 1 !important; transform: scale(1) !important; }
+  }
+  .topbar .right { display: flex; align-items: center; gap: 18px; }
+  .topbar a.back { color: var(--muted); text-decoration: none; }
+  .topbar a.back:hover { color: var(--accent); }
+
+  .langtoggle {
+    display: inline-flex; align-items: center; gap: 4px;
+    border: 1px solid var(--line); border-radius: 99px; padding: 6px 8px;
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.05em;
+  }
+  .langtoggle span[role="button"] { cursor: pointer; padding: 0 4px; color: var(--muted); transition: color 160ms ease; }
+  .langtoggle span.active { color: var(--ink); font-weight: 600; }
+  .langtoggle .sep { color: rgba(10,10,10,0.3); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: clamp(64px, 11vw, 140px) clamp(24px, 6vw, 80px) clamp(40px, 6vw, 64px);
+    max-width: 920px; margin: 0 auto;
+  }
+  .hero .eyebrow { color: var(--accent); margin-bottom: 22px; }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 76px); line-height: 1.02; letter-spacing: -0.03em;
+    margin: 0 0 22px;
+  }
+  .hero .meta { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+  /* ── Body ── */
+  .doc {
+    max-width: 760px; margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px) clamp(80px, 12vw, 140px);
+  }
+  .doc .lead {
+    font-size: 20px; line-height: 1.6; color: rgba(10,10,10,0.8);
+    padding-bottom: 36px; margin-bottom: 44px; border-bottom: 1px solid var(--line);
+  }
+  .doc section { margin-bottom: 46px; }
+  .doc h2 {
+    font-size: 13px; font-family: "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    margin: 0 0 18px; font-weight: 500; display: flex; gap: 14px;
+  }
+  .doc h2 .num { color: rgba(10,10,10,0.32); }
+  .doc h3 {
+    font-size: 19px; letter-spacing: -0.01em; margin: 28px 0 10px; font-weight: 600;
+  }
+  .doc p { font-size: 16.5px; line-height: 1.7; color: var(--muted); margin: 0 0 16px; text-wrap: pretty; }
+  .doc ul { margin: 0 0 16px; padding-left: 22px; }
+  .doc li { font-size: 16.5px; line-height: 1.7; color: var(--muted); margin-bottom: 8px; text-wrap: pretty; }
+  .doc a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(254,88,40,0.3); }
+  .doc a:hover { border-bottom-color: var(--accent); }
+  .doc strong { color: var(--ink); font-weight: 600; }
+  .doc .contact-block { font-size: 16.5px; line-height: 1.9; color: var(--muted); }
+  .doc .contact-block strong { display: inline-block; margin-bottom: 2px; }
+
+  /* ── Footer ── */
+  footer {
+    background: #050913; color: #fff;
+    padding: clamp(48px, 7vw, 72px) clamp(24px, 6vw, 80px);
+  }
+  footer .inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  footer .mono { color: rgba(255,255,255,0.4); }
+  footer a { color: rgba(255,255,255,0.62); text-decoration: none; }
+  footer a:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="brand" href="index.html" aria-label="Reality Tunnel — home">
+      <svg class="rt-eye" viewBox="0 0 42 50" aria-hidden="true">
+        <defs>
+          <clipPath id="rt-pp-clip"><path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" /></clipPath>
+        </defs>
+        <path d="M 5,25 Q 21,4 37,25 Q 21,46 5,25 Z" fill="#fe5828" />
+        <path d="M 5,24 Q 21,3 37,24 Q 21,45 5,24 Z" fill="none" stroke="#5e567b" stroke-width="4" stroke-linejoin="miter" />
+        <g clip-path="url(#rt-pp-clip)">
+          <circle class="tunnel-ring tr1" cx="21" cy="15" r="5" fill="#00AEEF" />
+          <circle class="tunnel-ring tr2" cx="21" cy="15" r="5" fill="#6900E9" />
+          <circle class="tunnel-ring tr3" cx="21" cy="15" r="5" fill="#00AEEF" />
+          <circle class="tunnel-ring tr4" cx="21" cy="15" r="5" fill="#6900E9" />
+          <circle class="tunnel-ring tr5" cx="21" cy="15" r="5" fill="#00AEEF" />
+        </g>
+      </svg>
+      <span class="rt-wordmark">
+        <span class="rt-word">REALITY TUNNEL</span>
+        <span class="rt-tag" id="brand-tag">Immersive Experiences Studio</span>
+      </span>
+    </a>
+    <div class="right">
+      <div class="langtoggle mono" id="langtoggle">
+        <span role="button" data-lang="en">EN</span>
+        <span class="sep">·</span>
+        <span role="button" data-lang="es">ES</span>
+      </div>
+      <a class="back mono" id="backlink" href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="mono eyebrow" id="eyebrow">Legal</div>
+    <h1 id="title">Privacy Policy</h1>
+    <div class="meta" id="meta">Last updated: May 30, 2026</div>
+  </div>
+
+  <div class="doc" id="doc"></div>
+
+  <footer>
+    <div class="inner">
+      <div class="mono" id="footer-copy">©2026 Reality Tunnel · US · Lima · LATAM</div>
+      <a class="mono" id="footer-back" href="index.html">Back to site →</a>
+    </div>
+  </footer>
+
+<script>
+// ── Bilingual content. The page reads/writes the same `rt-lang` key the main
+// site uses, so a visitor's language choice carries across pages. ────────────
+const CONTENT = {
+  eyebrow:    { en: 'Legal', es: 'Legal' },
+  tagline:    { en: 'Immersive Experiences Studio', es: 'Estudio de Experiencias Inmersivas' },
+  title:      { en: 'Privacy Policy', es: 'Política de privacidad' },
+  meta:       { en: 'Last updated: May 30, 2026', es: 'Última actualización: 30 de mayo de 2026' },
+  back:       { en: '← Back to site', es: '← Volver al sitio' },
+  footerCopy: { en: '©2026 Reality Tunnel · US · Lima · LATAM', es: '©2026 Reality Tunnel · EE.UU. · Lima · LATAM' },
+  footerBack: { en: 'Back to site →', es: 'Volver al sitio →' },
+  lead: {
+    en: "Reality Tunnel is the US headquarters of NextLATAM.com. This policy explains what information we collect when you visit our website or contact us, how we use it, and the choices you have. We keep data collection to the minimum needed to respond to you and operate our site.",
+    es: "Reality Tunnel es la sede en EE.UU. de NextLATAM.com. Esta política explica qué información recopilamos cuando visitas nuestro sitio web o nos contactas, cómo la usamos y las opciones que tienes. Limitamos la recopilación de datos al mínimo necesario para responderte y operar nuestro sitio."
+  },
+  sections: [
+    { num: '01',
+      h: { en: 'Information We Collect', es: 'Información que recopilamos' },
+      blocks: [
+        { t: 'p', en: 'We collect information in two ways:', es: 'Recopilamos información de dos maneras:' },
+        { t: 'h3', en: 'Information you give us', es: 'Información que nos proporcionas' },
+        { t: 'p',
+          en: 'When you submit a project brief or contact form, we collect the details you choose to provide — typically your name, company, email address, and the contents of your message (service interest, budget range, and project description).',
+          es: 'Cuando envías un brief de proyecto o un formulario de contacto, recopilamos los datos que decides proporcionar — normalmente tu nombre, empresa, correo electrónico y el contenido de tu mensaje (servicio de interés, rango de presupuesto y descripción del proyecto).' },
+        { t: 'h3', en: 'Information collected automatically', es: 'Información recopilada automáticamente' },
+        { t: 'p',
+          en: 'Like most websites, we may automatically receive standard technical data such as your browser type, device, approximate location, referring page, and pages viewed. This is used in aggregate to understand site performance and is not used to personally identify you.',
+          es: 'Como la mayoría de los sitios web, podemos recibir automáticamente datos técnicos estándar como el tipo de navegador, dispositivo, ubicación aproximada, página de referencia y páginas vistas. Esto se usa de forma agregada para entender el rendimiento del sitio y no se utiliza para identificarte personalmente.' },
+      ] },
+    { num: '02',
+      h: { en: 'How We Use Your Information', es: 'Cómo usamos tu información' },
+      blocks: [
+        { t: 'ul', items: [
+          { en: 'To respond to your inquiries and prepare proposals or estimates.', es: 'Para responder a tus consultas y preparar propuestas o presupuestos.' },
+          { en: 'To communicate with you about projects, scheduling, and follow-ups.', es: 'Para comunicarnos contigo sobre proyectos, calendarios y seguimientos.' },
+          { en: 'To operate, maintain, and improve our website.', es: 'Para operar, mantener y mejorar nuestro sitio web.' },
+          { en: 'To comply with legal obligations and protect our rights.', es: 'Para cumplir con obligaciones legales y proteger nuestros derechos.' },
+        ] },
+        { t: 'p',
+          en: 'We do not sell your personal information, and we do not share it with third parties for their own marketing purposes.',
+          es: 'No vendemos tu información personal ni la compartimos con terceros para sus propios fines de marketing.' },
+      ] },
+    { num: '03',
+      h: { en: 'Cookies & Analytics', es: 'Cookies y analítica' },
+      blocks: [
+        { t: 'p',
+          en: 'We may use cookies and similar technologies to keep the site functioning and to measure traffic. You can disable cookies in your browser settings; some features of the site may not work as intended if you do. Any analytics we use is configured to report aggregate, non-identifying trends.',
+          es: 'Podemos usar cookies y tecnologías similares para mantener el sitio en funcionamiento y medir el tráfico. Puedes desactivar las cookies en la configuración de tu navegador; si lo haces, algunas funciones del sitio podrían no funcionar como se espera. Cualquier herramienta de analítica que utilizamos está configurada para reportar tendencias agregadas y no identificables.' },
+      ] },
+    { num: '04',
+      h: { en: 'How We Share Information', es: 'Cómo compartimos la información' },
+      blocks: [
+        { t: 'p',
+          en: 'We share information only with trusted service providers who help us operate our business — for example, email and hosting providers — and only to the extent needed to perform those services. These providers are bound to keep your information confidential. We may also disclose information when required by law or to protect the safety, rights, or property of Reality Tunnel and others.',
+          es: 'Compartimos información únicamente con proveedores de servicios de confianza que nos ayudan a operar nuestro negocio — por ejemplo, proveedores de correo electrónico y alojamiento — y solo en la medida necesaria para prestar esos servicios. Estos proveedores están obligados a mantener tu información confidencial. También podemos divulgar información cuando la ley lo exija o para proteger la seguridad, los derechos o la propiedad de Reality Tunnel y de terceros.' },
+      ] },
+    { num: '05',
+      h: { en: 'Data Retention', es: 'Retención de datos' },
+      blocks: [
+        { t: 'p',
+          en: 'We retain the information you submit for as long as needed to respond to your inquiry and maintain our business records, after which it is deleted or anonymized. You may request earlier deletion at any time (see below).',
+          es: 'Conservamos la información que envías durante el tiempo necesario para responder a tu consulta y mantener nuestros registros comerciales, tras lo cual se elimina o se anonimiza. Puedes solicitar su eliminación anticipada en cualquier momento (ver más abajo).' },
+      ] },
+    { num: '06',
+      h: { en: 'Your Rights & Choices', es: 'Tus derechos y opciones' },
+      blocks: [
+        { t: 'p-rights',
+          en: ['Depending on where you live, you may have the right to access, correct, or delete the personal information we hold about you, and to object to or restrict certain processing. To exercise any of these rights, email us at ', ' and we will respond within a reasonable timeframe.'],
+          es: ['Dependiendo de dónde vivas, podrías tener derecho a acceder, corregir o eliminar la información personal que tenemos sobre ti, y a oponerte o restringir ciertos tratamientos. Para ejercer cualquiera de estos derechos, escríbenos a ', ' y te responderemos en un plazo razonable.'] },
+      ] },
+    { num: '07',
+      h: { en: 'Data Security', es: 'Seguridad de los datos' },
+      blocks: [
+        { t: 'p',
+          en: 'We use reasonable administrative, technical, and physical safeguards to protect your information. No method of transmission over the internet is fully secure, however, and we cannot guarantee absolute security.',
+          es: 'Utilizamos salvaguardas administrativas, técnicas y físicas razonables para proteger tu información. Sin embargo, ningún método de transmisión por internet es completamente seguro, y no podemos garantizar una seguridad absoluta.' },
+      ] },
+    { num: '08',
+      h: { en: "Children's Privacy", es: 'Privacidad de los menores' },
+      blocks: [
+        { t: 'p',
+          en: 'Our website is not directed to children under 13, and we do not knowingly collect personal information from them. If you believe a child has provided us information, please contact us so we can remove it.',
+          es: 'Nuestro sitio web no está dirigido a menores de 13 años, y no recopilamos conscientemente información personal de ellos. Si crees que un menor nos ha proporcionado información, contáctanos para que podamos eliminarla.' },
+      ] },
+    { num: '09',
+      h: { en: 'Changes to This Policy', es: 'Cambios en esta política' },
+      blocks: [
+        { t: 'p',
+          en: 'We may update this policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. Material changes will be reflected here, so we encourage you to review it periodically.',
+          es: 'Podemos actualizar esta política de vez en cuando. Cuando lo hagamos, modificaremos la fecha de "Última actualización" en la parte superior de esta página. Los cambios importantes se reflejarán aquí, por lo que te recomendamos revisarla periódicamente.' },
+      ] },
+    { num: '10',
+      h: { en: 'Contact Us', es: 'Contáctanos' },
+      blocks: [
+        { t: 'p',
+          en: 'If you have questions about this policy or how we handle your information, reach us at:',
+          es: 'Si tienes preguntas sobre esta política o sobre cómo manejamos tu información, contáctanos en:' },
+        { t: 'contact' },
+      ] },
+  ],
+};
+
+const EMAIL = 'info@realitytunnel.com';
+const PHONE = '+1 (310) 408-1881';
+const CITY = { en: 'Los Angeles, California', es: 'Los Ángeles, California' };
+
+function getLang() {
+  try { return localStorage.getItem('rt-lang') === 'es' ? 'es' : 'en'; }
+  catch { return 'en'; }
+}
+function setLang(v) {
+  try { localStorage.setItem('rt-lang', v === 'es' ? 'es' : 'en'); } catch {}
+  render();
+}
+
+function el(tag, props, ...kids) {
+  const n = document.createElement(tag);
+  if (props) for (const k in props) {
+    if (k === 'class') n.className = props[k];
+    else if (k === 'href') n.setAttribute('href', props[k]);
+    else n[k] = props[k];
+  }
+  for (const kid of kids) if (kid != null) n.append(kid);
+  return n;
+}
+
+function render() {
+  const lang = getLang();
+  document.documentElement.setAttribute('lang', lang);
+
+  document.getElementById('eyebrow').textContent = CONTENT.eyebrow[lang];
+  document.getElementById('brand-tag').textContent = CONTENT.tagline[lang];
+  document.getElementById('title').textContent = CONTENT.title[lang];
+  document.getElementById('meta').textContent = CONTENT.meta[lang];
+  document.getElementById('backlink').textContent = CONTENT.back[lang];
+  document.getElementById('footer-copy').textContent = CONTENT.footerCopy[lang];
+  document.getElementById('footer-back').textContent = CONTENT.footerBack[lang];
+
+  // toggle active state
+  document.querySelectorAll('#langtoggle span[role="button"]').forEach((s) => {
+    s.classList.toggle('active', s.dataset.lang === lang);
+  });
+
+  const doc = document.getElementById('doc');
+  doc.innerHTML = '';
+  doc.append(el('p', { class: 'lead' }, CONTENT.lead[lang]));
+
+  for (const sec of CONTENT.sections) {
+    const s = el('section');
+    s.append(el('h2', null, el('span', { class: 'num' }, sec.num), sec.h[lang]));
+    for (const b of sec.blocks) {
+      if (b.t === 'p') s.append(el('p', null, b[lang]));
+      else if (b.t === 'h3') s.append(el('h3', null, b[lang]));
+      else if (b.t === 'ul') {
+        const ul = el('ul');
+        for (const it of b.items) ul.append(el('li', null, it[lang]));
+        s.append(ul);
+      } else if (b.t === 'p-rights') {
+        const parts = b[lang];
+        s.append(el('p', null, parts[0], el('a', { href: 'mailto:' + EMAIL }, EMAIL), parts[1]));
+      } else if (b.t === 'contact') {
+        const c = el('p', { class: 'contact-block' });
+        c.append(el('strong', null, 'Reality Tunnel'), el('br'),
+                 CITY[lang], el('br'),
+                 el('a', { href: 'mailto:' + EMAIL }, EMAIL), el('br'),
+                 el('a', { href: 'tel:+13104081881' }, PHONE));
+        s.append(c);
+      }
+    }
+    doc.append(s);
+  }
+}
+
+document.getElementById('langtoggle').addEventListener('click', (e) => {
+  const b = e.target.closest('span[role="button"]');
+  if (b) setLang(b.dataset.lang);
+});
+
+render();
+</script>
+
+</body>
+</html>

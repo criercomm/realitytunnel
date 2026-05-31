@@ -358,6 +358,31 @@ function ContactForm({ accent, secondary }) {
   );
 }
 
+// ── LangToggle — EN / ES switch wired to the i18n live DOM translator ──
+function LangToggle() {
+  const [lang, setSiteLang] = useLang();
+  const isES = lang === 'es';
+  const cellStyle = (active) => ({
+    color: active ? '#fff' : 'rgba(255,255,255,0.55)',
+    fontWeight: active ? 600 : 400,
+    cursor: 'pointer',
+    padding: '0 4px',
+    transition: 'color 160ms ease',
+  });
+  return (
+    <div className="mono" style={{
+      display: 'inline-flex', alignItems: 'center',
+      background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)',
+      fontSize: 11, padding: '8px 8px', borderRadius: 99,
+      letterSpacing: '0.05em',
+    }}>
+      <span role="button" aria-label="English" onClick={() => setSiteLang('en')} style={cellStyle(!isES)}>EN</span>
+      <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
+      <span role="button" aria-label="Español" onClick={() => setSiteLang('es')} style={cellStyle(isES)}>ES</span>
+    </div>
+  );
+}
+
 function DirectionA({ accent, navPalette, keylineColor }) {
   // accent palette: [primary, secondary, tertiary, quaternary (ember)]
   const A = accent.primary;    // headline glow / CTA
@@ -665,38 +690,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             ))}
           </nav>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            {(() => {
-              const isES = /(^|; )googtrans=\/en\/es(;|$)/.test(typeof document !== 'undefined' ? document.cookie : '');
-              const setLang = (target) => {
-                if (target === 'es') {
-                  document.cookie = 'googtrans=/en/es; path=/';
-                  document.cookie = `googtrans=/en/es; path=/; domain=${location.hostname}`;
-                } else {
-                  document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-                  document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${location.hostname}`;
-                }
-                location.reload();
-              };
-              const cellStyle = (active) => ({
-                color: active ? '#fff' : 'rgba(255,255,255,0.55)',
-                fontWeight: active ? 600 : 400,
-                cursor: 'pointer',
-                padding: '0 4px',
-                transition: 'color 160ms ease',
-              });
-              return (
-                <div className="mono notranslate translate" style={{
-                  display: 'inline-flex', alignItems: 'center',
-                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)',
-                  fontSize: 11, padding: '8px 8px', borderRadius: 99,
-                  letterSpacing: '0.05em',
-                }}>
-                  <span role="button" onClick={() => setLang('en')} style={cellStyle(!isES)}>EN</span>
-                  <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
-                  <span role="button" onClick={() => setLang('es')} style={cellStyle(isES)}>ES</span>
-                </div>
-              );
-            })()}
+            <LangToggle />
             <button
               type="button"
               aria-label="Open menu"
@@ -1325,8 +1319,13 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               ©2026 Reality Tunnel · US · Lima · LATAM
             </div>
-            <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-              All rights reserved
+            <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+              <a href="privacy-policy.html" className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' }}>
+                Privacy Policy
+              </a>
+              <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                All rights reserved
+              </div>
             </div>
           </div>
       </section>

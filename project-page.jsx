@@ -26,6 +26,9 @@
   // ───────────────────────────────────────────────────────────────────────
   function SiteNav() {
     const [menuOpen, setMenuOpen] = React.useState(false);
+    const [lang, setSiteLang] = (typeof window !== 'undefined' && window.useLang)
+      ? window.useLang() : ['en', () => {}];
+    const isES = lang === 'es';
 
     return (
       <React.Fragment>
@@ -123,11 +126,17 @@
             </nav>
 
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-              <button className="mono" style={{
-                background: 'transparent', border: `1px solid ${RULE}`,
-                color: INK_MUTED, fontSize: 11, padding: '7px 12px', borderRadius: 99,
-                cursor: 'pointer',
-              }}>EN · ES</button>
+              <div className="mono" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                border: `1px solid ${RULE}`, borderRadius: 99,
+                padding: '7px 10px', fontSize: 11, letterSpacing: '0.05em',
+              }}>
+                <span role="button" aria-label="English" onClick={() => setSiteLang('en')}
+                  style={{ cursor: 'pointer', padding: '0 3px', color: isES ? INK_MUTED : INK, fontWeight: isES ? 400 : 600 }}>EN</span>
+                <span style={{ color: 'rgba(10,10,10,0.3)' }}>·</span>
+                <span role="button" aria-label="Español" onClick={() => setSiteLang('es')}
+                  style={{ cursor: 'pointer', padding: '0 3px', color: isES ? INK : INK_MUTED, fontWeight: isES ? 600 : 400 }}>ES</span>
+              </div>
               <a
                 href="index.html#contact"
                 style={{
@@ -268,7 +277,7 @@
                 <div>
                   <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Reach us</div>
                   <a href="mailto:info@realitytunnel.com" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6, textDecoration: 'none' }}>info@realitytunnel.com</a>
-                  <a href="tel:+51958967616" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>+51 958 967 616</a>
+                  <a href="tel:+13104081881" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>+1 (310) 408-1881</a>
                 </div>
                 <div>
                   <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Follow</div>
@@ -656,6 +665,7 @@
           .dirA a{color:inherit;text-decoration:none;}
         `}</style>
 
+        <SiteNav />
         <main>
           <div className="container">
             <Breadcrumb project={project} />
