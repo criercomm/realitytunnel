@@ -183,7 +183,7 @@ function ContactForm({ accent, secondary }) {
     e.preventDefault();
     // For deployment: replace with real endpoint. For now, simulate + mailto fallback.
     const body = `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nService: ${form.service}\nBudget: ${form.budget}\n\n${form.brief}`;
-    const href = `mailto:jp@realitytunnel.ai?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
+    const href = `mailto:info@realitytunnel.com?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
     // Open mail client in a new tab
     window.open(href, '_blank');
     setSent(true);
@@ -243,7 +243,7 @@ function ContactForm({ accent, secondary }) {
             fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
             color: accent, marginBottom: 14,
           }}>Reach us directly</div>
-          <a href="mailto:jp@realitytunnel.ai" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, textDecoration: 'none' }}>jp@realitytunnel.ai</a>
+          <a href="mailto:info@realitytunnel.com" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, textDecoration: 'none' }}>info@realitytunnel.com</a>
         </div>
         <div>
           <div style={{
@@ -906,8 +906,8 @@ function DirectionA({ accent, navPalette, keylineColor }) {
               </div>
               <div>
                 <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Reach us</div>
-                <a href="mailto:jp@realitytunnel.ai" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6 }}>jp@realitytunnel.ai</a>
-                <a href="tel:+51958967616" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)' }}>+51 958 967 616</a>
+                <a href="mailto:info@realitytunnel.com" style={{ display: 'block', fontSize: 17, color: '#fff', marginBottom: 6 }}>info@realitytunnel.com</a>
+                <a href="tel:+13104081881" style={{ display: 'block', fontSize: 17, color: 'rgba(255,255,255,0.75)' }}>+1 (310) 408-1881</a>
               </div>
               <div>
                 <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>Follow</div>
@@ -971,9 +971,10 @@ function DirectionA({ accent, navPalette, keylineColor }) {
                 <span style={{ color: A }}>One delivery team.</span>
               </h2>
             </div>
-            <div style={{ paddingTop: 60 }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 28 }}>About Us</div>
               <p style={{ fontSize: 19, lineHeight: 1.55, color: 'rgba(10,10,10,0.7)', fontWeight: 400, maxWidth: 480 }}>
-                No pyramid. The people pitching are the people prototyping, building, and pushing pixels at 3am the night before launch.
+                Reality Tunnel is the US headquarters of NextLATAM.com, founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM.
               </p>
             </div>
           </div>
@@ -1304,7 +1305,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
 
             <div>
               <div className="mono" style={{ fontSize: 11, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Reach us</div>
-              <a href="mailto:jp@realitytunnel.ai" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>jp@realitytunnel.ai</a>
+              <a href="mailto:info@realitytunnel.com" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>info@realitytunnel.com</a>
               <a href="tel:+51958967616" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>+51 958 967 616</a>
               <span style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0' }}>Lima · LATAM &amp; US</span>
             </div>
