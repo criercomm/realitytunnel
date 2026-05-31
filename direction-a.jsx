@@ -1306,8 +1306,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             <div>
               <div className="mono" style={{ fontSize: 11, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Reach us</div>
               <a href="mailto:info@realitytunnel.com" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>info@realitytunnel.com</a>
-              <a href="tel:+51958967616" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>+51 958 967 616</a>
-              <span style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0' }}>Lima · LATAM &amp; US</span>
+              <a href="tel:+13104081881" style={{ display: 'block', fontSize: 14, color: 'rgba(255,255,255,0.75)', padding: '4px 0', textDecoration: 'none' }}>+1 (310) 408-1881</a>
             </div>
 
             <div>
