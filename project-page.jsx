@@ -227,7 +227,7 @@
               </div>
             </header>
 
-            <div className="container" style={{
+            <div className="container pp-menu-grid" style={{
               position: 'relative', zIndex: 2,
               padding: '200px 64px 64px',
               display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 80,
@@ -419,7 +419,7 @@
         borderTop: `1px solid ${RULE}`,
         marginTop: 56,
       }}>
-        <div style={{
+        <div className="pp-brief" style={{
           display: 'grid', gridTemplateColumns: cols.length > 1 ? '1fr 1fr' : '1fr',
           gap: 80,
         }}>
@@ -558,6 +558,7 @@
                 <Tag
                   key={p.slug || p.title}
                   {...tagProps}
+                  className="pp-card"
                   style={{
                     flex: '0 0 calc((100% - 40px) / 3)',
                     scrollSnapAlign: 'start',
@@ -663,6 +664,20 @@
           .dirA .container{max-width:1200px;margin:0 auto;padding:0 64px;}
           .dirA .mono{font-family:"JetBrains Mono",ui-monospace,monospace;letter-spacing:0.02em;}
           .dirA a{color:inherit;text-decoration:none;}
+
+          /* ── MOBILE / RESPONSIVE ─────────────────────────────────── */
+          @media (max-width: 768px){
+            .dirA .container{padding:0 20px!important;}
+            .dirA h1{font-size:clamp(34px,9vw,64px)!important;}
+            .pp-nav .container{padding:14px 20px!important;}
+            .pp-nav nav{display:none!important;}
+            .pp-nav .pp-wordmark{display:none!important;}
+            .pp-nav a[href="index.html#contact"]{display:none!important;}
+            .pp-menu-grid{grid-template-columns:1fr!important;gap:36px!important;padding:120px 20px 48px!important;}
+            .pp-menu-grid nav a{font-size:clamp(44px,13vw,72px)!important;}
+            .pp-brief{grid-template-columns:1fr!important;gap:40px!important;}
+            .pp-card{flex:0 0 82%!important;}
+          }
         `}</style>
 
         <SiteNav />

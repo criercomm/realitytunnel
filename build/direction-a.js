@@ -156,6 +156,7 @@ function ApproachStepper({
     ref: wrapRef,
     onMouseEnter: () => setPaused(true),
     onMouseLeave: () => setPaused(false),
+    className: "approach-row",
     style: {
       position: 'relative',
       display: 'grid',
@@ -163,6 +164,7 @@ function ApproachStepper({
       gap: 14
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "approach-line",
     style: {
       position: 'absolute',
       top: 36,
@@ -173,6 +175,7 @@ function ApproachStepper({
       zIndex: 0
     }
   }), /*#__PURE__*/React.createElement("div", {
+    className: "approach-line",
     style: {
       position: 'absolute',
       top: 36,
@@ -352,6 +355,7 @@ function ContactForm({
     }, "Send another"));
   }
   return /*#__PURE__*/React.createElement("div", {
+    className: "contact-grid",
     style: {
       maxWidth: 1100,
       margin: '0 auto',
@@ -461,6 +465,7 @@ function ContactForm({
       gap: 18
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "form-row",
     style: {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
@@ -493,6 +498,7 @@ function ContactForm({
     placeholder: "you@company.com",
     style: fieldStyle
   })), /*#__PURE__*/React.createElement("div", {
+    className: "form-row",
     style: {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
@@ -797,8 +803,66 @@ function DirectionA({
           .dirA .rt-wordmark .rt-word .ch{animation:none!important;opacity:1!important;transform:none!important;}
           .dirA .rt-wordmark .rt-tag{animation:none!important;opacity:1!important;}
         }
+
+        /* ── MOBILE / RESPONSIVE ─────────────────────────────────────── */
+        @media (max-width: 768px){
+          .dirA .container{padding:0 20px!important;}
+          .dirA h1{font-size:clamp(34px,9vw,52px)!important;line-height:1.06!important;}
+          .dirA h2{font-size:clamp(28px,7.5vw,42px)!important;line-height:1.08!important;}
+
+          /* hero */
+          .dirA .hero-sec{height:auto!important;padding-bottom:56px!important;}
+          .dirA .hero-orb{display:none!important;}
+          .dirA .hero-head{padding:18px 0!important;}
+          .dirA .hero-head nav{display:none!important;}
+          .dirA .hero-head .rt-wordmark{display:none!important;}
+          .dirA .hero-cta{flex-wrap:wrap!important;}
+          .dirA .trust-strip{display:none!important;}
+
+          /* scroll bar — keep eye logo + burger only */
+          .dirA .scroll-bar nav{display:none!important;}
+          .dirA .scroll-bar a[href="#contact"]{display:none!important;}
+          .dirA .scroll-bar .container > a > span{display:none!important;}
+          .dirA .scroll-bar svg{width:40px!important;height:48px!important;}
+
+          /* fullscreen menu */
+          .dirA .menu-grid{grid-template-columns:1fr!important;gap:36px!important;padding:120px 20px 48px!important;}
+          .dirA .menu-link{font-size:clamp(44px,13vw,72px)!important;}
+
+          /* services */
+          .dirA .svc-intro{grid-template-columns:1fr!important;gap:28px!important;}
+          .dirA .svc-cards{grid-template-columns:1fr!important;}
+
+          /* stats — 2×2 */
+          .dirA .stats-grid{grid-template-columns:1fr 1fr!important;}
+          .dirA .stats-grid > div{border-left:none!important;border-top:1px solid rgba(255,255,255,0.08)!important;padding:26px 20px!important;}
+
+          /* work */
+          .dirA .work-grid{grid-template-columns:1fr!important;}
+          .dirA .feat-card{aspect-ratio:auto!important;min-height:440px!important;}
+          .dirA .feat-inner{flex-direction:column!important;align-items:flex-start!important;gap:18px!important;}
+          .dirA .feat-inner > div:last-child{text-align:left!important;}
+          .dirA .feat-card h3{font-size:30px!important;}
+
+          /* approach — stacked, no connector lines */
+          .dirA .approach-row{display:flex!important;flex-direction:column!important;gap:28px!important;}
+          .dirA .approach-line{display:none!important;}
+
+          /* about + contact + footer */
+          .dirA .about-grid{grid-template-columns:1fr!important;gap:28px!important;}
+          .dirA .contact-grid{grid-template-columns:1fr!important;gap:28px!important;padding:32px 20px!important;}
+          .dirA .form-row{grid-template-columns:1fr!important;}
+          .dirA .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px!important;}
+        }
+
+        @media (max-width: 460px){
+          .dirA .footer-grid{grid-template-columns:1fr!important;}
+          .dirA .stats-grid{grid-template-columns:1fr!important;}
+          .dirA .stats-grid > div{border-left:none!important;}
+        }
       `), /*#__PURE__*/React.createElement("div", {
     "aria-hidden": !scrolled,
+    className: "scroll-bar",
     style: {
       position: 'fixed',
       top: 0,
@@ -1006,6 +1070,7 @@ function DirectionA({
   }), /*#__PURE__*/React.createElement("path", {
     d: "M1 12 L11 12"
   })))))), /*#__PURE__*/React.createElement("section", {
+    className: "hero-sec",
     style: {
       position: 'relative',
       height: 900,
@@ -1026,6 +1091,7 @@ function DirectionA({
       height: '100%'
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-orb",
     style: {
       position: 'absolute',
       top: '50%',
@@ -1074,6 +1140,7 @@ function DirectionA({
     fill: ringColors[3],
     opacity: "0.95"
   })))))), /*#__PURE__*/React.createElement("header", {
+    className: "hero-head",
     style: {
       position: 'relative',
       zIndex: 2,
@@ -1279,6 +1346,7 @@ function DirectionA({
       textShadow: '0 1px 12px rgba(0,0,0,0.5)'
     }
   }, "We design, build, and integrate brand experiences that customers remember \u2014 and act upon \u2014 with a senior team that's shipped together for a decade."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-cta",
     style: {
       marginTop: 28,
       display: 'flex',
@@ -1341,7 +1409,7 @@ function DirectionA({
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "mono",
+    className: "mono trust-strip",
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -1471,7 +1539,7 @@ function DirectionA({
   }), /*#__PURE__*/React.createElement("path", {
     d: "M12 2 L2 12"
   }))))), /*#__PURE__*/React.createElement("div", {
-    className: "container",
+    className: "container menu-grid",
     style: {
       position: 'relative',
       zIndex: 2,
@@ -1660,6 +1728,7 @@ function DirectionA({
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "svc-intro",
     style: {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
@@ -1713,6 +1782,7 @@ function DirectionA({
       e.currentTarget.style.borderColor = `${A}66`;
     }
   }, "NextLATAM.com"), ", founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM."))), /*#__PURE__*/React.createElement("div", {
+    className: "svc-cards",
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3,1fr)',
@@ -1780,6 +1850,7 @@ function DirectionA({
       background: `radial-gradient(ellipse 900px 360px at 80% 50%, ${C}33 0%, transparent 70%), radial-gradient(ellipse 600px 320px at 15% 30%, ${B}1f 0%, transparent 70%)`
     }
   }), /*#__PURE__*/React.createElement("div", {
+    className: "stats-grid",
     style: {
       position: 'relative',
       display: 'grid',
@@ -1903,6 +1974,7 @@ function DirectionA({
       e.currentTarget.style.color = '#0a0a0a';
     }
   }, "Next LATAM"), ".")), /*#__PURE__*/React.createElement("a", {
+    className: "feat-card",
     href: PROJECTS[0].url || '#',
     style: {
       display: 'block',
@@ -1955,6 +2027,7 @@ function DirectionA({
     strokeWidth: 3,
     scope: "feat"
   })), /*#__PURE__*/React.createElement("div", {
+    className: "feat-inner",
     style: {
       position: 'absolute',
       bottom: 32,
@@ -2019,6 +2092,7 @@ function DirectionA({
       letterSpacing: '-0.02em'
     }
   }, "14M views")))), /*#__PURE__*/React.createElement("div", {
+    className: "work-grid",
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3,1fr)',
@@ -2209,6 +2283,7 @@ function DirectionA({
       zIndex: 1
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "about-grid",
     style: {
       display: 'grid',
       gridTemplateColumns: '1fr 1.5fr',
@@ -2325,6 +2400,7 @@ function DirectionA({
     accent: A,
     secondary: B
   })), /*#__PURE__*/React.createElement("div", {
+    className: "footer-grid",
     style: {
       paddingTop: 48,
       borderTop: '1px solid rgba(255,255,255,0.08)',

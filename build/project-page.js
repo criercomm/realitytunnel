@@ -368,7 +368,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     }), /*#__PURE__*/React.createElement("path", {
       d: "M12 2 L2 12"
     }))))), /*#__PURE__*/React.createElement("div", {
-      className: "container",
+      className: "container pp-menu-grid",
       style: {
         position: 'relative',
         zIndex: 2,
@@ -676,6 +676,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         marginTop: 56
       }
     }, /*#__PURE__*/React.createElement("div", {
+      className: "pp-brief",
       style: {
         display: 'grid',
         gridTemplateColumns: cols.length > 1 ? '1fr 1fr' : '1fr',
@@ -874,6 +875,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       return /*#__PURE__*/React.createElement(Tag, _extends({
         key: p.slug || p.title
       }, tagProps, {
+        className: "pp-card",
         style: {
           flex: '0 0 calc((100% - 40px) / 3)',
           scrollSnapAlign: 'start',
@@ -1053,6 +1055,20 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
           .dirA .container{max-width:1200px;margin:0 auto;padding:0 64px;}
           .dirA .mono{font-family:"JetBrains Mono",ui-monospace,monospace;letter-spacing:0.02em;}
           .dirA a{color:inherit;text-decoration:none;}
+
+          /* ── MOBILE / RESPONSIVE ─────────────────────────────────── */
+          @media (max-width: 768px){
+            .dirA .container{padding:0 20px!important;}
+            .dirA h1{font-size:clamp(34px,9vw,64px)!important;}
+            .pp-nav .container{padding:14px 20px!important;}
+            .pp-nav nav{display:none!important;}
+            .pp-nav .pp-wordmark{display:none!important;}
+            .pp-nav a[href="index.html#contact"]{display:none!important;}
+            .pp-menu-grid{grid-template-columns:1fr!important;gap:36px!important;padding:120px 20px 48px!important;}
+            .pp-menu-grid nav a{font-size:clamp(44px,13vw,72px)!important;}
+            .pp-brief{grid-template-columns:1fr!important;gap:40px!important;}
+            .pp-card{flex:0 0 82%!important;}
+          }
         `), /*#__PURE__*/React.createElement(SiteNav, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("div", {
       className: "container"
     }, /*#__PURE__*/React.createElement(Breadcrumb, {

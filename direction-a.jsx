@@ -116,14 +116,15 @@ function ApproachStepper({ accent }) {
       ref={wrapRef}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      className="approach-row"
       style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
       {/* base connecting line */}
-      <div style={{
+      <div className="approach-line" style={{
         position: 'absolute', top: 36, left: '12%', right: '12%', height: 1,
         background: 'rgba(255,255,255,0.10)', zIndex: 0,
       }} />
       {/* progress line — fills proportionally to active step */}
-      <div style={{
+      <div className="approach-line" style={{
         position: 'absolute', top: 36, left: '12%', height: 1,
         width: `calc((100% - 24%) * ${active / Math.max(1, n - 1)})`,
         background: `linear-gradient(90deg, ${accent}aa 0%, ${accent}ff 100%)`,
@@ -230,7 +231,7 @@ function ContactForm({ accent, secondary }) {
   }
 
   return (
-    <div style={{
+    <div className="contact-grid" style={{
       maxWidth: 1100, margin: '0 auto',
       display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 56,
       background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)',
@@ -280,7 +281,7 @@ function ContactForm({ accent, secondary }) {
       </aside>
 
       <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+        <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
           <label>
             <span style={labelStyle}>Name</span>
             <input required value={form.name} onChange={set('name')} type="text" placeholder="Your name" style={fieldStyle} />
@@ -294,7 +295,7 @@ function ContactForm({ accent, secondary }) {
           <span style={labelStyle}>Email</span>
           <input required value={form.email} onChange={set('email')} type="email" placeholder="you@company.com" style={fieldStyle} />
         </label>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+        <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
           <label>
             <span style={labelStyle}>What are you exploring?</span>
             <select required value={form.service} onChange={set('service')} style={{ ...fieldStyle, appearance: 'none' }}>
@@ -480,11 +481,69 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           .dirA .rt-wordmark .rt-word .ch{animation:none!important;opacity:1!important;transform:none!important;}
           .dirA .rt-wordmark .rt-tag{animation:none!important;opacity:1!important;}
         }
+
+        /* ── MOBILE / RESPONSIVE ─────────────────────────────────────── */
+        @media (max-width: 768px){
+          .dirA .container{padding:0 20px!important;}
+          .dirA h1{font-size:clamp(34px,9vw,52px)!important;line-height:1.06!important;}
+          .dirA h2{font-size:clamp(28px,7.5vw,42px)!important;line-height:1.08!important;}
+
+          /* hero */
+          .dirA .hero-sec{height:auto!important;padding-bottom:56px!important;}
+          .dirA .hero-orb{display:none!important;}
+          .dirA .hero-head{padding:18px 0!important;}
+          .dirA .hero-head nav{display:none!important;}
+          .dirA .hero-head .rt-wordmark{display:none!important;}
+          .dirA .hero-cta{flex-wrap:wrap!important;}
+          .dirA .trust-strip{display:none!important;}
+
+          /* scroll bar — keep eye logo + burger only */
+          .dirA .scroll-bar nav{display:none!important;}
+          .dirA .scroll-bar a[href="#contact"]{display:none!important;}
+          .dirA .scroll-bar .container > a > span{display:none!important;}
+          .dirA .scroll-bar svg{width:40px!important;height:48px!important;}
+
+          /* fullscreen menu */
+          .dirA .menu-grid{grid-template-columns:1fr!important;gap:36px!important;padding:120px 20px 48px!important;}
+          .dirA .menu-link{font-size:clamp(44px,13vw,72px)!important;}
+
+          /* services */
+          .dirA .svc-intro{grid-template-columns:1fr!important;gap:28px!important;}
+          .dirA .svc-cards{grid-template-columns:1fr!important;}
+
+          /* stats — 2×2 */
+          .dirA .stats-grid{grid-template-columns:1fr 1fr!important;}
+          .dirA .stats-grid > div{border-left:none!important;border-top:1px solid rgba(255,255,255,0.08)!important;padding:26px 20px!important;}
+
+          /* work */
+          .dirA .work-grid{grid-template-columns:1fr!important;}
+          .dirA .feat-card{aspect-ratio:auto!important;min-height:440px!important;}
+          .dirA .feat-inner{flex-direction:column!important;align-items:flex-start!important;gap:18px!important;}
+          .dirA .feat-inner > div:last-child{text-align:left!important;}
+          .dirA .feat-card h3{font-size:30px!important;}
+
+          /* approach — stacked, no connector lines */
+          .dirA .approach-row{display:flex!important;flex-direction:column!important;gap:28px!important;}
+          .dirA .approach-line{display:none!important;}
+
+          /* about + contact + footer */
+          .dirA .about-grid{grid-template-columns:1fr!important;gap:28px!important;}
+          .dirA .contact-grid{grid-template-columns:1fr!important;gap:28px!important;padding:32px 20px!important;}
+          .dirA .form-row{grid-template-columns:1fr!important;}
+          .dirA .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px!important;}
+        }
+
+        @media (max-width: 460px){
+          .dirA .footer-grid{grid-template-columns:1fr!important;}
+          .dirA .stats-grid{grid-template-columns:1fr!important;}
+          .dirA .stats-grid > div{border-left:none!important;}
+        }
       `}</style>
 
       {/* ── SCROLL NAV — fixed white nav that slides in past the hero ── */}
       <div
         aria-hidden={!scrolled}
+        className="scroll-bar"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60,
           padding: '10px 0',
@@ -601,7 +660,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       </div>
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section style={{ position: 'relative', height: 900, overflow: 'hidden' }}>
+      <section className="hero-sec" style={{ position: 'relative', height: 900, overflow: 'hidden' }}>
         <AuroraField accent={[A, B, C]} />
 
         {/* Enormous ring orb — architectural element. Constrained to the same 1280
@@ -609,7 +668,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             content area instead of hanging off the viewport edge. */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
           <div className="container" style={{ position: 'relative', height: '100%' }}>
-            <div style={{
+            <div className="hero-orb" style={{
               position: 'absolute', top: '50%', right: -180, transform: 'translateY(-50%)',
               width: 1400, height: 1400, pointerEvents: 'none',
               animation: 'dirA-orb-drift 14s ease-in-out infinite, dirA-orb-pulse 7s ease-in-out infinite',
@@ -627,7 +686,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         </div>
 
         {/* Header */}
-        <header style={{
+        <header className="hero-head" style={{
           position: 'relative', zIndex: 2,
           padding: '32px 0',
         }}>
@@ -740,7 +799,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           }}>
             We design, build, and integrate brand experiences that customers remember — and act upon — with a senior team that's shipped together for a decade.
           </p>
-          <div style={{ marginTop: 28, display: 'flex', gap: 12, alignItems: 'center' }}>
+          <div className="hero-cta" style={{ marginTop: 28, display: 'flex', gap: 12, alignItems: 'center' }}>
             <a href="#contact" style={{
               background: A, color: '#fff', fontSize: 15, fontWeight: 600,
               padding: '16px 28px', borderRadius: 99,
@@ -771,7 +830,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           padding: '24px 0',
         }}>
           <div className="container">
-          <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 28, fontSize: 11, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <div className="mono trust-strip" style={{ display: 'flex', alignItems: 'center', gap: 28, fontSize: 11, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             <span style={{ color: 'rgba(255,255,255,0.4)' }}>Trusted by</span>
             <span>Manchester United</span><span>·</span>
             <span>Hewlett Packard</span><span>·</span>
@@ -850,7 +909,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           </header>
 
           {/* Menu content grid: large nav links + contact info */}
-          <div className="container" style={{
+          <div className="container menu-grid" style={{
             position: 'relative', zIndex: 2,
             padding: '200px 64px 64px',
             display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 80,
@@ -957,7 +1016,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       {/* ── SERVICES ─────────────────────────────────────── */}
       <section id="services" style={{ position: 'relative', padding: '88px 0 96px', background: '#ffffff', color: '#0a0a0a' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, marginBottom: 40 }}>
+          <div className="svc-intro" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, marginBottom: 40 }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 28 }}>Capabilities</div>
               <h2 style={{ fontSize: 64, lineHeight: 1.02, letterSpacing: '-0.028em', color: '#0a0a0a' }}>
@@ -981,7 +1040,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
+          <div className="svc-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
             {SERVICES.map((s, i) => {
               const tints = [
                 [A, '#7a2509'],         // brand accent orange (tweakable)
@@ -1024,7 +1083,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           position: 'absolute', inset: 0, pointerEvents: 'none',
           background: `radial-gradient(ellipse 900px 360px at 80% 50%, ${C}33 0%, transparent 70%), radial-gradient(ellipse 600px 320px at 15% 30%, ${B}1f 0%, transparent 70%)`,
         }} />
-        <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', maxWidth: 1280, margin: '0 auto' }}>
+        <div className="stats-grid" style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', maxWidth: 1280, margin: '0 auto' }}>
           {[
             { label: 'projects shipped',             value: '100', suffix: '+' },
             { label: 'years in AR / VR development', value: '12' },
@@ -1086,6 +1145,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
 
           {/* Featured project — cinematic (image background + readability overlay) */}
           <a
+            className="feat-card"
             href={PROJECTS[0].url || '#'}
             style={{
               display: 'block', textDecoration: 'none', color: 'inherit',
@@ -1112,7 +1172,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             <div style={{ position: 'absolute', top: 32, right: 32 }}>
               <EyeMark size={64} colors={['rgba(255,255,255,0.12)', 'rgba(255,255,255,0.55)', 'rgba(255,255,255,0.92)']} keylineColor="rgba(255,255,255,0.70)" strokeWidth={3} scope="feat" />
             </div>
-            <div style={{ position: 'absolute', bottom: 32, left: 32, right: 32, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+            <div className="feat-inner" style={{ position: 'absolute', bottom: 32, left: 32, right: 32, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
               <div>
                 <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14 }}>Featured · Virtual reality</div>
                 <h3 style={{ fontSize: 56, lineHeight: 0.98, color: '#fff', letterSpacing: '-0.03em', maxWidth: 720 }}>
@@ -1132,7 +1192,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           </a>
 
           {/* 6 more projects grid (2 rows × 3) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 18 }}>
+          <div className="work-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 18 }}>
             {PROJECTS.slice(1, 7).map((p, i) => {
               const Tag = p.url ? 'a' : 'div';
               const tagProps = p.url
@@ -1217,7 +1277,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           <div className="ob ob4" />
         </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80, alignItems: 'start' }}>
+          <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80, alignItems: 'start' }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 28, color: '#fff' }}>About the name</div>
               <h2 style={{
@@ -1266,7 +1326,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           <ContactForm accent={A} secondary={B} />
         </div>
 
-          <div style={{
+          <div className="footer-grid" style={{
             paddingTop: 48, borderTop: '1px solid rgba(255,255,255,0.08)',
             maxWidth: 1100, margin: '0 auto',
             display: 'grid', gridTemplateColumns: '2.2fr 0.7fr 1fr 1fr', gap: 56,
