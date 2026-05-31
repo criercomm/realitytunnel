@@ -968,7 +968,15 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             <div>
               <div className="eyebrow" style={{ marginBottom: 28 }}>About Us</div>
               <p style={{ fontSize: 19, lineHeight: 1.55, color: 'rgba(10,10,10,0.7)', fontWeight: 400, maxWidth: 480 }}>
-                Reality Tunnel is the US headquarters of NextLATAM.com, founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM.
+                Reality Tunnel is the US headquarters of{' '}
+                <a
+                  href="https://www.nextlatam.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: A, fontWeight: 500, borderBottom: `1px solid ${A}66`, paddingBottom: 1, transition: 'border-color 160ms ease' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = A; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${A}66`; }}
+                >NextLATAM.com</a>, founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM.
               </p>
             </div>
           </div>

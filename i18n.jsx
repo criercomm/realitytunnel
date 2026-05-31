@@ -157,6 +157,10 @@
     'About Us':                                             'Sobre nosotros',
     'Reality Tunnel is the US headquarters of NextLATAM.com, founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM.':
       'Reality Tunnel es la sede en EE.UU. de NextLATAM.com, fundada en Lima, Perú, en 2014 para servir a América Latina. El trabajo presentado aquí fue producido por NextLATAM.',
+    // Fragments — the sentence is split around the live NextLATAM.com link
+    'Reality Tunnel is the US headquarters of':             'Reality Tunnel es la sede en EE.UU. de',
+    ', founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM.':
+      ', fundada en Lima, Perú, en 2014 para servir a América Latina. El trabajo presentado aquí fue producido por NextLATAM.',
 
     // ── Split headline fragments ──────────────────────────────────────
     'Four phases.':                                         'Cuatro fases.',
