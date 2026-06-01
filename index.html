@@ -25,34 +25,42 @@
     html body .dirA .hero-head nav { display: none !important; }
     html body .dirA .hero-head .lang-toggle,
     html body .dirA .hero-head .mono { display: none !important; }
-    html body .dirA .hero-head .hero-lockup { gap: 3px !important; }
+    html body .dirA .hero-head .container { padding-left: 18px !important; padding-right: 18px !important; }
+    html body .dirA .hero-head .container > div:last-child { margin-right: 0 !important; flex: 0 0 auto !important; }
+    html body .dirA .hero-head .hero-lockup { gap: 3px !important; min-width: 0 !important; }
     html body .dirA .hero-head .hero-lockup > svg { width: 22px !important; height: 26px !important; margin-right: -11px !important; }
     html body .dirA .hero-head .rt-wordmark { display: flex !important; }
     html body .dirA .hero-head .rt-wordmark .rt-tag { display: none !important; }
-    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 19px !important; letter-spacing: 0.22em !important; font-weight: 300 !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 19px !important; letter-spacing: 0.14em !important; font-weight: 300 !important; }
     html body .dirA .hero-head .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
     html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; }
     html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
     html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
     html body .dirA [role="dialog"] [aria-hidden="true"] > div { animation: none !important; }
+    html body .dirA .scroll-bar .container > a > span { display: inline-block !important; font-size: 16px !important; letter-spacing: 0.2em !important; }
+    html body .dirA .scroll-bar .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
   @media (max-width: 768px) {
     html body .dirA .hero-sec .eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
     html body .dirA .hero-head .lang-toggle,
     html body .dirA .hero-head .mono { display: none !important; }
-    html body .dirA .hero-head .hero-lockup { gap: 3px !important; }
+    html body .dirA .hero-head .container { padding-left: 18px !important; padding-right: 18px !important; }
+    html body .dirA .hero-head .container > div:last-child { margin-right: 0 !important; flex: 0 0 auto !important; }
+    html body .dirA .hero-head .hero-lockup { gap: 3px !important; min-width: 0 !important; }
     html body .dirA .hero-head .hero-lockup > svg { width: 22px !important; height: 26px !important; margin-right: -11px !important; }
     html body .dirA .hero-head .rt-wordmark { display: flex !important; }
     html body .dirA .hero-head .rt-wordmark .rt-tag { display: none !important; }
-    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 19px !important; letter-spacing: 0.22em !important; font-weight: 300 !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 19px !important; letter-spacing: 0.14em !important; font-weight: 300 !important; }
     html body .dirA .hero-head .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
     html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; }
     html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
     html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
     html body .dirA [role="dialog"] [aria-hidden="true"] > div { animation: none !important; }
+    html body .dirA .scroll-bar .container > a > span { display: inline-block !important; font-size: 16px !important; letter-spacing: 0.2em !important; }
+    html body .dirA .scroll-bar .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
 </style>
 </head>
@@ -63,11 +71,11 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
-<script src="build/tweaks-panel.js?v=17"></script>
-<script src="build/shared.js?v=17"></script>
-<script src="build/i18n.js?v=17"></script>
-<script src="build/direction-a.js?v=17"></script>
-<script src="build/app.js?v=17"></script>
+<script src="build/tweaks-panel.js?v=19"></script>
+<script src="build/shared.js?v=19"></script>
+<script src="build/i18n.js?v=19"></script>
+<script src="build/direction-a.js?v=19"></script>
+<script src="build/app.js?v=19"></script>
 
 </body>
 </html>
