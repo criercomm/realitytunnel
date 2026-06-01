@@ -493,7 +493,9 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           .dirA .hero-orb{display:none!important;}
           .dirA .hero-head{padding:18px 0!important;}
           .dirA .hero-head nav{display:none!important;}
-          .dirA .hero-head .rt-wordmark{display:none!important;}
+          /* keep the wordmark + its ScatterWord animation on mobile, just scaled to fit */
+          .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
+          .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
           .dirA .hero-cta{flex-wrap:wrap!important;}
           .dirA .trust-strip{display:none!important;}
 
