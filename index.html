@@ -15,6 +15,32 @@
   html, body { margin: 0; padding: 0; background: #050913; overflow-x: hidden; }
   body { font-family: "Sora", system-ui, sans-serif; color: #fff; }
   #root { width: 100%; min-height: 100vh; }
+
+  /* ── MOBILE HERO FIXES (live here in index.html so they always deploy) ──
+     High specificity (html body .dirA…) + !important guarantees these win
+     over the component's own injected styles regardless of source order.
+     The touch-device query fires on EVERY phone in ANY orientation — it does
+     not depend on the 768px width breakpoint, which an iPhone Pro Max defeats
+     in landscape (926px wide) and which page-zoom can defeat in portrait. */
+  @media (hover: none) and (pointer: coarse) {
+    html body .dirA .hero-eyebrow { display: none !important; }
+    html body .dirA .hero-head nav { display: none !important; }
+    html body .dirA .hero-head .lang-toggle { display: none !important; }
+    html body .dirA .hero-head .hero-lockup { gap: 9px !important; }
+    html body .dirA .hero-head .hero-lockup > svg { width: 52px !important; height: 62px !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 15px !important; letter-spacing: 0.18em !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-tag { font-size: 8px !important; letter-spacing: 0.34em !important; }
+  }
+  /* Narrow desktop windows (no touch) — same treatment via width. */
+  @media (max-width: 768px) {
+    html body .dirA .hero-eyebrow { display: none !important; }
+    html body .dirA .hero-head nav { display: none !important; }
+    html body .dirA .hero-head .lang-toggle { display: none !important; }
+    html body .dirA .hero-head .hero-lockup { gap: 9px !important; }
+    html body .dirA .hero-head .hero-lockup > svg { width: 52px !important; height: 62px !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 15px !important; letter-spacing: 0.18em !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-tag { font-size: 8px !important; letter-spacing: 0.34em !important; }
+  }
 </style>
 </head>
 <body>
