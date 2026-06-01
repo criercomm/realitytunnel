@@ -868,6 +868,19 @@ function DirectionA({
           .dirA .stats-grid{grid-template-columns:1fr!important;}
           .dirA .stats-grid > div{border-left:none!important;}
         }
+
+        /* ── LANDSCAPE PHONES (e.g. iPhone Pro Max ~926px wide, short height) ──
+           Width-based query misses these because they're wider than 768px in
+           landscape; key off the short viewport height + orientation instead. */
+        @media (orientation: landscape) and (max-height: 500px){
+          .dirA .hero-eyebrow{display:none!important;}
+          .dirA .hero-head nav{display:none!important;}
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
+          .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
+          .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
+        }
       `), /*#__PURE__*/React.createElement("div", {
     "aria-hidden": !scrolled,
     className: "scroll-bar",
