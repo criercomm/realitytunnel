@@ -16,18 +16,23 @@
   body { font-family: "Sora", system-ui, sans-serif; color: #fff; }
   #root { width: 100%; min-height: 100vh; }
 
-  /* ── MOBILE HERO FIXES ── */
+  /* ── MOBILE HERO + MENU FIXES ── */
   @media (hover: none) and (pointer: coarse) {
     html body .dirA .hero-sec .eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
     html body .dirA .hero-head .lang-toggle,
     html body .dirA .hero-head .mono { display: none !important; }
     html body .dirA .hero-head .hero-lockup { gap: 3px !important; }
-    html body .dirA .hero-head .hero-lockup > svg { width: 26px !important; height: 31px !important; }
+    html body .dirA .hero-head .hero-lockup > svg { width: 26px !important; height: 31px !important; margin-right: -7px !important; }
     html body .dirA .hero-head .rt-wordmark { display: flex !important; }
     html body .dirA .hero-head .rt-wordmark .rt-tag { display: none !important; }
-    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 16px !important; letter-spacing: 0.22em !important; font-weight: 300 !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 17px !important; letter-spacing: 0.22em !important; font-weight: 300 !important; }
     html body .dirA .hero-head .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
+    /* Hamburger menu: pull content up + allow scroll so the bottom items are visible. */
+    html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; }
+    html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
+    html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
+    html body .dirA .menu-grid { padding-top: 28px !important; }
   }
   @media (max-width: 768px) {
     html body .dirA .hero-sec .eyebrow { display: none !important; }
@@ -35,11 +40,16 @@
     html body .dirA .hero-head .lang-toggle,
     html body .dirA .hero-head .mono { display: none !important; }
     html body .dirA .hero-head .hero-lockup { gap: 3px !important; }
-    html body .dirA .hero-head .hero-lockup > svg { width: 26px !important; height: 31px !important; }
+    html body .dirA .hero-head .hero-lockup > svg { width: 26px !important; height: 31px !important; margin-right: -7px !important; }
     html body .dirA .hero-head .rt-wordmark { display: flex !important; }
     html body .dirA .hero-head .rt-wordmark .rt-tag { display: none !important; }
-    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 16px !important; letter-spacing: 0.22em !important; font-weight: 300 !important; }
+    html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 17px !important; letter-spacing: 0.22em !important; font-weight: 300 !important; }
     html body .dirA .hero-head .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
+    /* Hamburger menu: pull content up + allow scroll so the bottom items are visible. */
+    html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; }
+    html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
+    html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
+    html body .dirA .menu-grid { padding-top: 28px !important; }
   }
 </style>
 </head>
@@ -50,11 +60,11 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
-<script src="build/tweaks-panel.js?v=12"></script>
-<script src="build/shared.js?v=12"></script>
-<script src="build/i18n.js?v=12"></script>
-<script src="build/direction-a.js?v=12"></script>
-<script src="build/app.js?v=12"></script>
+<script src="build/tweaks-panel.js?v=14"></script>
+<script src="build/shared.js?v=14"></script>
+<script src="build/i18n.js?v=14"></script>
+<script src="build/direction-a.js?v=14"></script>
+<script src="build/app.js?v=14"></script>
 
 </body>
 </html>
