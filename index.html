@@ -42,16 +42,17 @@
     html body .dirA > section:not(.hero-sec) { padding-top: 48px !important; padding-bottom: 48px !important; }
     /* Hamburger menu: pull content up + allow scroll so the bottom items are visible. */
     html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; background: #000 !important; }
-    html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
-    html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
-    /* Make the menu close (X) button white so it's visible on the black bg. */
-    html body .dirA [role="dialog"] button { color: #fff !important; border-color: rgba(255,255,255,0.22) !important; }
+    html body .dirA [role="dialog"] > header { padding-top: 32px !important; padding-bottom: 0 !important; }
+    html body .dirA [role="dialog"] > header .container { min-height: 76px !important; }
+    /* Close (X) button: mirror the DESKTOP version — translucent dark circle, subtle grey keyline, white X that rotates on hover. */
+    html body .dirA [role="dialog"] button { background: rgba(255,255,255,0.06) !important; color: #fff !important; border: 1px solid rgba(255,255,255,0.18) !important; box-shadow: none !important; transition: background 160ms, border-color 160ms, transform 200ms !important; }
+    html body .dirA [role="dialog"] button:hover { background: rgba(255,255,255,0.14) !important; transform: rotate(90deg) !important; }
     html body .dirA [role="dialog"] button svg { stroke: #fff !important; }
     html body .dirA [role="dialog"] button svg path, html body .dirA [role="dialog"] button svg line { stroke: #fff !important; fill: #fff !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
     /* The decorative blurred orbs (80px blur on 700px divs) are very expensive on
        mobile and make the menu lag — hide them entirely; the gradient bg remains. */
-    html body .dirA [role="dialog"] [aria-hidden="true"] { display: none !important; }
+    html body .dirA [role="dialog"] > [aria-hidden="true"] { display: none !important; }
     /* On-scroll floating nav: deployed hides its textmark on mobile — show it as a STATIC wordmark. */
     html body .dirA .scroll-bar .container > a > span { display: inline-block !important; font-size: 16px !important; letter-spacing: 0.2em !important; }
     html body .dirA .scroll-bar .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
@@ -74,16 +75,17 @@
     html body .dirA > section:not(.hero-sec) { padding-top: 48px !important; padding-bottom: 48px !important; }
     /* Hamburger menu: pull content up + allow scroll so the bottom items are visible. */
     html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; background: #000 !important; }
-    html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
-    html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
-    /* Make the menu close (X) button white so it's visible on the black bg. */
-    html body .dirA [role="dialog"] button { color: #fff !important; border-color: rgba(255,255,255,0.22) !important; }
+    html body .dirA [role="dialog"] > header { padding-top: 32px !important; padding-bottom: 0 !important; }
+    html body .dirA [role="dialog"] > header .container { min-height: 76px !important; }
+    /* Close (X) button: mirror the DESKTOP version — translucent dark circle, subtle grey keyline, white X that rotates on hover. */
+    html body .dirA [role="dialog"] button { background: rgba(255,255,255,0.06) !important; color: #fff !important; border: 1px solid rgba(255,255,255,0.18) !important; box-shadow: none !important; transition: background 160ms, border-color 160ms, transform 200ms !important; }
+    html body .dirA [role="dialog"] button:hover { background: rgba(255,255,255,0.14) !important; transform: rotate(90deg) !important; }
     html body .dirA [role="dialog"] button svg { stroke: #fff !important; }
     html body .dirA [role="dialog"] button svg path, html body .dirA [role="dialog"] button svg line { stroke: #fff !important; fill: #fff !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
     /* The decorative blurred orbs (80px blur on 700px divs) are very expensive on
        mobile and make the menu lag — hide them entirely; the gradient bg remains. */
-    html body .dirA [role="dialog"] [aria-hidden="true"] { display: none !important; }
+    html body .dirA [role="dialog"] > [aria-hidden="true"] { display: none !important; }
     /* On-scroll floating nav: deployed hides its textmark on mobile — show it as a STATIC wordmark. */
     html body .dirA .scroll-bar .container > a > span { display: inline-block !important; font-size: 16px !important; letter-spacing: 0.2em !important; }
     html body .dirA .scroll-bar .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
