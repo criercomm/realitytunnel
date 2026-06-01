@@ -19,7 +19,12 @@
   body { font-family: "Sora", system-ui, sans-serif; color: #fff; }
   #root { width: 100%; min-height: 100vh; }
 
-  /* ── MOBILE HERO + MENU FIXES ── */
+  /* ── MOBILE HERO FIXES (live here in index.html so they always deploy) ──
+     High specificity (html body .dirA…) + !important guarantees these win
+     over the component's own injected styles regardless of source order.
+     The touch-device query fires on EVERY phone in ANY orientation — it does
+     not depend on the 768px width breakpoint, which an iPhone Pro Max defeats
+     in landscape (926px wide) and which page-zoom can defeat in portrait. */
   @media (hover: none) and (pointer: coarse) {
     html body .dirA .hero-sec .eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
@@ -28,19 +33,24 @@
     html body .dirA .hero-head .container { padding-left: 18px !important; padding-right: 18px !important; }
     html body .dirA .hero-head .container > div:last-child { margin-right: 0 !important; flex: 0 0 auto !important; }
     html body .dirA .hero-head .container > div:first-child { gap: 6px !important; min-width: 0 !important; }
-    html body .dirA .hero-head .container > div:first-child > svg { width: 49px !important; height: 58px !important; margin-right: -1px !important; }
+    html body .dirA .hero-head .container > div:first-child > svg { width: 56px !important; height: 67px !important; margin-right: -1px !important; }
     html body .dirA .hero-head .rt-wordmark { display: flex !important; }
     html body .dirA .hero-head .rt-wordmark .rt-tag { display: none !important; }
     html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 19px !important; letter-spacing: 0.14em !important; font-weight: 300 !important; }
     html body .dirA .hero-head .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
+    /* Hamburger menu: pull content up + allow scroll so the bottom items are visible. */
     html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; }
     html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
     html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
-    html body .dirA [role="dialog"] [aria-hidden="true"] > div { animation: none !important; }
+    /* The decorative blurred orbs (80px blur on 700px divs) are very expensive on
+       mobile and make the menu lag — hide them entirely; the gradient bg remains. */
+    html body .dirA [role="dialog"] [aria-hidden="true"] { display: none !important; }
+    /* On-scroll floating nav: deployed hides its textmark on mobile — show it as a STATIC wordmark. */
     html body .dirA .scroll-bar .container > a > span { display: inline-block !important; font-size: 16px !important; letter-spacing: 0.2em !important; }
     html body .dirA .scroll-bar .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
+  /* Narrow desktop windows (no touch) — same treatment via width. */
   @media (max-width: 768px) {
     html body .dirA .hero-sec .eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
@@ -49,16 +59,20 @@
     html body .dirA .hero-head .container { padding-left: 18px !important; padding-right: 18px !important; }
     html body .dirA .hero-head .container > div:last-child { margin-right: 0 !important; flex: 0 0 auto !important; }
     html body .dirA .hero-head .container > div:first-child { gap: 6px !important; min-width: 0 !important; }
-    html body .dirA .hero-head .container > div:first-child > svg { width: 49px !important; height: 58px !important; margin-right: -1px !important; }
+    html body .dirA .hero-head .container > div:first-child > svg { width: 56px !important; height: 67px !important; margin-right: -1px !important; }
     html body .dirA .hero-head .rt-wordmark { display: flex !important; }
     html body .dirA .hero-head .rt-wordmark .rt-tag { display: none !important; }
     html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 19px !important; letter-spacing: 0.14em !important; font-weight: 300 !important; }
     html body .dirA .hero-head .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
+    /* Hamburger menu: pull content up + allow scroll so the bottom items are visible. */
     html body .dirA [role="dialog"][aria-modal="true"] { overflow-y: auto !important; }
     html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
     html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
-    html body .dirA [role="dialog"] [aria-hidden="true"] > div { animation: none !important; }
+    /* The decorative blurred orbs (80px blur on 700px divs) are very expensive on
+       mobile and make the menu lag — hide them entirely; the gradient bg remains. */
+    html body .dirA [role="dialog"] [aria-hidden="true"] { display: none !important; }
+    /* On-scroll floating nav: deployed hides its textmark on mobile — show it as a STATIC wordmark. */
     html body .dirA .scroll-bar .container > a > span { display: inline-block !important; font-size: 16px !important; letter-spacing: 0.2em !important; }
     html body .dirA .scroll-bar .rt-word .ch { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
@@ -68,14 +82,18 @@
 
 <div id="root"></div>
 
+<!-- Production React (small + fast). JSX is precompiled to plain JS in build/ so
+     mobile Safari never has to run Babel at runtime — that runtime transpile of
+     ~200KB of JSX was what crashed iPhones ("Can't open this page").
+     To change components: edit the .jsx source, then rebuild build/*.js. -->
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
-<script src="build/tweaks-panel.js?v=22"></script>
-<script src="build/shared.js?v=22"></script>
-<script src="build/i18n.js?v=22"></script>
-<script src="build/direction-a.js?v=22"></script>
-<script src="build/app.js?v=22"></script>
+<script src="build/tweaks-panel.js?v=24"></script>
+<script src="build/shared.js?v=24"></script>
+<script src="build/i18n.js?v=24"></script>
+<script src="build/direction-a.js?v=24"></script>
+<script src="build/app.js?v=24"></script>
 
 </body>
 </html>
