@@ -45,8 +45,9 @@
     html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
     html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
     /* Make the menu close (X) button white so it's visible on the black bg. */
-    html body .dirA [role="dialog"] > header button { color: #fff !important; border-color: rgba(255,255,255,0.22) !important; }
-    html body .dirA [role="dialog"] > header button svg { stroke: #fff !important; }
+    html body .dirA [role="dialog"] button { color: #fff !important; border-color: rgba(255,255,255,0.22) !important; }
+    html body .dirA [role="dialog"] button svg { stroke: #fff !important; fill: none !important; }
+    html body .dirA [role="dialog"] button svg path, html body .dirA [role="dialog"] button svg line { stroke: #fff !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
     /* The decorative blurred orbs (80px blur on 700px divs) are very expensive on
        mobile and make the menu lag — hide them entirely; the gradient bg remains. */
@@ -76,8 +77,9 @@
     html body .dirA [role="dialog"] > header { padding-top: 16px !important; padding-bottom: 0 !important; }
     html body .dirA [role="dialog"] > header .container { min-height: 0 !important; }
     /* Make the menu close (X) button white so it's visible on the black bg. */
-    html body .dirA [role="dialog"] > header button { color: #fff !important; border-color: rgba(255,255,255,0.22) !important; }
-    html body .dirA [role="dialog"] > header button svg { stroke: #fff !important; }
+    html body .dirA [role="dialog"] button { color: #fff !important; border-color: rgba(255,255,255,0.22) !important; }
+    html body .dirA [role="dialog"] button svg { stroke: #fff !important; fill: none !important; }
+    html body .dirA [role="dialog"] button svg path, html body .dirA [role="dialog"] button svg line { stroke: #fff !important; }
     html body .dirA .menu-grid { padding-top: 28px !important; }
     /* The decorative blurred orbs (80px blur on 700px divs) are very expensive on
        mobile and make the menu lag — hide them entirely; the gradient bg remains. */
@@ -99,11 +101,11 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
-<script src="build/tweaks-panel.js?v=28"></script>
-<script src="build/shared.js?v=28"></script>
-<script src="build/i18n.js?v=28"></script>
-<script src="build/direction-a.js?v=28"></script>
-<script src="build/app.js?v=28"></script>
+<script src="build/tweaks-panel.js?v=29"></script>
+<script src="build/shared.js?v=29"></script>
+<script src="build/i18n.js?v=29"></script>
+<script src="build/direction-a.js?v=29"></script>
+<script src="build/app.js?v=29"></script>
 
 </body>
 </html>
