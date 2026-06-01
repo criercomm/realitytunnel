@@ -371,7 +371,7 @@ function LangToggle() {
     transition: 'color 160ms ease',
   });
   return (
-    <div className="mono" style={{
+    <div className="mono lang-toggle" style={{
       display: 'inline-flex', alignItems: 'center',
       background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)',
       fontSize: 11, padding: '8px 8px', borderRadius: 99,
@@ -493,6 +493,11 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           .dirA .hero-orb{display:none!important;}
           .dirA .hero-head{padding:18px 0!important;}
           .dirA .hero-head nav{display:none!important;}
+          /* free up room on mobile by dropping the EN/ES toggle */
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          /* shrink the eye mark + tighten the gap so the lockup fits narrow phones */
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
           /* keep the wordmark + its ScatterWord animation on mobile, just scaled to fit */
           .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
           .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
@@ -693,7 +698,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           padding: '32px 0',
         }}>
           <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div className="hero-lockup" style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <svg width={89} height={89 * (50 / 42)} viewBox="0 0 42 50" style={{ display: 'block', overflow: 'hidden' }} aria-hidden="true">
               <defs>
                 <clipPath id="rt-nav-clip">

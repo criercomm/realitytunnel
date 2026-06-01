@@ -667,7 +667,7 @@ function LangToggle() {
     transition: 'color 160ms ease'
   });
   return /*#__PURE__*/React.createElement("div", {
-    className: "mono",
+    className: "mono lang-toggle",
     style: {
       display: 'inline-flex',
       alignItems: 'center',
@@ -815,6 +815,11 @@ function DirectionA({
           .dirA .hero-orb{display:none!important;}
           .dirA .hero-head{padding:18px 0!important;}
           .dirA .hero-head nav{display:none!important;}
+          /* free up room on mobile by dropping the EN/ES toggle */
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          /* shrink the eye mark + tighten the gap so the lockup fits narrow phones */
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
           /* keep the wordmark + its ScatterWord animation on mobile, just scaled to fit */
           .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
           .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
@@ -1156,6 +1161,7 @@ function DirectionA({
       justifyContent: 'space-between'
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-lockup",
     style: {
       display: 'flex',
       alignItems: 'center',
