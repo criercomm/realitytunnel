@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Privacy Policy — Reality Tunnel</title>
 <meta name="description" content="Privacy Policy for Reality Tunnel, the US headquarters of NextLATAM.com.">
 
@@ -136,6 +139,18 @@
   footer .mono { color: rgba(255,255,255,0.4); }
   footer a { color: rgba(255,255,255,0.62); text-decoration: none; }
   footer a:hover { color: #fff; }
+
+  /* ── Mobile: declutter the top bar — use the scroll-nav logo (no tagline),
+     tighten the lockup, and free up room so nothing clips. ── */
+  @media (max-width: 768px) {
+    .topbar { padding: 14px 18px; }
+    .topbar a.brand { gap: 8px; }
+    .topbar .rt-eye { width: 30px; }
+    .rt-wordmark .rt-tag { display: none; }
+    .rt-wordmark .rt-word { font-size: 14px; letter-spacing: 0.18em; }
+    .topbar .right { gap: 12px; }
+    .topbar a.back { font-size: 11px; }
+  }
 </style>
 </head>
 <body>
