@@ -881,6 +881,22 @@ function DirectionA({
           .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
           .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
         }
+
+        /* ── ALL TOUCH DEVICES (phones in ANY orientation) ──────────────
+           The 768px width breakpoint can't catch a Pro Max in landscape
+           (926px wide), and iOS Safari may zoom-out on overflow and defeat
+           width queries entirely. Target the input modality instead: this
+           fires on every phone, portrait or landscape, and never on a
+           mouse-driven laptop/desktop. */
+        @media (hover: none) and (pointer: coarse){
+          .dirA .hero-eyebrow{display:none!important;}
+          .dirA .hero-head nav{display:none!important;}
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
+          .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
+          .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
+        }
       `), /*#__PURE__*/React.createElement("div", {
     "aria-hidden": !scrolled,
     className: "scroll-bar",
