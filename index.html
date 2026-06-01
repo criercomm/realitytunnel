@@ -16,9 +16,9 @@
   body { font-family: "Sora", system-ui, sans-serif; color: #fff; }
   #root { width: 100%; min-height: 100vh; }
 
-  /* ── MOBILE HERO FIXES (live here in index.html so they always deploy) ── */
+  /* ── MOBILE HERO FIXES — target .hero-sec .eyebrow (exists in deployed JS) ── */
   @media (hover: none) and (pointer: coarse) {
-    html body .dirA .hero-eyebrow { display: none !important; }
+    html body .dirA .hero-sec .eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
     html body .dirA .hero-head .lang-toggle { display: none !important; }
     html body .dirA .hero-head .hero-lockup { gap: 9px !important; }
@@ -27,7 +27,7 @@
     html body .dirA .hero-head .rt-wordmark .rt-tag { font-size: 8px !important; letter-spacing: 0.34em !important; }
   }
   @media (max-width: 768px) {
-    html body .dirA .hero-eyebrow { display: none !important; }
+    html body .dirA .hero-sec .eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
     html body .dirA .hero-head .lang-toggle { display: none !important; }
     html body .dirA .hero-head .hero-lockup { gap: 9px !important; }
@@ -44,11 +44,11 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
-<script src="build/tweaks-panel.js?v=4"></script>
-<script src="build/shared.js?v=4"></script>
-<script src="build/i18n.js?v=4"></script>
-<script src="build/direction-a.js?v=4"></script>
-<script src="build/app.js?v=4"></script>
+<script src="build/tweaks-panel.js?v=5"></script>
+<script src="build/shared.js?v=5"></script>
+<script src="build/i18n.js?v=5"></script>
+<script src="build/direction-a.js?v=5"></script>
+<script src="build/app.js?v=5"></script>
 
 </body>
 </html>
