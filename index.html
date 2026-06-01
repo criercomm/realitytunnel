@@ -16,12 +16,7 @@
   body { font-family: "Sora", system-ui, sans-serif; color: #fff; }
   #root { width: 100%; min-height: 100vh; }
 
-  /* ── MOBILE HERO FIXES (live here in index.html so they always deploy) ──
-     High specificity (html body .dirA…) + !important guarantees these win
-     over the component's own injected styles regardless of source order.
-     The touch-device query fires on EVERY phone in ANY orientation — it does
-     not depend on the 768px width breakpoint, which an iPhone Pro Max defeats
-     in landscape (926px wide) and which page-zoom can defeat in portrait. */
+  /* ── MOBILE HERO FIXES (live here in index.html so they always deploy) ── */
   @media (hover: none) and (pointer: coarse) {
     html body .dirA .hero-eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
@@ -31,7 +26,6 @@
     html body .dirA .hero-head .rt-wordmark .rt-word { font-size: 15px !important; letter-spacing: 0.18em !important; }
     html body .dirA .hero-head .rt-wordmark .rt-tag { font-size: 8px !important; letter-spacing: 0.34em !important; }
   }
-  /* Narrow desktop windows (no touch) — same treatment via width. */
   @media (max-width: 768px) {
     html body .dirA .hero-eyebrow { display: none !important; }
     html body .dirA .hero-head nav { display: none !important; }
@@ -47,18 +41,14 @@
 
 <div id="root"></div>
 
-<!-- Production React (small + fast). JSX is precompiled to plain JS in build/ so
-     mobile Safari never has to run Babel at runtime — that runtime transpile of
-     ~200KB of JSX was what crashed iPhones ("Can't open this page").
-     To change components: edit the .jsx source, then rebuild build/*.js. -->
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
-<script src="build/tweaks-panel.js?v=3"></script>
-<script src="build/shared.js?v=3"></script>
-<script src="build/i18n.js?v=3"></script>
-<script src="build/direction-a.js?v=3"></script>
-<script src="build/app.js?v=3"></script>
+<script src="build/tweaks-panel.js?v=4"></script>
+<script src="build/shared.js?v=4"></script>
+<script src="build/i18n.js?v=4"></script>
+<script src="build/direction-a.js?v=4"></script>
+<script src="build/app.js?v=4"></script>
 
 </body>
 </html>
