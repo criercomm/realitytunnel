@@ -490,6 +490,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
 
           /* hero */
           .dirA .hero-sec{height:auto!important;padding-bottom:56px!important;}
+          .dirA .hero-eyebrow{display:none!important;}
           .dirA .hero-orb{display:none!important;}
           .dirA .hero-head{padding:18px 0!important;}
           .dirA .hero-head nav{display:none!important;}
@@ -788,7 +789,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         {/* Hero content */}
         <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 16 }}>
           <div style={{ maxWidth: 920 }}>
-          <div className="eyebrow" style={{ marginBottom: 28 }}>Creating alternate realities since 2014</div>
+          <div className="eyebrow hero-eyebrow" style={{ marginBottom: 28 }}>Creating alternate realities since 2014</div>
           <h1 style={{
             fontSize: 80, lineHeight: 1.0, letterSpacing: '-0.015em',
             fontWeight: 600, color: '#fff',

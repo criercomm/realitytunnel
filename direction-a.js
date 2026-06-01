@@ -812,6 +812,7 @@ function DirectionA({
 
           /* hero */
           .dirA .hero-sec{height:auto!important;padding-bottom:56px!important;}
+          .dirA .hero-eyebrow{display:none!important;}
           .dirA .hero-orb{display:none!important;}
           .dirA .hero-head{padding:18px 0!important;}
           .dirA .hero-head nav{display:none!important;}
@@ -1322,7 +1323,7 @@ function DirectionA({
       maxWidth: 920
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "eyebrow",
+    className: "eyebrow hero-eyebrow",
     style: {
       marginBottom: 28
     }
