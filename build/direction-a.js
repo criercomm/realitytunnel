@@ -667,7 +667,7 @@ function LangToggle() {
     transition: 'color 160ms ease'
   });
   return /*#__PURE__*/React.createElement("div", {
-    className: "mono",
+    className: "mono lang-toggle",
     style: {
       display: 'inline-flex',
       alignItems: 'center',
@@ -789,6 +789,15 @@ function DirectionA({
           [role="dialog"][aria-modal="true"]{animation:none!important;}
           .dirA .menu-link{animation:none!important;opacity:1!important;transform:none!important;}
         }
+        @media (min-width:769px) and (max-height:900px){
+          .dirA .menu-grid{padding-top:64px!important;padding-bottom:40px!important;gap:64px!important;}
+          .dirA .menu-link{font-size:72px!important;}
+          .dirA .menu-grid aside{gap:24px!important;}
+        }
+        @media (min-width:769px) and (max-height:760px){
+          .dirA .menu-grid{padding-top:44px!important;}
+          .dirA .menu-link{font-size:60px!important;}
+        }
         @keyframes dirA-testi-in{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
         .dirA .shimmer{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.08) 50%,transparent 100%);background-size:200% 100%;animation:dirA-shimmer 4s ease-in-out infinite;}
@@ -812,10 +821,18 @@ function DirectionA({
 
           /* hero */
           .dirA .hero-sec{height:auto!important;padding-bottom:56px!important;}
+          .dirA .hero-eyebrow{display:none!important;}
           .dirA .hero-orb{display:none!important;}
           .dirA .hero-head{padding:18px 0!important;}
           .dirA .hero-head nav{display:none!important;}
-          .dirA .hero-head .rt-wordmark{display:none!important;}
+          /* free up room on mobile by dropping the EN/ES toggle */
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          /* shrink the eye mark + tighten the gap so the lockup fits narrow phones */
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
+          /* keep the wordmark + its ScatterWord animation on mobile, just scaled to fit */
+          .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
+          .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
           .dirA .hero-cta{flex-wrap:wrap!important;}
           .dirA .trust-strip{display:none!important;}
 
@@ -859,6 +876,35 @@ function DirectionA({
           .dirA .footer-grid{grid-template-columns:1fr!important;}
           .dirA .stats-grid{grid-template-columns:1fr!important;}
           .dirA .stats-grid > div{border-left:none!important;}
+        }
+
+        /* ── LANDSCAPE PHONES (e.g. iPhone Pro Max ~926px wide, short height) ──
+           Width-based query misses these because they're wider than 768px in
+           landscape; key off the short viewport height + orientation instead. */
+        @media (orientation: landscape) and (max-height: 500px){
+          .dirA .hero-eyebrow{display:none!important;}
+          .dirA .hero-head nav{display:none!important;}
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
+          .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
+          .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
+        }
+
+        /* ── ALL TOUCH DEVICES (phones in ANY orientation) ──────────────
+           The 768px width breakpoint can't catch a Pro Max in landscape
+           (926px wide), and iOS Safari may zoom-out on overflow and defeat
+           width queries entirely. Target the input modality instead: this
+           fires on every phone, portrait or landscape, and never on a
+           mouse-driven laptop/desktop. */
+        @media (hover: none) and (pointer: coarse){
+          .dirA .hero-eyebrow{display:none!important;}
+          .dirA .hero-head nav{display:none!important;}
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
+          .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
+          .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
         }
       `), /*#__PURE__*/React.createElement("div", {
     "aria-hidden": !scrolled,
@@ -1154,6 +1200,7 @@ function DirectionA({
       justifyContent: 'space-between'
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-lockup",
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -1314,7 +1361,7 @@ function DirectionA({
       maxWidth: 920
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "eyebrow",
+    className: "eyebrow hero-eyebrow",
     style: {
       marginBottom: 28
     }
@@ -1543,7 +1590,7 @@ function DirectionA({
     style: {
       position: 'relative',
       zIndex: 2,
-      padding: '200px 64px 64px',
+      padding: '120px 64px 64px',
       display: 'grid',
       gridTemplateColumns: '1.6fr 1fr',
       gap: 80,
