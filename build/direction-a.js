@@ -1712,7 +1712,7 @@ function DirectionA({
     style: {
       position: 'relative',
       padding: '88px 0 96px',
-      background: 'radial-gradient(ellipse 60% 55% at 80% 20%, rgba(105,0,233,0.30) 0%, transparent 65%),' + 'radial-gradient(ellipse 50% 45% at 12% 80%, rgba(0,174,239,0.18) 0%, transparent 65%),' + 'radial-gradient(ellipse 45% 35% at 55% 95%, rgba(254,88,40,0.14) 0%, transparent 60%),' + 'linear-gradient(180deg, #1c1f3a 0%, #14172a 55%, #0e1124 100%)',
+      background: 'radial-gradient(ellipse 60% 55% at 80% 20%, rgba(105,0,233,0.16) 0%, transparent 65%),' + 'radial-gradient(ellipse 50% 45% at 12% 80%, rgba(0,174,239,0.09) 0%, transparent 65%),' + 'radial-gradient(ellipse 45% 35% at 55% 95%, rgba(254,88,40,0.07) 0%, transparent 60%),' + 'linear-gradient(180deg, #121324 0%, #0d0f1f 55%, #070914 100%)',
       overflow: 'hidden'
     }
   }, /*#__PURE__*/React.createElement("div", {
