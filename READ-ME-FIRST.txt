@@ -1,19 +1,26 @@
-HAMBURGER MENU UPDATE — file placement
+REALITY TUNNEL — build/ folder sync fix
 ========================================
 
-Place these TWO files at these EXACT paths in your repo
-(overwrite the existing ones):
+PROBLEM
+  Your repo's build/ folder was missing 4 of its 5 compiled files, and
+  project-page.js was sitting at the repo ROOT instead of inside build/.
+  index.html loads build/app.js, build/shared.js, build/i18n.js,
+  build/direction-a.js, build/tweaks-panel.js — when those are missing the
+  React app never mounts and the page shows a black screen.
 
-  direction-a.jsx        -> repo ROOT  (next to index.html)
-  build/direction-a.js   -> the build/ FOLDER
+FIX — place ALL of these files inside the build/ folder (overwrite existing):
+  build/app.js
+  build/direction-a.js   <- includes the latest hamburger-menu edits
+  build/i18n.js
+  build/project-page.js
+  build/shared.js
+  build/tweaks-panel.js
 
-IMPORTANT
-- Do NOT put direction-a.js at the repo root.
-  The root only has direction-a.jsx (the source).
-  The compiled direction-a.js lives ONLY inside build/.
-- If you currently have a stray "direction-a.js" at the root, DELETE it.
-- build/direction-a.js must start with:
-      /* Compiled from direction-a.jsx ... */
-  If it starts with JSX/markup, it's the wrong file and the site will break.
+ALSO
+  - DELETE the stray "project-page.js" that is currently at your repo ROOT.
+    (Keep project-page.jsx at the root — that's the source. The compiled
+     project-page.js belongs ONLY in build/.)
+  - Your root .jsx source files and index.html are already correct — no
+    change needed there.
 
-Then commit + push. index.html loads build/direction-a.js.
+Then commit + push. All five build/*.js files must be present.
