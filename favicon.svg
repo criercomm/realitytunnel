@@ -1,3 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 50">
+  <g transform="translate(0 25)">
+    <ellipse cx="20.74" cy="0"    rx="20.26" ry="25.08" fill="#6900E9"/>
+    <ellipse cx="23.77" cy="0.56" rx="16.68" ry="20.64" fill="#00AEEF"/>
+    <ellipse cx="27.79" cy="0.62" rx="12.21" ry="15.11" fill="#fe5828"/>
+    <ellipse cx="31.47" cy="1.17" rx="7.83"  ry="9.69"  fill="#8c3622"/>
+  </g>
+</svg>
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Reality Tunnel">
   <rect width="64" height="64" rx="14" fill="#050913"></rect>

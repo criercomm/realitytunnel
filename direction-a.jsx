@@ -135,12 +135,13 @@ function ApproachStepper({ accent }) {
       {APPROACH.map((step, i) => {
         const isActive = i === active;
         return (
-          <div
+          <button
             key={step.n}
+            type="button"
             onClick={() => goTo(i)}
-            role="button"
-            tabIndex={0}
-            style={{ position: 'relative', padding: '0 14px', cursor: 'pointer' }}
+            aria-pressed={isActive}
+            aria-label={`${step.name} — phase ${step.n}`}
+            style={{ position: 'relative', padding: '0 14px', cursor: 'pointer', background: 'none', border: 0, textAlign: 'left', font: 'inherit', color: 'inherit', width: '100%' }}
           >
             <div style={{
               width: 72, height: 72, borderRadius: 99, margin: '0 auto 28px',
@@ -165,7 +166,7 @@ function ApproachStepper({ accent }) {
               color: isActive ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.5)',
               transition: 'color 360ms ease',
             }}>{step.blurb}</p>
-          </div>
+          </button>
         );
       })}
     </div>
@@ -550,7 +551,10 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           .dirA .about-grid{grid-template-columns:1fr!important;gap:28px!important;}
           .dirA .contact-grid{grid-template-columns:1fr!important;gap:28px!important;padding:32px 20px!important;}
           .dirA .form-row{grid-template-columns:1fr!important;}
-          .dirA .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px!important;}
+          .dirA .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px!important;padding-left:20px!important;padding-right:20px!important;}
+
+          /* testimonials */
+          .dirA blockquote{font-size:clamp(18px,5.5vw,28px)!important;}
         }
 
         @media (max-width: 460px){
@@ -572,6 +576,15 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
         }
 
+        /* ── CONTRAST (WCAG AA) ──────────────────────────────────────────────
+           Brand orange (#fe5828) is 3.1:1 on white — passes for large text
+           only. Small text (eyebrow 12px, mono 10-11px) needs 4.5:1.
+           #B8350B (dark ember) is 5.8:1 on white — use for small text in
+           light-background sections.                                          */
+        #services .eyebrow,
+        #work .eyebrow { color: #B8350B !important; }
+        #services .eyebrow::before,
+        #work .eyebrow::before { background: #B8350B !important; box-shadow: 0 0 12px #B8350B66 !important; }
         /* ── ALL TOUCH DEVICES (phones in ANY orientation) ──────────────
            The 768px width breakpoint can't catch a Pro Max in landscape
            (926px wide), and iOS Safari may zoom-out on overflow and defeat
@@ -592,6 +605,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       {/* ── SCROLL NAV — fixed white nav that slides in past the hero ── */}
       <div
         aria-hidden={!scrolled}
+        inert={scrolled ? undefined : ''}
         className="scroll-bar"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60,
@@ -708,6 +722,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         </div>
       </div>
 
+      <main id="main-content">
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-sec" style={{ position: 'relative', height: 900, overflow: 'hidden' }}>
         <AuroraField accent={[A, B, C]} />
@@ -880,7 +895,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         }}>
           <div className="container">
           <div className="mono trust-strip" style={{ display: 'flex', alignItems: 'center', gap: 28, fontSize: 11, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            <span style={{ color: 'rgba(255,255,255,0.4)' }}>Trusted by</span>
+            <span>Trusted by</span>
             <span>Manchester United</span><span>·</span>
             <span>Hewlett Packard</span><span>·</span>
             <span>Interbank</span><span>·</span>
@@ -1081,9 +1096,9 @@ function DirectionA({ accent, navPalette, keylineColor }) {
                   href="https://www.nextlatam.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: A, fontWeight: 500, borderBottom: `1px solid ${A}66`, paddingBottom: 1, transition: 'border-color 160ms ease' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = A; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${A}66`; }}
+                  style={{ color: '#B8350B', fontWeight: 500, borderBottom: '1px solid #B8350B66', paddingBottom: 1, transition: 'border-color 160ms ease' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#B8350B'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#B8350B66'; }}
                 >NextLATAM.com</a>, founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM.
               </p>
             </div>
@@ -1273,12 +1288,12 @@ function DirectionA({ accent, navPalette, keylineColor }) {
                   }}>{p.year}</div>
                 </div>
                 <div>
-                  <div className="mono" style={{ fontSize: 10, color: A, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 10 }}>{p.tag}</div>
+                  <div className="mono" style={{ fontSize: 10, color: '#B8350B', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 10 }}>{p.tag}</div>
                   <h4 style={{ fontSize: 21, fontWeight: 600, letterSpacing: '-0.018em', marginBottom: 6, color: '#0a0a0a' }}>{p.title}</h4>
                   <div style={{ fontSize: 13, color: 'rgba(10,10,10,0.65)', fontWeight: 400, lineHeight: 1.5, marginBottom: 14 }}>{p.sub}</div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 14, borderTop: '1px solid rgba(10,10,10,0.08)' }}>
-                    <span className="mono" style={{ fontSize: 11, color: 'rgba(10,10,10,0.55)' }}>{p.client}</span>
-                    <span className="mono" style={{ fontSize: 11, color: A }}>{p.metric}</span>
+                    <span className="mono" style={{ fontSize: 11, color: 'rgba(10,10,10,0.7)' }}>{p.client}</span>
+                    <span className="mono" style={{ fontSize: 11, color: '#B8350B' }}>{p.metric}</span>
                   </div>
                 </div>
               </Tag>
@@ -1433,19 +1448,20 @@ function DirectionA({ accent, navPalette, keylineColor }) {
             paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.06)',
             display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap',
           }}>
-            <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+            <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               ©2026 Reality Tunnel · US · Lima · LATAM
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
-              <a href="privacy-policy.html" className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <a href="privacy-policy.html" className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Privacy Policy
               </a>
-              <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
                 All rights reserved
               </div>
             </div>
           </div>
       </section>
+      </main>
     </div>
   );
 }

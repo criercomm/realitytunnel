@@ -4,7 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>360° Virtual Tour Platform — Reality Tunnel</title>
-  <meta name="description" content="Our proprietary 360 virtual tour platform, serving real estate, hospitality, and retail clients across LATAM.">
+  <meta name="description" content="Reality Tunnel's proprietary 360° virtual tour platform — built for real estate, hospitality, and retail clients across LATAM. White-label ready.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Reality Tunnel">
+  <link rel="canonical" href="https://realitytunnel.ai/project-360-virtual-tour.html">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Reality Tunnel">
+  <meta property="og:url" content="https://realitytunnel.ai/project-360-virtual-tour.html">
+  <meta property="og:title" content="360° Virtual Tour Platform — Reality Tunnel">
+  <meta property="og:description" content="Reality Tunnel's proprietary 360° virtual tour platform for real estate, hospitality, and retail across LATAM. White-label ready, browser-based, no app required.">
+  <meta property="og:image" content="https://realitytunnel.ai/reality-tunnel-poster.jpg">
+  <meta property="og:image:alt" content="360° Virtual Tour Platform — Reality Tunnel">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:author" content="Reality Tunnel">
+  <meta property="article:publisher" content="https://realitytunnel.ai/#organization">
+  <meta property="article:tag" content="360° Virtual Tour">
+  <meta property="article:tag" content="Real Estate">
+  <meta property="article:tag" content="Hospitality">
+  <meta property="article:tag" content="LATAM">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="360° Virtual Tour Platform — Reality Tunnel">
+  <meta name="twitter:description" content="Proprietary 360° virtual tour platform for real estate, hospitality, and retail across LATAM. Browser-based, no app required.">
+  <meta name="twitter:image" content="https://realitytunnel.ai/reality-tunnel-poster.jpg">
+  <meta name="twitter:image:alt" content="360° Virtual Tour Platform — Reality Tunnel">
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://realitytunnel.ai/project-360-virtual-tour.html#webpage",
+        "url": "https://realitytunnel.ai/project-360-virtual-tour.html",
+        "name": "360° Virtual Tour Platform — Reality Tunnel",
+        "description": "Reality Tunnel's proprietary 360° virtual tour platform for real estate, hospitality, and retail clients across LATAM.",
+        "isPartOf": {"@id": "https://realitytunnel.ai/#website"},
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://realitytunnel.ai/"},
+            {"@type": "ListItem", "position": 2, "name": "Work", "item": "https://realitytunnel.ai/#work"},
+            {"@type": "ListItem", "position": 3, "name": "360° Virtual Tour Platform", "item": "https://realitytunnel.ai/project-360-virtual-tour.html"}
+          ]
+        }
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": "https://realitytunnel.ai/project-360-virtual-tour.html#work",
+        "name": "360° Virtual Tour Platform",
+        "description": "Reality Tunnel's proprietary browser-based 360° virtual tour platform. Serves real estate, hospitality, and retail clients across LATAM. White-label ready, no app installation required, works on any device.",
+        "url": "https://realitytunnel.ai/project-360-virtual-tour.html",
+        "image": "https://realitytunnel.ai/reality-tunnel-poster.jpg",
+        "creator": {"@id": "https://realitytunnel.ai/#organization"},
+        "genre": "360° Virtual Tour",
+        "keywords": "360 virtual tour, virtual tour platform, real estate virtual tour, hospitality virtual tour, LATAM, WebGL, browser-based, white-label",
+        "about": {"@type": "Thing", "name": "Virtual Tour Platform"}
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
   <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,6 +168,25 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.02
 @media(max-width:375px){.hd-logo img{height:18px;}.btn{padding:10px 14px;font-size:13.5px;}}
 
   </style>
+  <script>
+  (function(){
+    // Canonical always reflects exact current page URL (works at any path depth)
+    var c = document.querySelector('link[rel="canonical"]');
+    if (c) c.href = window.location.origin + window.location.pathname;
+    var ph = 'https://realitytunnel.ai';
+    var origin = window.location.origin;
+    if (origin === ph) return;
+    // base = origin + directory, so subdirectory hosting works (e.g. /realitytunnel/)
+    var base = (origin + window.location.pathname).replace(/[^/]+$/, '');
+    [].forEach.call(document.querySelectorAll('meta[content]'), function(m) {
+      var v = m.getAttribute('content');
+      if (v && v.indexOf(ph + '/') === 0) m.setAttribute('content', v.replace(ph + '/', base));
+    });
+    [].forEach.call(document.querySelectorAll('script[type="application/ld+json"]'), function(s) {
+      s.textContent = s.textContent.split(ph + '/').join(base);
+    });
+  })();
+  </script>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
@@ -241,5 +327,6 @@ White-label Licensing</span></div>
     nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
   })();
   </script>
+<script>window.addEventListener("load",function(){var l=document.createElement("link");l.rel="manifest";l.href="manifest.json";document.head.appendChild(l);});</script>
 </body>
 </html>

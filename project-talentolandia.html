@@ -4,7 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talentolandia — Reality Tunnel</title>
-  <meta name="description" content="An AR learning app that brings Talentolandia product characters to life through computer vision.">
+  <meta name="description" content="An AR learning app that brings product characters to life through computer vision — 92k installs, adopted by three regional school authorities in Peru.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Reality Tunnel">
+  <link rel="canonical" href="https://realitytunnel.ai/project-talentolandia.html">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Reality Tunnel">
+  <meta property="og:url" content="https://realitytunnel.ai/project-talentolandia.html">
+  <meta property="og:title" content="Talentolandia AR — Reality Tunnel">
+  <meta property="og:description" content="AR learning app using computer vision to bring product characters to life for children. 92k installs, adopted by three regional school authorities in Peru.">
+  <meta property="og:image" content="https://realitytunnel.ai/projects/talentolandia.webp">
+  <meta property="og:image:alt" content="Talentolandia AR experience — Reality Tunnel case study">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:author" content="Reality Tunnel">
+  <meta property="article:publisher" content="https://realitytunnel.ai/#organization">
+  <meta property="article:tag" content="Augmented Reality">
+  <meta property="article:tag" content="Computer Vision">
+  <meta property="article:tag" content="Education">
+  <meta property="article:tag" content="Mobile App">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Talentolandia AR — Reality Tunnel">
+  <meta name="twitter:description" content="AR + computer vision app that brings educational product characters to life. 92k installs, 3 school authority adoptions in Peru.">
+  <meta name="twitter:image" content="https://realitytunnel.ai/projects/talentolandia.webp">
+  <meta name="twitter:image:alt" content="Talentolandia AR experience — Reality Tunnel">
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://realitytunnel.ai/project-talentolandia.html#webpage",
+        "url": "https://realitytunnel.ai/project-talentolandia.html",
+        "name": "Talentolandia AR — Reality Tunnel",
+        "description": "AR learning app using computer vision to bring product characters to life for children ages 6–12. 92k installs.",
+        "isPartOf": {"@id": "https://realitytunnel.ai/#website"},
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://realitytunnel.ai/"},
+            {"@type": "ListItem", "position": 2, "name": "Work", "item": "https://realitytunnel.ai/#work"},
+            {"@type": "ListItem", "position": 3, "name": "Talentolandia", "item": "https://realitytunnel.ai/project-talentolandia.html"}
+          ]
+        }
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": "https://realitytunnel.ai/project-talentolandia.html#work",
+        "name": "Talentolandia AR",
+        "description": "Lightweight computer vision model recognising characters printed on Talentolandia product cards. When a child points their device at a card, the matching 3D character appears in AR — animated, voiced, and interactive. Runs on low-end Android. 92,000 downloads in six months.",
+        "url": "https://realitytunnel.ai/project-talentolandia.html",
+        "image": "https://realitytunnel.ai/projects/talentolandia.webp",
+        "creator": {"@id": "https://realitytunnel.ai/#organization"},
+        "dateCreated": "2022",
+        "genre": "Augmented Reality",
+        "keywords": "augmented reality, computer vision, AR education, children learning, mobile app, Android, iOS, Peru",
+        "about": {"@type": "Thing", "name": "Augmented Reality Educational App"}
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
   <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,6 +169,25 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.02
 @media(max-width:375px){.hd-logo img{height:18px;}.btn{padding:10px 14px;font-size:13.5px;}}
 
   </style>
+  <script>
+  (function(){
+    // Canonical always reflects exact current page URL (works at any path depth)
+    var c = document.querySelector('link[rel="canonical"]');
+    if (c) c.href = window.location.origin + window.location.pathname;
+    var ph = 'https://realitytunnel.ai';
+    var origin = window.location.origin;
+    if (origin === ph) return;
+    // base = origin + directory, so subdirectory hosting works (e.g. /realitytunnel/)
+    var base = (origin + window.location.pathname).replace(/[^/]+$/, '');
+    [].forEach.call(document.querySelectorAll('meta[content]'), function(m) {
+      var v = m.getAttribute('content');
+      if (v && v.indexOf(ph + '/') === 0) m.setAttribute('content', v.replace(ph + '/', base));
+    });
+    [].forEach.call(document.querySelectorAll('script[type="application/ld+json"]'), function(s) {
+      s.textContent = s.textContent.split(ph + '/').join(base);
+    });
+  })();
+  </script>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
@@ -241,5 +328,6 @@ Mobile App (iOS & Android)</span></div>
     nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
   })();
   </script>
+<script>window.addEventListener("load",function(){var l=document.createElement("link");l.rel="manifest";l.href="manifest.json";document.head.appendChild(l);});</script>
 </body>
 </html>

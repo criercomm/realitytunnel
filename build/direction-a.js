@@ -188,15 +188,22 @@ function ApproachStepper({
     }
   }), APPROACH.map((step, i) => {
     const isActive = i === active;
-    return /*#__PURE__*/React.createElement("div", {
+    return /*#__PURE__*/React.createElement("button", {
       key: step.n,
+      type: "button",
       onClick: () => goTo(i),
-      role: "button",
-      tabIndex: 0,
+      "aria-pressed": isActive,
+      "aria-label": `${step.name} — phase ${step.n}`,
       style: {
         position: 'relative',
         padding: '0 14px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        background: 'none',
+        border: 0,
+        textAlign: 'left',
+        font: 'inherit',
+        color: 'inherit',
+        width: '100%'
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -869,7 +876,10 @@ function DirectionA({
           .dirA .about-grid{grid-template-columns:1fr!important;gap:28px!important;}
           .dirA .contact-grid{grid-template-columns:1fr!important;gap:28px!important;padding:32px 20px!important;}
           .dirA .form-row{grid-template-columns:1fr!important;}
-          .dirA .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px!important;}
+          .dirA .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px!important;padding-left:20px!important;padding-right:20px!important;}
+
+          /* testimonials */
+          .dirA blockquote{font-size:clamp(18px,5.5vw,28px)!important;}
         }
 
         @media (max-width: 460px){
@@ -891,6 +901,15 @@ function DirectionA({
           .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
         }
 
+        /* ── CONTRAST (WCAG AA) ──────────────────────────────────────────────
+           Brand orange (#fe5828) is 3.1:1 on white — passes for large text
+           only. Small text (eyebrow 12px, mono 10-11px) needs 4.5:1.
+           #B8350B (dark ember) is 5.8:1 on white — use for small text in
+           light-background sections.                                          */
+        #services .eyebrow,
+        #work .eyebrow { color: #B8350B !important; }
+        #services .eyebrow::before,
+        #work .eyebrow::before { background: #B8350B !important; box-shadow: 0 0 12px #B8350B66 !important; }
         /* ── ALL TOUCH DEVICES (phones in ANY orientation) ──────────────
            The 768px width breakpoint can't catch a Pro Max in landscape
            (926px wide), and iOS Safari may zoom-out on overflow and defeat
@@ -908,6 +927,7 @@ function DirectionA({
         }
       `), /*#__PURE__*/React.createElement("div", {
     "aria-hidden": !scrolled,
+    inert: scrolled ? undefined : '',
     className: "scroll-bar",
     style: {
       position: 'fixed',
@@ -1115,7 +1135,9 @@ function DirectionA({
     d: "M1 7 L17 7"
   }), /*#__PURE__*/React.createElement("path", {
     d: "M1 12 L11 12"
-  })))))), /*#__PURE__*/React.createElement("section", {
+  })))))), /*#__PURE__*/React.createElement("main", {
+    id: "main-content"
+  }, /*#__PURE__*/React.createElement("section", {
     className: "hero-sec",
     style: {
       position: 'relative',
@@ -1466,11 +1488,7 @@ function DirectionA({
       letterSpacing: '0.08em',
       textTransform: 'uppercase'
     }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'rgba(255,255,255,0.4)'
-    }
-  }, "Trusted by"), /*#__PURE__*/React.createElement("span", null, "Manchester United"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Hewlett Packard"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Interbank"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "BBVA"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Sony"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Ford"))))), menuOpen && /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", null, "Trusted by"), /*#__PURE__*/React.createElement("span", null, "Manchester United"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Hewlett Packard"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Interbank"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "BBVA"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Sony"), /*#__PURE__*/React.createElement("span", null, "\xB7"), /*#__PURE__*/React.createElement("span", null, "Ford"))))), menuOpen && /*#__PURE__*/React.createElement("div", {
     role: "dialog",
     "aria-modal": "true",
     "aria-label": "Site menu",
@@ -1816,17 +1834,17 @@ function DirectionA({
     target: "_blank",
     rel: "noopener noreferrer",
     style: {
-      color: A,
+      color: '#B8350B',
       fontWeight: 500,
-      borderBottom: `1px solid ${A}66`,
+      borderBottom: '1px solid #B8350B66',
       paddingBottom: 1,
       transition: 'border-color 160ms ease'
     },
     onMouseEnter: e => {
-      e.currentTarget.style.borderColor = A;
+      e.currentTarget.style.borderColor = '#B8350B';
     },
     onMouseLeave: e => {
-      e.currentTarget.style.borderColor = `${A}66`;
+      e.currentTarget.style.borderColor = '#B8350B66';
     }
   }, "NextLATAM.com"), ", founded in Lima, Peru in 2014 to serve Latin America. The work featured here was produced by NextLATAM."))), /*#__PURE__*/React.createElement("div", {
     className: "svc-cards",
@@ -2217,7 +2235,7 @@ function DirectionA({
       className: "mono",
       style: {
         fontSize: 10,
-        color: A,
+        color: '#B8350B',
         letterSpacing: '0.14em',
         textTransform: 'uppercase',
         marginBottom: 10
@@ -2249,13 +2267,13 @@ function DirectionA({
       className: "mono",
       style: {
         fontSize: 11,
-        color: 'rgba(10,10,10,0.55)'
+        color: 'rgba(10,10,10,0.7)'
       }
     }, p.client), /*#__PURE__*/React.createElement("span", {
       className: "mono",
       style: {
         fontSize: 11,
-        color: A
+        color: '#B8350B'
       }
     }, p.metric))));
   })))), /*#__PURE__*/React.createElement("section", {
@@ -2578,7 +2596,7 @@ function DirectionA({
     className: "mono",
     style: {
       fontSize: 11,
-      color: 'rgba(255,255,255,0.4)',
+      color: 'rgba(255,255,255,0.6)',
       letterSpacing: '0.14em',
       textTransform: 'uppercase'
     }
@@ -2594,7 +2612,7 @@ function DirectionA({
     className: "mono",
     style: {
       fontSize: 11,
-      color: 'rgba(255,255,255,0.4)',
+      color: 'rgba(255,255,255,0.6)',
       letterSpacing: '0.14em',
       textTransform: 'uppercase',
       textDecoration: 'none'
@@ -2603,11 +2621,11 @@ function DirectionA({
     className: "mono",
     style: {
       fontSize: 11,
-      color: 'rgba(255,255,255,0.4)',
+      color: 'rgba(255,255,255,0.6)',
       letterSpacing: '0.14em',
       textTransform: 'uppercase'
     }
-  }, "All rights reserved")))));
+  }, "All rights reserved"))))));
 }
 window.DirectionA = DirectionA;
 })();

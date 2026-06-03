@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.nextlatam.com/</loc>
+    <loc>https://realitytunnel.ai/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.nextlatam.com/project-manchester-united.html</loc>
+    <loc>https://realitytunnel.ai/project-manchester-united.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nextlatam.com/project-interbank-360.html</loc>
+    <loc>https://realitytunnel.ai/project-interbank-360.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nextlatam.com/project-hewlett-packard-ar.html</loc>
+    <loc>https://realitytunnel.ai/project-hewlett-packard-ar.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nextlatam.com/project-talentolandia.html</loc>
+    <loc>https://realitytunnel.ai/project-talentolandia.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nextlatam.com/project-hackers-worst-nightmare.html</loc>
+    <loc>https://realitytunnel.ai/project-hackers-worst-nightmare.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nextlatam.com/project-360-virtual-tour.html</loc>
+    <loc>https://realitytunnel.ai/project-360-virtual-tour.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://realitytunnel.ai/privacy-policy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
