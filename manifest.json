@@ -1,0 +1,17 @@
+{
+  "name": "Reality Tunnel",
+  "short_name": "Reality Tunnel",
+  "description": "AR, VR & 3D immersive experiences studio — US & LATAM.",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#050913",
+  "background_color": "#050913",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

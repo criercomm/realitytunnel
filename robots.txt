@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.nextlatam.com/sitemap.xml
+Sitemap: https://realitytunnel.ai/sitemap.xml

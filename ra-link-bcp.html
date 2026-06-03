@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>RA Link — BCP — Reality Tunnel</title>
 <meta name="description" content="RA Link — BCP — a Reality Tunnel project.">
 
@@ -25,12 +26,13 @@
 
 <!-- Production React + precompiled JS (build/) so mobile Safari never runs Babel
      at runtime. Edit the .jsx source and rebuild build/*.js to change components. -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"></script>
+<script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"></script>
 
-<script src="build/shared.js"></script>
-<script src="build/i18n.js"></script>
-<script src="build/project-page.js"></script>
+<script defer src="build/shared.js"></script>
+<script defer src="build/i18n.js"></script>
+<script defer src="build/project-page.js"></script>
 
+<script>window.addEventListener("load",function(){var l=document.createElement("link");l.rel="manifest";l.href="manifest.json";document.head.appendChild(l);});</script>
 </body>
 </html>
