@@ -468,6 +468,18 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           [role="dialog"][aria-modal="true"]{animation:none!important;}
           .dirA .menu-link{animation:none!important;opacity:1!important;transform:none!important;}
         }
+        /* Short desktop viewports (e.g. 13" MacBook Air, ~1440x800) — pull the
+           menu content up and shrink the oversized nav links so the right-column
+           contact + social-media block clears the fold without scrolling. */
+        @media (min-width:769px) and (max-height:900px){
+          .dirA .menu-grid{padding-top:64px!important;padding-bottom:40px!important;gap:64px!important;}
+          .dirA .menu-link{font-size:72px!important;}
+          .dirA .menu-grid aside{gap:24px!important;}
+        }
+        @media (min-width:769px) and (max-height:760px){
+          .dirA .menu-grid{padding-top:44px!important;}
+          .dirA .menu-link{font-size:60px!important;}
+        }
         @keyframes dirA-testi-in{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
         .dirA .shimmer{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.08) 50%,transparent 100%);background-size:200% 100%;animation:dirA-shimmer 4s ease-in-out infinite;}
@@ -573,6 +585,21 @@ function DirectionA({ accent, navPalette, keylineColor }) {
         #work .eyebrow { color: #B8350B !important; }
         #services .eyebrow::before,
         #work .eyebrow::before { background: #B8350B !important; box-shadow: 0 0 12px #B8350B66 !important; }
+        /* ── ALL TOUCH DEVICES (phones in ANY orientation) ──────────────
+           The 768px width breakpoint can't catch a Pro Max in landscape
+           (926px wide), and iOS Safari may zoom-out on overflow and defeat
+           width queries entirely. Target the input modality instead: this
+           fires on every phone, portrait or landscape, and never on a
+           mouse-driven laptop/desktop. */
+        @media (hover: none) and (pointer: coarse){
+          .dirA .hero-eyebrow{display:none!important;}
+          .dirA .hero-head nav{display:none!important;}
+          .dirA .hero-head .lang-toggle{display:none!important;}
+          .dirA .hero-head .hero-lockup{gap:9px!important;}
+          .dirA .hero-head .hero-lockup > svg{width:52px!important;height:62px!important;}
+          .dirA .hero-head .rt-wordmark .rt-word{font-size:15px!important;letter-spacing:0.18em!important;}
+          .dirA .hero-head .rt-wordmark .rt-tag{font-size:8px!important;letter-spacing:0.34em!important;}
+        }
       `}</style>
 
       {/* ── SCROLL NAV — fixed white nav that slides in past the hero ── */}
@@ -948,7 +975,7 @@ function DirectionA({ accent, navPalette, keylineColor }) {
           {/* Menu content grid: large nav links + contact info */}
           <div className="container menu-grid" style={{
             position: 'relative', zIndex: 2,
-            padding: '200px 64px 64px',
+            padding: '120px 64px 64px',
             display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 80,
             alignItems: 'start',
           }}>
@@ -1016,10 +1043,10 @@ function DirectionA({ accent, navPalette, keylineColor }) {
       <section style={{
         position: 'relative', padding: '88px 0 96px',
         background:
-          'radial-gradient(ellipse 60% 55% at 80% 20%, rgba(105,0,233,0.30) 0%, transparent 65%),' +
-          'radial-gradient(ellipse 50% 45% at 12% 80%, rgba(0,174,239,0.18) 0%, transparent 65%),' +
-          'radial-gradient(ellipse 45% 35% at 55% 95%, rgba(254,88,40,0.14) 0%, transparent 60%),' +
-          'linear-gradient(180deg, #1c1f3a 0%, #14172a 55%, #0e1124 100%)',
+          'radial-gradient(ellipse 60% 55% at 80% 20%, rgba(105,0,233,0.16) 0%, transparent 65%),' +
+          'radial-gradient(ellipse 50% 45% at 12% 80%, rgba(0,174,239,0.09) 0%, transparent 65%),' +
+          'radial-gradient(ellipse 45% 35% at 55% 95%, rgba(254,88,40,0.07) 0%, transparent 60%),' +
+          'linear-gradient(180deg, #121324 0%, #0d0f1f 55%, #070914 100%)',
         overflow: 'hidden',
       }}>
         <div className="container" style={{ marginBottom: 56 }}>

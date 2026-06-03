@@ -639,7 +639,8 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       style: {
         position: 'relative',
         width: '100%',
-        aspectRatio: '16 / 9',
+        paddingBottom: '56.25%',
+        height: 0,
         borderRadius: 18,
         overflow: 'hidden',
         background: '#000',
