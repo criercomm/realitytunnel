@@ -1,0 +1,19 @@
+HAMBURGER MENU UPDATE — file placement
+========================================
+
+Place these TWO files at these EXACT paths in your repo
+(overwrite the existing ones):
+
+  direction-a.jsx        -> repo ROOT  (next to index.html)
+  build/direction-a.js   -> the build/ FOLDER
+
+IMPORTANT
+- Do NOT put direction-a.js at the repo root.
+  The root only has direction-a.jsx (the source).
+  The compiled direction-a.js lives ONLY inside build/.
+- If you currently have a stray "direction-a.js" at the root, DELETE it.
+- build/direction-a.js must start with:
+      /* Compiled from direction-a.jsx ... */
+  If it starts with JSX/markup, it's the wrong file and the site will break.
+
+Then commit + push. index.html loads build/direction-a.js.
