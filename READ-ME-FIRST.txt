@@ -1,10 +1,31 @@
-REALITY TUNNEL — darker logo-marquee blobs
-============================================
+REALITY TUNNEL — COMPLETE deploy package (safe to drag-replace)
+================================================================
 
-Place these TWO files at these EXACT paths (overwrite existing):
+WHY THE SITE KEPT BREAKING
+  Earlier zips contained a build/ folder with ONLY direction-a.js.
+  Dragging that onto your repo's build/ folder makes Finder REPLACE the
+  whole folder, deleting app.js / shared.js / i18n.js / tweaks-panel.js /
+  project-page.js. index.html needs all five build/*.js files to mount the
+  React app — without them you get a black screen.
 
-  direction-a.jsx        -> repo ROOT  (next to index.html)
-  build/direction-a.js   -> the build/ FOLDER
+THIS PACKAGE IS COMPLETE — dragging its build/ folder over yours is now SAFE.
 
-Then commit + push. index.html loads build/direction-a.js.
-Do NOT put direction-a.js at the repo root.
+PLACE AT THESE EXACT PATHS (overwrite existing):
+  build/app.js
+  build/direction-a.js     <- latest edits (menu + darker marquee blobs)
+  build/i18n.js
+  build/project-page.js
+  build/shared.js
+  build/tweaks-panel.js
+  direction-a.jsx          -> repo ROOT (source)
+  .gitignore               -> repo ROOT  (note the LEADING DOT)
+
+ALSO CLEAN UP IN YOUR REPO
+  - DELETE the file named "gitignore" (no dot) at the repo root — replace it
+    with this ".gitignore" (with the dot) so .DS_Store is actually ignored.
+  - DELETE the committed ".DS_Store" from the repo:
+        git rm --cached .DS_Store
+  - If a stray "project-page.js" or "direction-a.js" sits at the repo ROOT,
+    delete it. The root only holds .jsx sources; compiled .js lives in build/.
+
+Then: git add -A && git commit -m "Restore build/ + fix gitignore" && git push
