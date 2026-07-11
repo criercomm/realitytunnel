@@ -185,7 +185,7 @@ function ContactForm({ accent, secondary }) {
     e.preventDefault();
     // For deployment: replace with real endpoint. For now, simulate + mailto fallback.
     const body = `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nService: ${form.service}\nBudget: ${form.budget}\n\n${form.brief}`;
-    const href = `mailto:info@realitytunnel.com?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
+    const href = `mailto:jp@crierpr.com?subject=${encodeURIComponent('New project brief — ' + (form.name || 'unsigned'))}&body=${encodeURIComponent(body)}`;
     // Open mail client in a new tab
     window.open(href, '_blank');
     setSent(true);
